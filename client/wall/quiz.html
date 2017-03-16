@@ -1,0 +1,278 @@
+<template name="quiz">
+    <body>
+   {{>sticky_nav}}
+   {{>navigation_quiz}} 
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
+<!--<script src="js/jquery-1.11.2.min.js"></script> 
+ Include all compiled plugins (below), or include individual files as needed  
+<script src="js/bootstrap.js"></script> 
+<script src="js/custom.js"></script> -->
+<style>
+    .modal-backdrop{
+        background-color: none !important;
+    }
+</style>
+<script>
+    $('document').ready(function(){
+        $('.sign-in').click(function(e){
+            e.preventDefault();
+           $('#signin').modal('show');
+        });
+        $('.sign-up').click(function(e){
+            e.preventDefault();
+           $('#signup').modal('show');
+        });
+        $('.frgtpwd').click(function(e){
+            e.preventDefault();
+            $('#signin').modal('hide');
+           $('#forgotpwd').modal('show');
+        });
+        $('html').on('click', function(){
+           if($('.notifi_pop').is(':visible'))
+           {
+               $('.notifi_pop').hide();
+           }
+        });
+        $('html').on('click', '.notifi_pop', function(){
+            $('.notifi_pop').show();
+        });
+        $('html').on('click', function(){
+           if($('.cartpop').is(':visible'))
+           {
+               $('.cartpop').hide();
+           }
+        });
+        $('html').on('click', '.cartpop', function(){
+            $('.cartpop').show();
+        });
+    });
+</script>
+</body>
+</template>
+
+<!--Navigation Start-->
+<template name="navigation_quiz">
+<div class="topfixed">
+  <div class="light-green">
+        <div class="container inner-nav">
+      <div class="row"> <a class="navbar-brand sprite" href="index.html">iProf</a>
+        <form class="navbar-form navbar-left" role="search">
+          {{>search_bar}}
+        </form>
+        <ul class="pull-right">
+            {{>notif_cart_count}}
+          <li><a href="javascript:void(0);" class="sign-in">Sign In</a></li>
+          {{>sign_in}}
+          {{>forgot_pwd}}
+          <li><a class="btn btn-default sign-up shadow" href="javascript:void(0);" role="button">Sign Up</a></li>
+          {{>sign_up}}  
+        </ul>
+      </div>
+    </div>
+  </div>
+    {{>my_preference}}
+    </div>
+    {{>wall_banner1}}
+    {{>breadcrumb_quiz}}
+    {{>quiz_ques}}
+    {{>footer}}
+  <div class="clearfix"></div>
+  </template> 
+
+
+ <!--Breadcrumb-->
+ <template name="breadcrumb_quiz">
+<div class="well no-border no-radius no-shadow no-margin-bottom no-padding">
+  <div class="container">
+    <div class="row">
+      <ol class="breadcrumb no-margin">
+        <li><a class="hoverCursor sliderviewmore" id = "course_home">Home</a></li>
+        <li class="active">Quiz</li>
+      </ol>
+    </div>
+  </div>
+</div>
+   
+<!--Breadcrumb End--> 
+
+<div class="container funzonehd shadow greybg margntop">
+	<div class="row">
+    	<div class="col-md-12">
+            	<h1>QUIZ</h1>
+       
+        </div>
+    </div>
+</div>
+ </template> 
+
+ 
+ <template name=" quiz_ques">
+<div class="container funzonevideos mrgntop">
+  <div class="row">
+    <!--question 1 starts-->
+    <div class="col-md-4 col-sm-4">
+      <div class="white shadow text-center">
+        <div class="questionofthedaydetails">
+          <div class="questiontext">vestibulum vel justo tempor, justo fringilla in et pretium dolor urna. Feugiat amet proin tortor cupiditate consequat justo, pretium urna enim urna?</div>
+          <ul class="start_test questionanswer">
+              <li>
+              <div class="radio radio-info">
+                <label>
+                  <input type="radio" name="radio" />
+                  <span class="lbl padding-8">Answer 1</span> </label>
+                  </div>
+              </li>
+              <li>
+                <div class="radio radio-info">
+                  <label>
+                  <input type="radio" name="radio" />
+                  <span class="lbl padding-8">Answer 2</span> </label>
+                </div>
+              </li>
+              <li>
+              <div class="radio radio-info">
+                <label>
+                  <input type="radio" name="radio" />
+                  <span class="lbl padding-8">Answer 3</span> </label>
+                  </div>
+              </li>
+              <li>
+              <div class="radio radio-info">
+                <label>
+                  <input type="radio" name="radio" />
+                  <span class="lbl padding-8">Answer 4</span> </label>
+                  </div>
+              </li>
+            </ul>
+          <button class="btn btn-success submitbtn shadow">SUBMIT</button>
+        </div>
+      </div>
+    </div>
+    <!--question 1 ends--> 
+
+    <!--question 2 starts-->
+    <div class="col-md-4 col-sm-4">
+      <div class="white shadow text-center">
+        <div class="questionofthedaydetails">
+          <div class="questiontext">vestibulum vel justo tempor, justo fringilla in et pretium dolor urna. Feugiat amet proin tortor cupiditate consequat justo, pretium urna enim urna?</div>
+          <ul class="start_test questionanswer">
+              <li>
+              <div class="radio radio-info">
+                <label>
+                  <input type="radio" name="radio" />
+                  <span class="lbl padding-8">Answer 1</span> </label>
+                  </div>
+              </li>
+              <li>
+                <div class="radio radio-info">
+                  <label>
+                  <input type="radio" name="radio" />
+                  <span class="lbl padding-8">Answer 2</span> </label>
+                </div>
+              </li>
+              <li>
+              <div class="radio radio-info">
+                <label>
+                  <input type="radio" name="radio" />
+                  <span class="lbl padding-8">Answer 3</span> </label>
+                  </div>
+              </li>
+              <li>
+              <div class="radio radio-info">
+                <label>
+                  <input type="radio" name="radio" />
+                  <span class="lbl padding-8">Answer 4</span> </label>
+                  </div>
+              </li>
+            </ul>
+          <button class="btn btn-success submitbtn shadow">SUBMIT</button>
+        </div>
+      </div>
+    </div>
+    <!--question 2 ends-->  
+    <!--question 3 starts-->
+    <div class="col-md-4 col-sm-4">
+      <div class="white shadow text-center">
+        <div class="questionofthedaydetails">
+          <div class="questiontext">vestibulum vel justo tempor, justo fringilla in et pretium dolor urna. Feugiat amet proin tortor cupiditate consequat justo, pretium urna enim urna?</div>
+          <ul class="start_test questionanswer">
+              <li>
+              <div class="radio radio-info">
+                <label>
+                  <input type="radio" name="radio" />
+                  <span class="lbl padding-8">Answer 1</span> </label>
+                  </div>
+              </li>
+              <li>
+                <div class="radio radio-info">
+                  <label>
+                  <input type="radio" name="radio" />
+                  <span class="lbl padding-8">Answer 2</span> </label>
+                </div>
+              </li>
+              <li>
+              <div class="radio radio-info">
+                <label>
+                  <input type="radio" name="radio" />
+                  <span class="lbl padding-8">Answer 3</span> </label>
+                  </div>
+              </li>
+              <li>
+              <div class="radio radio-info">
+                <label>
+                  <input type="radio" name="radio" />
+                  <span class="lbl padding-8">Answer 4</span> </label>
+                  </div>
+              </li>
+            </ul>
+          <button class="btn btn-success submitbtn shadow">SUBMIT</button>
+        </div>
+      </div>
+    </div>
+    <!--question 3 ends--> 
+    
+    <!--question 4 starts-->
+    <div class="col-md-4 col-sm-4">
+      <div class="white shadow text-center">
+        <div class="questionofthedaydetails">
+          <div class="questiontext">vestibulum vel justo tempor, justo fringilla in et pretium dolor urna. Feugiat amet proin tortor cupiditate consequat justo, pretium urna enim urna?</div>
+          <ul class="start_test questionanswer">
+              <li>
+              <div class="radio radio-info">
+                <label>
+                  <input type="radio" name="radio" />
+                  <span class="lbl padding-8">Answer 1</span> </label>
+                  </div>
+              </li>
+              <li>
+                <div class="radio radio-info">
+                  <label>
+                  <input type="radio" name="radio" />
+                  <span class="lbl padding-8">Answer 2</span> </label>
+                </div>
+              </li>
+              <li>
+              <div class="radio radio-info">
+                <label>
+                  <input type="radio" name="radio" />
+                  <span class="lbl padding-8">Answer 3</span> </label>
+                  </div>
+              </li>
+              <li>
+              <div class="radio radio-info">
+                <label>
+                  <input type="radio" name="radio" />
+                  <span class="lbl padding-8">Answer 4</span> </label>
+                  </div>
+              </li>
+            </ul>
+          <button class="btn btn-success submitbtn shadow">SUBMIT</button>
+        </div>
+      </div>
+    </div>
+    <!--question 4 ends--> 
+  </div>
+</div>
+     
+ </template>     
+<!--quiz ends--> 

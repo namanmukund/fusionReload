@@ -1,0 +1,10 @@
+{
+ "lmsIP": "10.10.17.205", 
+  "public": {    
+    "environment": "staging",
+	"persistent_session": {
+      "default_method": "persistent"
+    }
+  },
+  "googleApiKey": "AABBCCddEEff12123131"
+}

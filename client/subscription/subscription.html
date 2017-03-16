@@ -1,0 +1,256 @@
+<template name="subscription"> 
+    {{>topstrip}}
+    {{>subs_navigation}} 
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
+  <!--<script src="js/jquery-1.11.2.min.js"></script>--> 
+  <!-- Include all compiled plugins (below), or include individual files as needed --> 
+<!--  <script src="js/bootstrap.js"></script> 
+  <script src="js/bootstrap-multiselect.js"></script> 
+  --><script src="js/custom.js"></script>
+  <style>
+    .modal-backdrop{
+        background-color: none !important;
+    }
+</style>
+  <script>
+    $('document').ready(function(){
+        $('html').on('click', function(){
+           if($('.notifi_pop').is(':visible'))
+           {
+               $('.notifi_pop').hide();
+           }
+        });
+        $('html').on('click', '.notifi_pop', function(){
+            $('.notifi_pop').show();
+        });
+        $('html').on('click', function(){
+           if($('.cartpop').is(':visible'))
+           {
+               $('.cartpop').hide();
+           }
+        });
+        $('html').on('click', '.cartpop', function(){
+            $('.cartpop').show();
+        });
+        
+        
+        
+        $('.radio_button_subscription').on('click',function(){
+            if($(this).is(':checked')){
+                $('#total_price').val($(this).val());
+                $('#notify1').val($(this).val());
+            }
+            return true;
+        })
+        
+        $('.radio_button_subscription').each(function(index,val){
+            if($(this).hasClass('defaultSubscription')){
+                $('#total_price').val($(this).val());
+                $('#notify1').val($(this).val());
+            }
+            
+        })
+        
+    });
+    
+var pricing_val;    
+        function eventTrigger (e) {
+    if (! e)
+        e = event;
+    return e.target || e.srcElement;
+}
+
+function autosave(){
+    alert('autosave');
+    if($('.radio_button_subscription').is(':checked')){
+        alert($(this).val());
+        alert('iner if');
+        $('#total_price').val($(this).val());
+        $('#notify1').val($(this).val());
+    }
+}
+
+function radioClick (e) {
+    
+    /*var obj = eventTrigger (e);
+    console.log("from radioClick",obj.value);
+        window.myValue=obj.value;
+    var notify = document.getElementById &&
+                    document.getElementById ('notify');
+        var notify1 = document.getElementById &&
+                    document.getElementById ('notify1');
+     
+    console.log('notify',notify);
+    console.log('notify1',notify1);
+    //alert('hello');
+    if (notify && notify1){
+        notify.value = obj.value;
+        notify1.value = obj.value;
+    }
+        
+    pricing_val = obj.value;
+    return obj.value;*/
+}
+
+function getValue() {
+    alert(window.myValue); 
+}
+</script> 
+</template>
+<!--Navigation Start-->
+<template name="subs_navigation">
+  <div class="light-green">
+    <div class="container inner-nav">
+      <div class="row"> <a class="navbar-brand sprite" href="/">iProf</a>
+          {{>search_bar}}
+        <ul class="pull-right">
+          {{>notif_cart_count}}
+        {{#if login_check}}       
+            <li><a href="javascript:void(0);" class="sign-in">Sign In</a></li>
+            <li><a class=" sign-up btn btn-default shadow" href="javascript:void(0);" role="button">Sign Up</a></li>
+        {{else}}      
+            {{>user_profile_data}}
+        {{/if}} 
+        </ul>
+      </div>
+    </div>
+  </div>
+  {{>subs_breadcrumb}}
+  {{>subs_body}}
+  {{>footer}}
+  <div class="clearfix"></div>
+</template>
+<!--your preference end--> 
+
+<!--Breadcrumb-->
+<template name="subs_breadcrumb">
+  <div class="well white no-border no-radius no-shadow no-padding">
+    <div class="container">
+      <div class="row">
+        <ol class="breadcrumb no-margin">
+          <li class="go_home_subscription"><a href="#">Home</a></li>
+          <li class="active">Subscription</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</template>
+<!--Breadcrumb End-->
+
+<template name="subs_body">
+  <div class="white no-border no-radius no-padding no-margin-bottom mrgntop subscription">
+    <div class="container">
+      <div class="row">
+        <div  class="col-xs-12 col-sm-12">
+          <div class="row">
+<!--            <div class="col-sm-3 col-md-3">  required for floating  
+               Nav tabs 
+              <ul class="nav nav-tabs tabs-left">
+              {{#if is_user_login_subscription}}
+              <li class="active"><a href="#signinsignup" data-toggle="tab"><i>1</i>Sign In/ Sign Up</a></li>
+               <li><a href="#selectplan" data-toggle="tab"><i>2</i>Select Plan</a></li>
+              <li><a href="#makepayment" data-toggle="tab"><i>3</i>Make Payment</a></li>
+              {{else}}
+                     <li class="active"><a href="#selectplan" data-toggle="tab"><i>1</i>Select Plan</a></li>
+                     <li><a href="#makepayment" data-toggle="tab"><i>2</i>Make Payment</a></li>
+              {{/if}}  
+              </ul>
+            </div>-->
+            <div class="col-sm-9 col-md-9 subscriptionPlan"> 
+              <!-- Tab panes -->
+                  <div class="row">
+                    <div class="col-sm-7 col-md-7 subscborderrt"> 
+                      {{#if subscription_val}}
+                      {{#each subscription_val}}
+                      {{#if check_price coursePrice 0}}
+                      
+                      {{#if subscription_val_pricing}}
+                      
+                            {{#if subscription_val_pricing_check subscription_val_pricing validityId}}
+                                <div class="radio radio-info shadow selectplan">
+                                  <label>
+                                    <input class="radio_button_subscription defaultSubscription" type="radio" name="radio" id = "{{validityId}}" value ="{{coursePrice}}" onclick="return radioClick (event)" checked/>
+                                    <span class="lbl padding-8 validity"><strong>{{courseValidity}} only </strong><strong>&#8377; {{coursePrice}}</strong></span><span class="small">{{savingDesc}}</span> 
+                                  </label>
+                                </div>
+                            {{else}}
+                                <div class="radio radio-info shadow selectplan">
+                                  <label>
+                                    <input class="radio_button_subscription" type="radio" name="radio" id = "{{validityId}}" value ="{{coursePrice}}" onclick="return radioClick (event)"/>
+                                    <span class="lbl padding-8 validity"><strong>{{courseValidity}} only </strong><strong>&#8377; {{coursePrice}}</strong></span><span class="small">{{savingDesc}}</span> 
+                                  </label>
+                                </div>
+                            {{/if}}  
+                      
+                       {{else}}
+                            {{#if checked_button validityId 2}}
+                                <div class="radio radio-info shadow selectplan">
+                                  <label>
+                                    <input class="radio_button_subscription defaultSubscription" type="radio" name="radio" id = "{{validityId}}" value ="{{coursePrice}}" onclick="return radioClick (event)" checked/>
+                                    
+                                    <span class="lbl padding-8 validity"><strong>{{courseValidity}} only </strong><strong>&#8377; {{coursePrice}}</strong></span><span class="small">{{savingDesc}}</span> 
+                                  </label>
+                                </div>
+                            {{else}}
+                                <div class="radio radio-info shadow selectplan">
+                                  <label>
+                                    <input class="radio_button_subscription" type="radio" name="radio" id = "{{validityId}}" value ="{{coursePrice}}" onclick="return radioClick (event)"/>
+                                    <span class="lbl padding-8 validity"><strong>{{courseValidity}} only </strong><strong>&#8377; {{coursePrice}}</strong></span><span class="small">{{savingDesc}}</span> 
+                                  </label>
+                                </div>
+                            {{/if}}   
+                       {{/if}}
+                            
+                            
+                      {{/if}}
+                      {{/each}}
+                      {{/if}}
+                        <div class="applycoupncode"> <span>Offers Available</span>
+                          <!--<span class="coupontext"><input type="text" class="form-control" placeholder="Enter Coupon Code" id="get_coupon_value"/><a href="javascript:void(0)"><i class="glyphicon glyphicon-remove-circle remove_coupon_code" ></i></a></span>-->
+                          <span class="coupontext"><input type="text" id="get_coupon_value" placeholder="Enter Coupon Code" class="form-control"/><a href="javascript:void(0)"><i class="glyphicon glyphicon-remove-circle remove_coupon_code"></i></a>
+                            <button class="btn apply_coupon_subscription" href="javascript:void(0);" style="cursor:pointer">Apply</button></span>
+                          <div class="clearfix"></div>
+                          <div class="offerprice">
+                             <strong class="couponcode">INTRO50</strong> <span>Use Promo Code to avail 50% off.</span> 
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-5 col-md-5">
+                    <div class="substotalprice">
+                        
+                    	<div class="col-md-12">
+                        <div class="row margnbottom">
+                        	<div class="col-md-7">Total Amount: </div>
+                                <!--<input type="text" id="notify" name="notify" class="notify" size="24" disabled="disabled">-->
+                            <div class="col-md-5"><strong>&#8377; {{price_value}}</strong><input type="text" id="total_price" name="notify" class="notify" size="24" disabled="disabled"></div>
+                        </div>
+                        <div class="row margnbottom">
+                        	<div class="col-md-7">Discount Applied: </div>
+                            <div class="col-md-5"><strong>&#8377; {{final_payable_amount.discount}}</strong></div>
+                        </div>
+                        <div class="row margnbottom">
+                        	<div class="col-md-7">Net Payable: </div>
+                            {{#if final_payable_amount.payabale_amount}}    
+                            <div class="col-md-5"><strong>&#8377; {{final_payable_amount.payabale_amount}}</strong></div>
+                            {{else}}
+                            <div class="col-md-5"><strong>&#8377; </strong><input type="text" id="notify1" name="net_price" class="notify" size="24" disabled="disabled"></div>
+                            {{/if}}
+                            
+                        </div>
+                        
+                        </div>
+                        
+                        
+                        
+                    </div>
+                    <button class="btn btn-warning proceedbtn pull-right subscription_proceed">Proceed</button>
+                    </div>
+                  </div>
+                </div>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

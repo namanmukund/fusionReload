@@ -1,0 +1,62 @@
+<template name="test_analysis">
+  <body>
+  <script src="/js/custom.js"></script>
+  <style>
+  .margintop {
+      margin-top: 100px;
+  }
+  </style>
+  {{>headertest}}
+  <!--opponent list-->
+  <div class="well white no-border no-radius no-shadow no-margin-bottom no-padding taketest margintop">
+    <div class="container">
+      <div class="row">
+	<h1>Test Analysis</h1>
+	<div class="col-md-7 col-sm-7 col-xs-12">
+	  <div class="graphdiv">
+	    <ul class="chartgraph">
+	      <li> <span class="questioncruut colorbg1">{{user_test_detail.correctCount}}</span> <span class="questionbaar colorbgch1"><strong class="colorbg1" style="width:{{graph totalQuestion user_test_detail.correctCount}}%;">&nbsp;</strong></span>
+		<div class="clearfix"></div>
+	      </li>
+	      <li> <span class="questioncruut colorbg2">{{user_test_detail.incorrectCount}}</span> <span class="questionbaar colorbgch2"><strong class="colorbg2"  style="width:{{graph totalQuestion user_test_detail.incorrectCount}}%;">&nbsp;</strong></span>
+		<div class="clearfix"></div>
+	      </li>
+	      <li> <span class="questioncruut colorbg3">{{user_test_detail.attemptedCount}}</span> <span class="questionbaar colorbgch3"><strong class="colorbg3"  style="width:{{graph totalQuestion user_test_detail.attemptedCount}}%;">&nbsp;</strong></span>
+		<div class="clearfix"></div>
+	      </li>
+	      <li> <span class="questioncruut colorbg4">{{user_test_detail.unattemptedCount}}</span> <span class="questionbaar colorbgch4"><strong class="colorbg4"  style="width:{{graph totalQuestion user_test_detail.unattemptedCount}}%;">&nbsp;</strong></span>
+		<div class="clearfix"></div>
+	      </li>
+	      <span class="timetaken"  style="margin-left:64%;"> <strong> <b>[{{duration user_test_detail.totalTimeTaken}}]</b> Time Taken </strong></span>
+	      <li> <span class="questioncruut colorbg5">{{totalQuestion}}</span> <span class="questionbaar"><strong class="colorbg5"  style="width:100%;">&nbsp;</strong></span>
+		<div class="clearfix"></div>
+	      </li>
+	      <li class="topmargind"> <span class="questioncruut">&nbsp;</span> <span class="questionbaar topborder"> <b class="leftno">1</b> <b class="lrightno">{{totalQuestion}}</b> </span> </li>
+	    </ul>
+	    <div class="clearfix"></div>
+	    <ul class="chartgraph2">
+	      <li><span class="questioncruut colorbg5">{{totalQuestion}}</span> <span class="questionbaar" style="width:10%;">Questions </span> </li>
+	      <li><span class="questioncruut colorbg4">{{user_test_detail.unattemptedCount}}</span> <span class="questionbaar" style="width:20%;">Unattempted </span> </li>
+	      <li><span class="questioncruut colorbg3">{{user_test_detail.attemptedCount}}</span> <span class="questionbaar" style="width:30%;">Attempted </span> </li>
+	      <li><span class="questioncruut colorbg2">{{user_test_detail.incorrectCount}}</span> <span class="questionbaar" style="width:50%;">Incorrect </span> </li>
+	      <li><span class="questioncruut colorbg1">{{user_test_detail.correctCount}}</span> <span class="questionbaar" style="width:100%;">Correct </span> </li>
+	      <div class="clearfix"></div>
+	    </ul>
+	  </div>
+	</div>
+	<div class="col-md-5 col-sm-5 col-xs-12">
+	  <div class="timechangetaken"> <strong><b>{{user_test_detail.marksObtained}}</b> Score </strong> <span>Time taken {{duration user_test_detail.totalTimeTaken}}</span> <span>Correct Question :{{user_test_detail.correctCount}}</span>
+	    <div class="clearfix"></div>
+	    <a href="/analysis_result/{{test_id}}?source={{headerSource}}" id="analysisResult" class="buttonyellow testanalysis">Test Analysis</a> </div>
+	</div>
+      </div>
+    </div>
+  </div>
+  <!--opponent list End--> 
+  {{>footer}}
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
+  <!--<script src="js/jquery-1.11.2.min.js"></script>--> 
+  <!-- Include all compiled plugins (below), or include individual files as needed --> 
+  <!--<script src="js/bootstrap.js"></script>-->
+</body>
+</template>

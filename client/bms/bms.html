@@ -1,0 +1,36 @@
+<template name="bms">
+    <body>
+   {{>bmsBreadcrumb}}
+   {{>bmsSubject}}
+  
+    <script src="js/custom.js"></script> 
+<style>
+    .modal-backdrop{
+        background-color: none !important;
+    }
+</style>
+<script>
+    $('document').ready(function(){
+        $('html').on('click', function(){
+           if($('.notifi_pop').is(':visible'))
+           {
+               $('.notifi_pop').hide();
+           }
+        });
+        $('html').on('click', '.notifi_pop', function(){
+            $('.notifi_pop').show();
+        });
+        $('html').on('click', function(){
+           if($('.cartpop').is(':visible'))
+           {
+               $('.cartpop').hide();
+           }
+        });
+        $('html').on('click', '.cartpop', function(){
+            $('.cartpop').show();
+        });
+        $('[data-toggle="tooltip"]').tooltip();   
+    });
+</script>
+    </body>
+    </template>

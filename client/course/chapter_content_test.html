@@ -1,0 +1,162 @@
+<template name="chapter_content_test">
+<body>
+    {{>topstrip}}
+   {{>navigation_chapter_content_test}} 
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
+<!--<script src="js/jquery-1.11.2.min.js"></script>--> 
+<!-- Include all compiled plugins (below), or include individual files as needed --> 
+<!--<script src="js/bootstrap.js"></script> 
+<script src="js/bootstrap-multiselect.js"></script> 
+-->
+<style>
+   .modal-backdrop{
+        background-color: none !important;
+   }
+   a.reviewbtnTest {
+      color: #404040;
+      float: left;
+      font-family: "sf_ui_displaylight";
+      font-size: 11px;
+      margin-right: 10px;
+      margin-top: 0px;
+      padding: 5px 10px;
+      text-align: center;
+  }
+</style>
+<script>
+    $('document').ready(function(){
+        $('html').on('click', function(){
+           if($('.notifi_pop').is(':visible'))
+           {
+               $('.notifi_pop').hide();
+           }
+        });
+        $('html').on('click', '.notifi_pop', function(){
+            $('.notifi_pop').show();
+        });
+        $('html').on('click', function(){
+           if($('.cartpop').is(':visible'))
+           {
+               $('.cartpop').hide();
+           }
+        });
+        $('html').on('click', '.cartpop', function(){
+            $('.cartpop').show();
+        });
+    });
+</script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    $(".paper-icon-button #save").css({"display:none");
+    });
+</script>
+<script src="/js/custom.js"></script>
+<!--<script src="https://content.jwplatform.com/libraries/HrmCsKJB.js"></script>-->
+</body>
+</template>
+
+<!--Navigation Start-->
+<template name="navigation_chapter_content_test">
+<div class="blue-bg">
+  <div class="container inner-nav">
+    <div class="row"> 
+        <ul class="pull-right">
+            {{>notif_cart_count}}
+            {{#if login_check}}
+                <li><a href="javascript:void(0);" class="sign-in">Sign In</a></li>
+                <li><a class="sign-up btn btn-default shadow" href="javascript:void(0);" role="button">Sign Up</a></li>
+            {{else}}  
+            {{>user_profile_data}}
+            
+            {{/if}}
+        </ul>
+        <a class="navbar-brand sprite blklogo" href="/">iProf</a>
+            {{>search_bar}}
+        
+    </div>
+  </div>
+</div>    
+    {{>chapter_content_result_test}}   
+    {{>footer}}
+  <div class="clearfix"></div>
+</template> 
+<!--Navigation end-->
+
+<template name="chapter_content_result_test">
+<div class="well no-border no-radius no-padding no-margin-bottom searchresult">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1 boxborder white">
+        <div class="row"> 
+          <!--breadcrumb-->
+          <ol class="breadcrumb no-margin">
+            <li class="content_to_test"><a href="javascript:void(0)">Tests</a></li>
+            {{#if breadcrumb_course_name}}
+                <li class="content_to_test_pdp"><a href="javascript:void(0)">{{breadcrumb_course_name}}</a></li>
+            {{/if}}
+            <!--<li class="pdp_to_test"><a href="javascript:void(0">pdp</a></li>-->
+            
+            
+                {{#if breadcrumb_chapter_name}}
+                    <li class="active">{{breadcrumb_chapter_name}}</li>
+                {{/if}}
+          </ol>
+          <!--breadcrumb ends-->
+          <div id="tabcontent" class="white">
+            <ul class="nav nav-tabs white margnbottom" role="tablist">
+              <li role="presentation" class="active"><a href="#testseries" aria-controls="profile" role="tab" data-toggle="tab">Tests</a></li>
+            </ul>
+            <div class="paddingbottom">
+              <div class="tab-content">    
+                <!--test series starts-->
+                <div role="tabpanel" class="tab-pane active" id="testseries"> 
+                  <div class="col-md-12">
+                    
+                  <div class="courseresult white ">
+                      <div class="row">
+                      {{#if chapter_test_result_list}}    
+                        {{#each chapter_test_result_list}}   
+                      
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                          <div class="shadow margnbtmadd">
+                            <div class="resultimage"><a href="javascript:void(0);"><img src="/images/vdoplayicn.png" alt="" class="vdoplayicn"/></a><img src="/images/searchresultimg.jpg" alt="" class="img-responsive"/></div>
+                            <div class="courseresultdetails">
+
+                              <h4>{{test_name}}</h4>
+                              <p>Total Questions {{total_question}}</p>
+                              <div class="pull-right">
+                              {{#if attemptTest student_status "Not Attempted"}}
+                                 <a href="/user_tests/{{test_id}}/{{chapterId}}?source=test" id="{{test_id}}" class="graybutton reviewbtnTest strtTest">Take Test</a>
+                              {{else}}
+                                 <a href="/analysis_result/{{test_id}}?source=test" class="graybutton reviewbtnTest">Review Last Attempt</a>
+                                 <a href="/user_tests/{{test_id}}/{{chapterId}}?source=test" id="{{test_id}}" class="graybutton reviewbtnTest strtTest">Re Test</a>
+                              {{/if}}
+                              <div class="clearfix"></div>
+                              </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                      </div>
+                      
+                        {{/each}}
+                      {{/if}}
+                  </div>
+                      <div class="clearfix"></div>
+                </div>
+                        
+                    </div>
+                </div>
+                <!--test series ends--> 
+                <!--tutors starts-->
+                <!--tutors ends--> 
+              </div>
+                <div class="clearfix"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</template>

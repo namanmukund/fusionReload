@@ -1,0 +1,1063 @@
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<title>iProf</title>
+<!-- Bootstrap -->
+<link href="/css/bootstrap.css" rel="stylesheet">
+<link href="/css/bootstrap-multiselect.css" rel="stylesheet">
+<link href="/css/style.css" rel="stylesheet">
+<link href="/css/fonts.css" rel="stylesheet">
+<link href="/css/subscribe.css" rel="stylesheet">
+<link href="/css/owl.carousel.css" rel="stylesheet">
+<link href="/css/owl.theme.css" rel="stylesheet">
+<link href="/css/materialdesignicons.min.css" media="all" rel="stylesheet" type="text/css" />
+<!--<link href="/css/bootstrap-multiselect.css" rel="stylesheet">-->
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+<!--<script src="js/bootstrap.js"></script>-->
+<!--<script src="js/bootstrap-multiselect.js"></script>
+<script src="js/jquery-1.11.2.min.js"></script> -->
+
+<script src="https://content.jwplatform.com/libraries/HrmCsKJB.js"></script>
+<link href="/css/jquery.mCustomScrollbar.css" rel="stylesheet">
+<!--<style>
+#breadcrumb {
+	margin-left: 155px !important;
+	margin-top: 100px;
+}
+</style>-->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-56431575-3', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<meta name="google-site-verification" content="z0fs8NW4MAmzAwP8MiW8OivsV40rmsyhpM-eb9BRO68" />
+</head>
+<template name="landing">
+  <body>
+  {{>navigation}} 
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
+  
+  <!-- Include all compiled plugins (below), or include individual files as needed --> 
+  
+  <script>
+$('.scroll').click(function() {
+ $('.navbar-nav >li>a').removeClass('active');
+ $(this).addClass('active');
+ var temp=$(this).attr('alt');
+ $('html,body').animate({ scrollTop: $(temp).offset().top-50}, 1000);
+ return false;
+ //e.preventDefault();
+});
+</script> 
+  <script>
+   $('document').ready(function(){
+        $('.proceed_free_trial').click(function() {
+             $('#congratspop').hide();
+        });
+    });
+
+	$('.carousel').carousel({
+  interval: 2000
+})
+</script> 
+  <script>
+ $(document).ready(function() {
+  $("#owl-demo").owlCarousel({
+      navigation : true, // Show next and prev buttons
+      slideSpeed : 300,
+	  loop:true,
+      paginationSpeed : 400,
+      singleItem:true,
+      autoPlay:6000
+
+      // "singleItem:true" is a shortcut for:
+      // items : 1,
+      // itemsDesktop : false,
+      // itemsDesktopSmall : false,
+      // itemsTablet: false,
+      // itemsMobile : false
+
+  });
+
+
+    var carousel = $("#owl-demo");
+  carousel.owlCarousel({
+    navigation:true,
+    navigationText: [
+      "<i class='glyphicon glyphicon-menu-left icon-white'></i>",
+      "<i class='glyphicon glyphicon-menu-right icon-white'></i>"
+      ],
+
+});
+
+
+
+});
+
+
+</script> 
+  <script src="/js/custom.js"></script> 
+  <script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '991260897597547',
+      xfbml      : true,
+      version    : 'v2.5'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+  </body>
+</template>
+<!--Navigation Start-->
+<template name="topstrip">
+  <div class="topstrip" id="topS">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <ul class="pull-right">
+            <li>
+              <script>(function(d, s, id) {
+		var js, fjs = d.getElementsByTagName(s)[0];
+		if (d.getElementById(id)) return;
+		js = d.createElement(s); js.id = id;
+		js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+		fjs.parentNode.insertBefore(js, fjs);
+	      }(document, 'script', 'facebook-jssdk'));</script>
+              <div class="fb-like" data-href="https://www.facebook.com/iProfLearningSolutions" data-layout="button_count" data-action="like" data-show-faces="true" data-width="400px" data-share="false"></div>
+            </li>
+            <li class="download-app"><a href="https://bnc.lt/m/fXzknXrbRp">Download App<i class="sprite"></i></a></li>
+            <li><a href="/deals">Deals &amp; Offers</a></li>
+            <li><a href="javascript:void(0)" id="support" class="support_click">Get in Touch</a>
+              <div class="support_bos">
+                <div class="support_bosbg"><span class="arrowndc">&nbsp;</span>
+                  <p><a class="chat" href="javascript:void(0);" target="_blank" onclick="javascript:window.open('https://chatserver.comm100.com/ChatWindow.aspx?siteId=145221&planId=229&visitType=1&byHref=1&partnerId=-1','mywindowtitle','width=500,height=350');
+                            return false;"><span class="livechate">&nbsp;</span>Live Chat</a></p>
+                  <p><a href="mailto:info@iprofindia.com"><span class="livechate3">&nbsp;</span>info@iprofindia.com</a></p>
+                  <p><a href="/contact-us"><span class="livechate4">&nbsp;</span>Feedback</a></p>
+                  <p><a href="javascript:void(0);" id="getacall"><span class="livechate1">&nbsp;</span>Get a Call Back</a>
+                  <div id="getBox" style="display:none;">
+                    <form id="getCallFrm">
+                      <input class="form-control" id="getmobile" name="getmobile" placeholder="Enter Mobile">
+                      <span id="messageCall" style="display:block; margin-top:2px;"></span>
+                      <button class="topsubmitbtn btn btn-success" id="callSubmit" style="margin-top:10px;">SUBMIT</button>
+                    </form>
+                  </div>
+                  </p>
+                </div>
+              </div>
+            </li>
+            <li>Call us at: 0120-4363636</li>
+          </ul>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+<template name="navigation">
+  <div class="topfixed">{{>topstrip}}
+    <nav class="navbar navbar-default green-bg">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+          <a class="navbar-brand sprite" href="javascript:void(0)" id="go_to_top_landing_page">Brand</a></div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="javascript:void(0)" alt="#getstarted" id="getStartId" class="scroll">Get Started</a></li>
+            <li><a href="javascript:void(0)" alt="#features" class="scroll">Why iProf</a></li>
+            <li><a href="javascript:void(0)" alt="#content_partners" class="scroll">Content Partners</a></li>
+            <li><a href="javascript:void(0)" alt="#pricing" class="scroll">Subscription Plans</a></li>
+            <li><a href="javascript:void(0)" alt="#review" class="scroll">Reviews</a></li>
+            {{#if login_check}}
+            <li><a href="javascript:void(0);" class="sign-in">Sign In</a></li>
+            <li><a class=" sign-up btn btn-default shadow" href="javascript:void(0);" role="button">Sign Up</a></li>
+            {{else}}
+            {{>user_profile_data}}
+            {{/if}}
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+  {{>start}}
+  {{>getStarted}}
+  {{>features}}
+  {{>publisher}}
+  {{>pricing}}
+  {{>review}}
+  {{>footer}}</template>
+
+<!--Navigation end-->
+<template name="start">
+  <div class="subscribe-home">
+    <!--  <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+     Indicators
+    <ol class="carousel-indicators">
+      <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+      <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+    </ol>
+
+     Wrapper for slides
+    <div class="carousel-inner" role="listbox">
+      <div class="item active" id="home-bg"> <img src="images/home-bg.jpg" alt="">
+        <div class="carousel-caption">
+          <div class="subscribe">
+            <h2 class="text-center">Subscribe to iProf Unlimited</h2>
+            <div class="thin text-center">&amp; join 1.5 million students who are already learning using our platform.</div>
+            <ul>
+              <li>Cost Effective 1</li>
+              <li>Join Unlimited Courses</li>
+              <li>Get All Tests FREE</li>
+              <li>Offline Learning</li>
+              <li>Browse Unlimited content</li>
+            </ul>
+            <div class="button"><a class="btn btn-default transparent free_trial" href="javascript:void(0);" role="button">Start 7 Days Free Trial</a><br>
+              <a class="btn btn-default subscription_from_landing" href="javascript:void(0);" role="button">Subscribe now</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="item" id="home-bg"> <img src="images/home-bg.jpg" alt="">
+        <div class="carousel-caption">
+          <div class="subscribe">
+            <h2 class="text-center">Subscribe to iProf Unlimited</h2>
+            <div class="thin text-center">&amp; join 1.5 million students who are already learning using our platform.</div>
+            <ul>
+              <li>Cost Effective123</li>
+              <li>Join Unlimited Courses</li>
+              <li>Get All Tests FREE</li>
+              <li>Offline Learning</li>
+              <li>Browse Unlimited content</li>
+            </ul>
+            <div class="button"><a class="btn btn-default transparent free_trial" href="javascript:void(0);" role="button">Start 7 Days Free Trial</a><br>
+              <a class="btn btn-default subscription_from_landing" href="javascript:void(0);" role="button">Subscribe now</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+     Controls
+    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev"> <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a> <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next"> <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> <span class="sr-only">Next</span> </a> </div>-->
+    <div id="owl-demo" class="owl-carousel owl-theme indexmargintop">
+      <div class="item">
+        <div id="home-bg">
+          <div class="row">
+            <div class="pull-right">
+              <div class="bannercontentbg">
+                <div class="bannerhd">Get Success&nbsp;<span>Without Stress</span></div>
+                <div class="bannersubhd">Freedom to Study&nbsp;<span>at your<span class="ylwclr">&nbsp;own pace, own place</span></span></div>
+                <div class="bannerintro-offer">
+                  <ul>
+                    <li>Introductory Offer</li>
+                    <li><strong>50%</strong>Off<span>Code: INTRO50</span></li>
+                  </ul>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="subscriptionprice"><strong>S</strong>
+                  <div class="subsprice"><span>ubscription</span><span>tarting @ &#8377; 999</span></div>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="coursehardware">LAPTOP / PC | MOBILE | TABLET</div>
+                <div><a href="javascript:void(0);" class="banner_subscription"><img src="/images/subscribenow.png" alt=""/></a>{{#if is_free_trial_taken}}
+                  <!--<button type="button" class="bannerbtn" ><img src="/images/getfreetrial.png" alt=""/></button>-->
+                  {{/if}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="item banner1">
+        <div class="row">
+          <div class="pull-right">
+            <div class="bannercontentbg">
+              <div class="bannerhd bannerpaddingadd">Don't miss out!</div>
+              <div class="bannersubhd">Join our&nbsp;<span class="ylwclr">80 Lacs+</span>&nbsp;Students</div>
+              <div class="bannerintro-offer bannermargintop">
+                <ul>
+                  <li>Introductory Offer</li>
+                  <li><strong>50%</strong>Off<span>Code: INTRO50</span></li>
+                </ul>
+                <div class="clearfix"></div>
+              </div>
+              <div class="subscriptionprice"><strong>S</strong>
+                <div class="subsprice"><span>ubscription</span><span>tarting @ &#8377; 999</span></div>
+                <div class="clearfix"></div>
+              </div>
+              <div class="coursehardware">LAPTOP / PC | MOBILE | TABLET</div>
+              <div><a href="javascript:void(0);" class="banner_subscription"><img src="/images/subscribenow.png" alt=""/></a>{{#if is_free_trial_taken}}
+                <!--<button type="button" class="bannerbtn" ><img src="/images/getfreetrial.png" alt=""/></button>-->
+                {{/if}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="item banner2">
+        <div class="row">
+          <div class="pull-right">
+            <div class="bannercontentbg">
+              <div class="bannerhd">One&nbsp;<span>Subscription</span>,<br>
+                Multiple Courses!</div>
+              <div class="bannersubhd">Access Complete Library of<span><span class="ylwclr">500+ courses</span></span></div>
+              <div class="bannerintro-offer bannermargintop2">
+                <ul>
+                  <li>Introductory Offer</li>
+                  <li><strong>50%</strong>Off<span>Code: INTRO50</span></li>
+                </ul>
+                <div class="clearfix"></div>
+              </div>
+              <div class="subscriptionprice"><strong>S</strong>
+                <div class="subsprice"><span>ubscription</span><span>tarting @ &#8377; 999</span></div>
+                <div class="clearfix"></div>
+              </div>
+              <div class="coursehardware">LAPTOP / PC | MOBILE | TABLET</div>
+              <div><a href="javascript:void(0);" class="banner_subscription"><img src="/images/subscribenow.png" alt=""/></a>{{#if is_free_trial_taken}}
+                <!--<button type="button" class="bannerbtn" ><img src="/images/getfreetrial.png" alt=""/></button>-->
+                {{/if}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="item banner3">
+        <div class="row">
+          <div class="pull-right">
+            <div class="bannercontentbg">
+              <div class="bannerhd">Crack<span>ANY</span>Exam!</div>
+              <div class="bannersubhd">Comprehensive courses with&nbsp;<span><span class="ylwclr">Videos, Notes &amp; Tests</span>from</span><span>renowned teachers</span></div>
+              <div class="bannerintro-offer bannermargintop1">
+                <ul>
+                  <li>Introductory Offer</li>
+                  <li><strong>50%</strong>Off<span>Code: INTRO50</span></li>
+                </ul>
+                <div class="clearfix"></div>
+              </div>
+              <div class="subscriptionprice"><strong>S</strong>
+                <div class="subsprice"><span>ubscription</span><span>tarting @ &#8377; 999</span></div>
+                <div class="clearfix"></div>
+              </div>
+              <div class="coursehardware">LAPTOP / PC | MOBILE | TABLET</div>
+              <div><a href="javascript:void(0);" class="banner_subscription"><img src="/images/subscribenow.png" alt=""/></a>{{#if is_free_trial_taken}}
+                <!--<button type="button" class="bannerbtn" ><img src="/images/getfreetrial.png" alt=""/></button>-->
+                {{/if}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="item banner4">
+        <div class="row">
+          <div class="pull-right">
+            <div class="bannercontentbg">
+              <div class="lastbannermargintop">
+                <div class="bannerhd">Study<span>without</span>internet!</div>
+                <div class="bannersubhd borderbtm"><span>Get your course home delivered,</span><span>preloaded on SD card / Pen Drive</span></div>
+                <a href="#getstarted"><img src="/images/choose-course.png" alt=""/></a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+<template name="getStarted">
+  <div id="getstarted" class="mousescroll">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="get-started">
+            <h3 class="heading text-center">Get Started</h3>
+            <!--<h4 class="subheading text-center">Select your stream</h4>-->
+            <div class="stepnation">
+              <div class="grybrdr"></div>
+              <ul>
+                <li id="stepper_1" class="active pull-left"><span class="circ">1</span><span class="stepcontent">Select Category</span></li>
+                <li id="stepper_2"><span class="circ">2</span><span class="stepcontent">Select Sub-Category</span></li>
+                <li id="stepper_3"><span class="circ">3</span><span class="stepcontent">Select Course</span></li>
+                <li id="stepper_4" class="pull-right"><span class="circ">4</span><span class="stepcontent">Select Subject</span></li>
+              </ul>
+            </div>
+            <div class="clearfix"></div>
+            <div class="xyz" id="steps">
+              <div class="slide">
+                
+                <!--Step-1-->
+                <div class="step step-1">
+                  <div class="col-xs-6 card effect__hover" id="popular">
+                    <div class="card__front popular-course"><i class="sprite"></i><span class="card__text">POPULAR COURSES</span></div>
+                    <div class="card__back popular-course"><span class="card__text text-transformation">529 courses inside</span></div>
+                  </div>
+                  {{#each categories}}
+                  {{#if display_name}}
+                  <div class="col-xs-6 card effect__hover" id="{{id}}">
+                    <div class="card__front {{dispClass}}"><i class="sprite"></i><span class="card__text">{{display_name}}</span></div>
+                    {{#if no_of_courses id}}
+                    <div class="card__back {{dispClass}}"><span class="card__text text-transformation">{{no_of_courses id}} courses inside</span></div>
+                    {{/if}}</div>
+                  {{/if}}
+                  {{/each}}
+                  <!--<div class="card-search effect__hover">
+                    <div class="card__front search-course"><i class="sprite"></i><span class="card__text">SEARCH<span>(Your Prefered Course)</span></span></div>
+                  </div>-->
+                </div>
+                <!--Step-1-end-->
+                
+                <!--Step-2-->
+                {{#if popularCourses}}
+                <div class="step step-2">
+                  <ol class="breadcrumb breadcrumb-pad no-radius no-margin-bottom">
+                    <i class="sprite"></i>
+                    <li class= "home_breadcrumb hoverCursor">Home</li>
+                    <li class="active">Popular Courses</li>
+                  </ol>
+                  <div class="boxes">
+                    <div class="row">{{#if popularCourses}}
+                      {{#each popularCourses}}
+                      <div class="box popular_course" id="{{id}}"><span>{{display_name}}</span></div>
+                      {{/each}}
+                      {{/if}}</div>
+                  </div>
+                </div>
+                <div class="step step-4">
+                  <ol class="breadcrumb breadcrumb-pad no-radius no-margin-bottom">
+                    <i class="sprite"></i>
+                    <li class= "home_breadcrumb hoverCursor">Home</li>
+                    <li>Popular Courses</li>
+                    <li class="active">All Subjects</li>
+                  </ol>
+                  <div class="boxes">
+                    <div class="row">
+                      <div class="box all-subject">
+                        <div class="checkbox-new checkbox-success">
+                          <input type="checkbox" id="selectall" value="option0" checked>
+                          <label for="selectall">All Subjects</label>
+                        </div>
+                      </div>
+                      <form class="submitPreferences">
+                        {{#each subjects}}
+                        {{#if display_name}}
+                        <div class="box" id="{{id}}">
+                          <div class="checkbox-new checkbox-success">
+                            <input type="checkbox" id="inlineCheckbox_{{id}}" value="{{id}}" class="checkbox1" checked>
+                            <label for="inlineCheckbox_{{id}}">{{display_name}}</label>
+                          </div>
+                        </div>
+                        {{/if}}
+                        {{/each}}
+                        <div class="box transparent"><b class="btn btn-default proceed"><i class="glyphicon glyphicon-ok"></i>
+                          <input type="submit" name="Proceed">
+                          Proceed</b></div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+                {{else}}
+                <div class="step step-2 {{catClass}}">
+                  <ol class="breadcrumb breadcrumb-pad no-radius no-margin-bottom">
+                    <i class="sprite"></i>
+                    <li class= "home_breadcrumb hoverCursor"><a href="javascript:void(0);">Home</a></li>
+                    <li class="active">{{categoryName}}</li>
+                  </ol>
+                  <div class="boxes">
+                    <div class="row">{{#each subCategories}}
+                      {{#if display_name}}
+                      <div class="box" id="{{id}}"><span>{{display_name}}</span></div>
+                      {{/if}}
+                      {{/each}}</div>
+                  </div>
+                </div>
+                
+                <!--Step-2-end-->
+                
+                <!--Step-3-->
+                <div class="step step-3 {{catClass}}">
+                  <ol class="breadcrumb breadcrumb-pad no-radius no-margin-bottom">
+                    <i class="sprite"></i>
+                    <li class= "home_breadcrumb hoverCursor"><a href="javascript:void(0);">Home</a></li>
+                    <li class = "category_name_breadcrumb"><a href="javascript:void(0);">{{categoryName}}</a></li>
+                    <li class="active">{{subCategoryName}}</li>
+                  </ol>
+                  <div class="boxes">
+                    <div class="row">{{#each courses}}
+                      {{#if display_name}}
+                      <div class="box" id="{{id}}"><span>{{display_name}}</span></div>
+                      {{/if}}
+                      {{/each}}
+                      
+                      <!--                    {{#each popularCourses}}
+                    {{#if display_name}}
+                    <div class="box" id="{{id}}"><span>{{display_name}}</span></div>
+                    {{/if}}
+                    {{/each}}-->
+                      
+                    </div>
+                  </div>
+                </div>
+                <div class="step step-4 {{catClass}}">
+                  <ol class="breadcrumb breadcrumb-pad no-radius no-margin-bottom">
+                    <i class="sprite"></i>
+                    <li class= "home_breadcrumb hoverCursor"><a href="javascript:void(0);">Home</a></li>
+                    <li class = "category_name_breadcrumb"><a href="javascript:void(0);">{{categoryName}}</a></li>
+                    <li class = "sub_category_name_breadcrumb"><a href="javascript:void(0);">{{subCategoryName}}</a></li>
+                    <li class="active">{{courseName}}</li>
+                  </ol>
+                  <div class="boxes">
+                    <div class="row">
+                      <div class="box all-subject">
+                        <div class="checkbox-new checkbox-success">
+                          <input type="checkbox" id="selectall" value="option0" checked>
+                          <label for="selectall">All Subjects</label>
+                        </div>
+                      </div>
+                      <form class="submitPreferences">
+                        {{#each subjects}}
+                        {{#if display_name}}
+                        <div class="box" id="{{id}}">
+                          <div class="checkbox-new checkbox-success">
+                            <input type="checkbox" id="inlineCheckbox_{{id}}" value="{{id}}" class="checkbox1" checked>
+                            {{#if change_subj_color_school_k12}}
+                                <label class="subject_step" for="inlineCheckbox_{{id}}">{{display_name}}</label>
+                            {{else}}
+                                <label for="inlineCheckbox_{{id}}">{{display_name}}</label>
+                            {{/if}}
+                          </div>
+                        </div>
+                        {{/if}}
+                        {{/each}}
+                        <div class="box transparent">
+                          <input type="submit" id="image-button" name="Proceed">
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+                <!--Step-3-end-->
+                {{/if}}
+                <!--Step-4-->
+                
+                <!--Step-4-end-->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<!--Features-->
+<template name="features">
+  <div class="well no-border no-radius no-shadow no-margin-bottom features text-center hp-graybg" id="features" >
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h3 class="heading">Why iProf</h3>
+          <h4 class="subheading">What makes us the preferred choice for all your digital learning needs</h4>
+          <div class="col-xs-12 col-sm-4 col-md-4 featured"><span class="tilt red"><i class="sprite"></i></span>
+            <h5>India's Largest Digital Content Library</h5>
+            <p>500+ Courses, 15,000+ Videos, 35000+ Notes, 40,000+ Tests and more content added regularly</p>
+          </div>
+          <div class="col-xs-12 col-sm-4 col-md-4 featured"><span class="tilt green"><i class="sprite"></i></span>
+            <h5>80 Lakh+ Users</h5>
+            <p>More than 80 lakh users, from School Studies to Competitive Exams to Professional Courses. We've got Courses for Everyone!</p>
+          </div>
+          <div class="col-xs-12 col-sm-4 col-md-4 featured"><span class="tilt brown"><i class="sprite"></i></span>
+            <h5>Doubts &amp; Discussions</h5>
+            <p>When in doubt.. Ask a Question! Get all your doubts and questions answered by the finest faculty and teachers associated with us</p>
+          </div>
+          <div class="clearfix"></div>
+          <div class="col-xs-12 col-sm-4 col-md-4 featured"><span class="tilt yellow"><i class="sprite"></i></span>
+            <h5>Mobile App</h5>
+            <p>More than 1.8 million downloads! A trusted Study Buddy. Now learn on the go, Stream or Download Videos, Practice Unlimited Tests</p>
+          </div>
+          <div class="col-xs-12 col-sm-4 col-md-4 featured"><span class="tilt sky"><i class="sprite"></i></span>
+            <h5>Offline Consumption</h5>
+            <p>No internet? No Problem!! Download once and study without internet OR get the content shipped in a Pen Drive or SD Card.</p>
+          </div>
+          <div class="col-xs-12 col-sm-4 col-md-4 featured"><span class="tilt bottlegreen"><i class="sprite"></i></span>
+            <h5>PC App</h5>
+            <p>Love the BIG screen? Study with high definition and animated videos with our PC App for Windows. Just Plug-n-Play on your Laptop or Desktop</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<!--Renowed Publisher-->
+<template name="publisher">
+  <div class="well no-border no-radius no-shadow no-margin-bottom white publisher text-center" id="content_partners">
+    <div class="container">
+      <div class="row">
+        <h3 class="heading">Our Renowned Publishers &amp; Teachers</h3>
+        <div class="col-md-12">
+          <!--<ul>
+            <li><img src="images/publisher/1.jpg" alt="" class="img-bdr"></li>
+            <li><img src="images/publisher/2.jpg" alt="" class="img-bdr"></li>
+            <li><img src="images/publisher/3.jpg" alt="" class="img-bdr"></li>
+            <li><img src="images/publisher/4.jpg" alt="" class="img-bdr"></li>
+            <li><img src="images/publisher/5.jpg" alt="" class="img-bdr"></li>
+            <li><img src="images/publisher/6.jpg" alt="" class="img-bdr"></li>
+            <li><img src="images/publisher/7.jpg" alt="" class="img-bdr"></li>
+            <li><img src="images/publisher/8.jpg" alt="" class="img-bdr"></li>
+            <li><img src="images/publisher/9.jpg" alt="" class="img-bdr"></li>
+            <li><img src="images/publisher/10.jpg" alt="" class="img-bdr"></li>
+            <li><img src="images/publisher/11.jpg" alt="" class="img-bdr"></li>
+            <li><img src="images/publisher/12.jpg" alt="" class="img-bdr"></li>
+            <li><img src="images/publisher/13.jpg" alt="" class="img-bdr"></li>
+            <li><img src="images/publisher/14.jpg" alt="" class="img-bdr"></li>
+            <li><img src="images/publisher/15.jpg" alt="" class="img-bdr"></li>
+            <li><img src="images/publisher/16.jpg" alt="" class="img-bdr"></li>
+            <li><img src="images/publisher/17.jpg" alt="" class="img-bdr"></li>
+            <li><img src="images/publisher/18.jpg" alt="" class="img-bdr"></li>
+            <li><img src="images/publisher/19.jpg" alt="" class="img-bdr"></li>
+            <li><img src="images/publisher/20.jpg" alt="" class="img-bdr"></li>
+            <li><img src="images/publisher/21.jpg" alt="" class="img-bdr"></li>
+            <li><img src="images/publisher/22.jpg" alt="" class="img-bdr"></li>
+            <li><img src="images/publisher/23.jpg" alt="" class="img-bdr"></li>
+            <li><img src="images/publisher/24.jpg" alt="" class="img-bdr"></li>
+            <li><img src="images/publisher/25.jpg" alt="" class="img-bdr"></li>
+          </ul>-->
+          <ul>
+            <li><img src="/images/publisher/11.jpg" alt="" class="img-bdr"></li>
+            <li><img src="/images/publisher/1.jpg" alt="" class="img-bdr"></li>
+            <li><img src="/images/publisher/13.jpg" alt="" class="img-bdr"></li>
+            <li><img src="/images/publisher/5.jpg" alt="" class="img-bdr"></li>
+            <li>
+              <div class="publisher_content"><strong>+</strong>
+                <div class="eduction_content"><span>30+</span><span>Education</span><span>Partners</span></div>
+              </div>
+            </li>
+          </ul>
+          <div class="clearfix"></div>
+          <ul>
+            <li><img src="/images/prof-rc-sharma.png" alt="" class="img-bdr">
+              <p>R.C. Sharma</p>
+              <p>(Chemistry)</p>
+              <p>42+ Yrs. Exp.</p>
+            </li>
+            <li><img src="/images/prof-kk-chouhan.png" alt="" class="img-bdr">
+              <p>KK Chouhan</p>
+              <p>(Biology)</p>
+              <p>20+ Yrs. Exp.</p>
+            </li>
+            <li><img src="/images/prof-suborto.png" alt="" class="img-bdr">
+              <p>Suborto Bisvas</p>
+              <p>(Biology)</p>
+              <p>20+ Yrs. Exp.</p>
+            </li>
+            <li><img src="/images/prof-bl-raina.png" alt="" class="img-bdr">
+              <p>BL Raina</p>
+              <p>(Maths)</p>
+              <p>42+ Yrs. Exp.</p>
+            </li>
+            <li>
+              <div class="publisher_content"><strong>+</strong>
+                <div class="eduction_content"><span>Many</span><span>More Eminent</span><span>Teachers</span></div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+<!--Pricing-Plans-->
+<template name="pricing">
+  <div class="well no-border no-radius no-shadow no-margin-bottom Pplans mousescroll hp-graybg" id="pricing">
+    <div class="container">
+      <div class="row">
+        <h3 class="heading text-center">Subscription Plans</h3>
+        <h4 class="subheading text-center">Choose a Subscription Plan and Get Complete Access to more than 500 Courses</h4>
+        <div class="col-md-12">
+          <div class="row">
+            <div class="shadow white borderradius">
+              <div class="col-xs-12 col-sm-7 col-md-7">
+                <h5>&nbsp;</h5>
+                <div class="price">
+                  <ul>
+                    <li>Unlimited Access to 500+ Courses</li>
+                    <li>Take Unlimited Tests</li>
+                    <li>Download Unlimited Content</li>
+                    <li>Study Anytime, Anywhere through APP and WEB</li>
+                    <li>Get Exclusive Discounts</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-5 col-md-5">
+                <div class="price">
+                  <h3>Subscription Plans</h3>
+                  {{#if subscription_val}}
+                  {{#each subscription_val}}
+                  {{#if check_price coursePrice 0}}
+                  {{#if checked_button validityId 2}}
+                  <div class="radio radio-info shadow selectplan">
+                    <label style="width:100%">
+                      <input type="radio" name="radio" id = "{{validityId}}" value ="{{coursePrice}}" checked/>
+                      <span class="lbl padding-8 validity">{{courseValidity}}&nbsp;<span class="pull-right">&#8377; {{coursePrice}}</span></span><span class="small">{{savingDesc}}</span></label>
+                  </div>
+                  {{else}}
+                  <div class="radio radio-info shadow selectplan">
+                    <label style="width:100%">
+                      <input type="radio" name="radio" id = "{{validityId}}" value ="{{coursePrice}}"/>
+                      <span class="lbl padding-8 validity">{{courseValidity}}&nbsp;<span class="pull-right">&#8377; {{coursePrice}}</span></span><span class="small">{{savingDesc}}</span></label>
+                  </div>
+                  {{/if}}
+                  {{/if}}
+                  {{/each}}
+                  {{/if}}</div>
+              </div>
+              <div class="pull-right marginright">
+                  <!--{{#if is_free_trial_taken}}<a href="subscription.html" class="free_trial">START 7 DAY FREE TRIAL</a>{{/if}}-->
+                <button type="button" class="btn btn-warning subscribenow subscribenowPricing">SUBSCRIBE NOW</button>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+<!--Renowed Publisher-->
+
+<template name="review">
+  <div class="well no-border no-radius no-shadow no-margin-bottom white Creview text-center" id="review">
+    <div class="container">
+      <div class="row">
+        <h3 class="heading">Reviews</h3>
+        <div class="col-sm-12" id="addreview">
+          <div class="review">
+            <div class="col-xs-12 col-sm-2 col-md-2"><span class="image"><img src="/images/aman.png" alt=""></span></div>
+            <div class="col-xs-12 col-sm-10 col-md-10">
+              <h5>Aman Gormade - IIT Aspirant</h5>
+              <p>I strongly believe in self-study.  I wanted to attempt advanced level of problems in Math. The questions in iProf Website turned out to be extremely helpful in developing my mathematical skills.  The brilliant faculty also helped me understand the concepts and master them.</p>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+          <div class="review">
+            <div class="col-xs-12 col-sm-2 col-md-2"><span class="image"><img src="/images/aditya.png" alt=""></span></div>
+            <div class="col-xs-12 col-sm-10 col-md-10">
+              <h5>Aditya - Student</h5>
+              <p>I was unable to remember the concepts taught in the classroom.  After using iProf services, I can easily revise at home and understand the topics with the  help of 2D &amp; 3D animations.  Also the lecture delivery of the professors is very good &amp; I comprehend everything easily.</p>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+          <div class="review">
+            <div class="col-xs-12 col-sm-2 col-md-2"><span class="image"><img src="/images/prof-ajay.png" alt=""></span></div>
+            <div class="col-xs-12 col-sm-10 col-md-10">
+              <h5>Prof. Ajay Pratap Singh</h5>
+              <p>I strongly feel that iProf is an important education tool for today’s students, giving a sharp base to their understanding.</p>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+          <div class="review">
+            <div class="col-xs-12 col-sm-2 col-md-2"><span class="image"><img src="/images/rcsharma.png" alt=""></span></div>
+            <div class="col-xs-12 col-sm-10 col-md-10">
+              <h5>Prof. R.C Sharma</h5>
+              <p>iProf helps students study anytime, anywhere through its convenient learning modes</p>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+          <div class="review">
+            <div class="col-xs-12 col-sm-2 col-md-2"><span class="image"><img src="/images/user.png" alt=""></span></div>
+            <div class="col-xs-12 col-sm-10 col-md-10">
+              <h5>Rajesh Chandvani - Student</h5>
+              <p>My 12<sup>th</sup>revision was pending for more than a year.  It was only with iProf that I was able to complete it.  With the rewind and paused button, I easily revised and clear my concepts.</p>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+          <div class="review">
+            <div class="col-xs-12 col-sm-2 col-md-2"><span class="image"><img src="/images/prof-kk.png" alt=""></span></div>
+            <div class="col-xs-12 col-sm-10 col-md-10">
+              <h5>Prof. K.K Chauhan</h5>
+              <p>iProf is a boom for today's students, learning a way to the advantage of smarter learning.</p>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+        <!--<div class="text-center"><a href="javascript:void()" class="morereview">More reviews <i class="dwnarw glyphicon glyphicon-menu-down"></i></a></div>-->
+      </div>
+    </div>
+  </div>
+</template>
+<!--FOOTER-->
+<template name="footer">
+  <div class="no-border no-radius no-shadow no-margin-bottom black footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-md-12"> 
+          <div class="row">
+            <div class="col-sm-8 col-md-8">
+              <div class="row">
+                <div class="col-xs-12 col-sm-3 col-md-4">
+                  <h6>HELP</h6>
+                  <ul>
+                    <li><a href="/contact-us">Contact Us</a></li>
+                    <!--<li><a href="/help">Help</a></li>-->
+                    
+                    <li><a href="/faqs">FAQ's</a></li>
+                    <!--<li><a href="/track-order">Track Order</a></li>-->
+                    <li><a href="/terms-and-conditions">Terms &amp; Conditions</a></li>
+                    <li><a href="/privacy-policy">Privacy Policy</a></li>
+                    <li><a href="/contact-us">Feedback</a></li>
+                  </ul>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-md-4">
+                  <h6>YOUR GROUP</h6>
+                  <ul>
+                    <li><a href="http://corporate.iprofindia.com/">Corporate Site</a></li>
+                    <li><a href="http://schoolera.com">School Era</a></li>
+                  </ul>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-md-4">
+                  <h6>iPROF ZONE</h6>
+                  <ul>
+                    <li><a href="/careers">Careers</a></li>
+                    <li><a href="/about-us">About us</a></li>
+                    <li><a href="/investors">Investors</a></li>
+                    <li><a href="/board-of-directors">Board of Directors</a></li>
+                    <li><a href="/content_partner">Content Partnerships</a></li>
+                    <li><a href="/team-iprof">Team</a></li>
+                  </ul>
+                </div>
+                <!-- <div class="col-xs-12 col-sm-3 col-md-3">
+                  <h6>MY ACCOUNT</h6>
+                  <ul>
+                     <li><a href="/about-us">About us</a></li>
+                   <li><a href="/privacy-policy">Privacy Policy</a></li>
+                    <li><a href="/terms-and-conditions">Terms &amp; Conditions</a></li>
+                    <li><a href="javascript:void()">Testimonials</a></li>
+                    <li><a href="javascript:void()">Jobs</a></li>
+                  </ul>
+                </div> -->
+              </div>
+            </div>
+            <div class="col-sm-4 col-md-4"> 
+              <h6>NEWSLETTER</h6>
+              <p>Sign Up for Our Newsletter &amp; Promotion</p>
+              <form>
+                <div class="form-group">
+                  <input type="text" class="form-control subscribe_from_footer" placeholder="Your Email Address" />
+                </div>
+                <button type="submit" class="btn btn-danger">SUBSCRIBE!</button>
+              </form>
+              <ul class="footernavi">
+						<span>Follow Us on&nbsp;&nbsp;</span>
+						<div class="follows">
+                            <a href="https://twitter.com/iProfApp" target="_blank"><img src="/images/twitter.png" alt=""></a>
+                            <a href="https://www.facebook.com/iProfLearningSolutions" target="_blank"><img src="/images/facebook.png" alt=""></a>
+                            <a href="https://www.youtube.com/channel/UCYXL2fjcmLp9vMVPEQMxYYA" target="_blank"><img src="/images/play.png" alt=""></a>
+                            <a href="https://plus.google.com/+iprofindia" target="_blank"><img src="/images/google.png" alt=""></a>
+                            <!--<a href="#"><img src="/images/rss.jpg" alt=""></a>-->
+						</div>
+					</ul>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="col-md-12">
+          <div class="disclaimer_bdr">
+            <div class="col-xs-12 col-sm-2 col-md-2 text-center"><img src="/images/iprof_logo.png" alt="iprof"/></div>
+            <div class="col-xs-12 col-sm-10 col-md-10">Disclaimer:- Any views, solutions or opinions presented by the faculty or the authors are solely those of the respective individuals and does not necessarily represent the views of iProf Learning Solutions India Pvt. Ltd., its staff or any of its affiliates. Our company accepts no liability for the content provided by the faculty or for the consequences of any actions taken on the basis of the information provided. Students are advised to verify the information provided here with official resources.</div>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="row paddingadd">
+            <div class="col-xs-12 col-sm-4 col-md-4">&copy; 2015 iProf. All rights reserved</div>
+            <div class="col-xs-12 col-sm-4 col-md-4 text-center mailid"><a href="mailto:info@iprofindia.com">info@iprofindia.com</a>&nbsp;&nbsp;|&nbsp;&nbsp;0120-4363636</div>
+            
+            <div class="col-xs-12 col-sm-4 col-md-4 text-right mailid"><img src="/images/card_icns.png" alt=""/></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- BEGIN Comm100 Live Chat Email/BBS Button Code -->
+  <div id="Comm100_ChatButton" class="chatbutton"><a   href="javascript:void(0)" onclick="javascript:window.open('https://chatserver.comm100.com/ChatWindow.aspx?siteId=145221&planId=229&visitType=1&byHref=1&partnerId=-1','mywindowtitle','width=500,height=350')" target="" ><img id="comm100_EmailImage" src="/images/quick-chat.png" border="0px" alt="Live Chat" /></a></div>
+  <!-- END Comm100 Live Chat Email/BBS Button Code -->
+  
+<style>
+.chatbutton {
+	position: fixed;
+	left: 0px;
+	bottom: 0px;
+	z-index: 9999;
+}
+</style>
+  <!--footer ends-->
+<!--  <div id="mask1" class="loaderdiv">
+    <div class="hi"></div>
+  </div>-->
+</template>
+<!--sign in-->
+
+<template name="sign_in">
+  <div class="modal fade" tabindex="-1" role="dialog" id="signin">
+    <div class="modal-dialog modal-width">
+      <div class="modal-content">
+        <div class="modal-header pophd">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Sign In</h4>
+        </div>
+        <div class="modal-body">
+          <form class="login signuppop">
+            <div class="form-group">
+              <button id="facebook-login" type="button" class="btn btnblue minwidth f_button">Facebook</button>
+              <button id="google-login" type="button" class="btn btn-danger minwidth g_button">Google+</button>
+            </div>
+            <div class="form-group"><span class="brdrbtm">&nbsp;</span><span class="or">OR</span><span class="brdrbtm">&nbsp;</span>
+              <div class="clearfix"></div>
+            </div>
+            <div class="form-group has-feedback"><span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+              <input class="form-control padding-left" type="email" name="email_id1" placeholder="Email id" required/>
+            </div>
+            <div class="form-group has-feedback"><span class="glyphicon glyphicon-lock form-control-feedback"></span>
+              <input class="form-control padding-left" type="password" name="user_password1" placeholder="Password" required/>
+            </div>
+            <div class="form-group has-feedback"><a href="javscript:void(0)" class="frgtpwd">Forgot Password?</a></div>
+            <div class="form-group has-feedback">
+              <button type="submit" class="btn btn-warning btnwidth">SIGN IN</button>
+              <div class="text-center">Dont have an account?<a href="javascript:void(0);" data-target="#signup" data-dismiss="modal" class="signup_from_signin">Sign Up</a></div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+</template>
+
+<!-- /.modal -->
+<!--sign in pop ends-->
+
+<!--forgot pwd-->
+<template name="forgot_pwd">
+  <div class="modal fade" tabindex="-1" role="dialog" id="forgotpwd">
+    <div class="modal-dialog modal-width">
+      <div class="modal-content">
+        <div class="modal-header pophd">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Reset Password</h4>
+        </div>
+        <div class="modal-body">
+          <form class="forgetpass signuppop">
+            <p>Please enter your registered email address.</p>
+            <p>The link and instructions to reset your password has been sent to your registered email address.</p>
+            <div class="form-group has-feedback"><span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+              <input class="form-control padding-left" type="email" name="email_id" placeholder="Email id" required/>
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-warning btnwidth">Submit</button>
+              <div class="text-center" ><a href="javascript:void(0);" class = "signup_from_signin">Sign Up</a>for new user</div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+</template>
+<!-- /.modal -->
+<!--forgot pwd pop ends-->
+
+<!--sign up-->
+<template name="sign_up">
+  <div class="modal fade" tabindex="-1" role="dialog" id="signup">
+    <div class="modal-dialog modal-width">
+      <div class="modal-content">
+        <div class="modal-header pophd">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Sign Up</h4>
+        </div>
+        <div class="modal-body">
+          <form class="register signuppop">
+            <div class="form-group">
+              <button id="sign_up_facebook_login" type="button" class="btn btnblue minwidth f_button">Facebook</button>
+              <button id="sign_up_google_login" type="button" class="btn btn-danger minwidth g_button">Google+</button>
+            </div>
+            <div class="form-group"><span class="brdrbtm">&nbsp;</span><span class="or">OR</span><span class="brdrbtm">&nbsp;</span>
+              <div class="clearfix"></div>
+            </div>
+            <div class="form-group has-feedback"><span class="glyphicon glyphicon-user form-control-feedback"></span>
+              <input class="form-control padding-left" type="text" name="user_name" placeholder="Name" required/>
+            </div>
+            <div class="form-group has-feedback"><span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+              <input class="form-control padding-left" type="email" name="email_id" placeholder="Email id" required/>
+            </div>
+            <div class="form-group has-feedback"><span class="glyphicon glyphicon-lock form-control-feedback"></span>
+              <input class="form-control padding-left" type="password" name="user_password" placeholder="Password" required/>
+            </div>
+            <div class="form-group has-feedback"><span class="glyphicon glyphicon-earphone form-control-feedback"></span>
+              <input class="form-control padding-left" type="text" maxlength="10" name ="mobile_no" placeholder="Mobile Number" required/>
+            </div>
+            <div class="checkbox checkbox-success">
+              <input type="checkbox" id="inlineCheckbox11" name ="check_box_signup">
+              <label for="inlineCheckbox11">I agree to the Terms &amp; Conditions</label>
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-warning btnwidth" id="sign_up_submit">SIGN UP</button>
+            </div>
+            <div class="text-center">Already an existing user?<a href="javascript:void(0);" data-target="#signin" data-dismiss="modal" class = "signin_from_signup">Sign In</a></div>
+          </form>
+        </div>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+</template>
+<!-- /.modal -->
+<!--sign up pop ends-->
+
+<!--congratspop-->
+<template name="congrats">
+  <div class="modal fade" tabindex="-1" role="dialog" id="congratspop">
+    <div class="modal-dialog modal-width">
+      <div class="modal-content">
+        <div class="modal-header pophd">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Congratulations!</h4>
+        </div>
+        <div class="modal-body text-center">
+          <p class="text-left">As an introductory offer, you have unlocked FREE access to the entire course library for 7 DAYS!</p>
+          <p class="text-left">Learn as much as you can :)</p>
+          <button type="button" id="congratsProceedFreeTrial" class="proceed_free_trial btn btn-warning">PROCEED</button>
+        </div>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+</template>
+<!-- /.modal -->
+<!--sign up pop ends-->
+
+<template name="user_profile_data">
+  <li><a class="welcome" href="javascript:void(0);" id="user_name"><span class="userimg"></span><span class="username">Hi {{login_user_name}}</span>&nbsp;&nbsp;<i class="glyphicon glyphicon-triangle-bottom" id="arrowdown"></i></a>
+    <div class="welcomepop shadow">
+      <p class="mySubscriptionIcon"><a href="javascript:void(0)"><i class="sprite subscription-icn"></i>My Subscription</a></p>
+      <p class="log_out_button"><a href="javascript:void(0)"><i class="glyphicon glyphicon glyphicon-off"></i>Sign Out</a></p>
+    </div>
+  </li>
+</template>

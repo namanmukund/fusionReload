@@ -1,0 +1,15 @@
+{
+ "lmsIP": "10.10.17.205",
+ "meteorPublicIp":"180.179.208.179",
+ 	"globalApiUrl": "http://10.10.17.205",
+	"meteorServerUrl": "http://localhost:3000",
+  "public": {    
+    "environment": "staging",
+	"persistent_session": {
+      "default_method": "persistent"
+    }
+  },
+  "googleApiKey": "AABBCCddEEff12123131",
+  "tdlUrl":"http://tdlv3qa.iprofindia.com/users/verifyPassword/",
+  "methodurl":"http://10.10.17.205"
+}

@@ -1,0 +1,383 @@
+<template name="tests_page">
+    <body>
+   {{>rtbanner_test}}
+   {{>nav_test}}
+   {{>test_list}} 
+<script src="/js/custom.js"></script> 
+<style>
+    .modal-backdrop{
+        background-color: none !important;
+    }
+</style>
+<script>
+    $('document').ready(function(){
+        $('html').on('click', function(){
+           if($('.notifi_pop').is(':visible'))
+           {
+               $('.notifi_pop').hide();
+           }
+        });
+        $('html').on('click', '.notifi_pop', function(){
+            $('.notifi_pop').show();
+        });
+        $('html').on('click', function(){
+           if($('.cartpop').is(':visible'))
+           {
+               $('.cartpop').hide();
+           }
+        });
+        $('html').on('click', '.cartpop', function(){
+            $('.cartpop').show();
+        });
+    });
+</script>
+<script>
+  $(document).ready(function() {
+ 
+  $("#owl-demo").owlCarousel({
+ 	
+	
+      navigation : true, // Show next and prev buttons
+      slideSpeed : 300,
+	  loop:true,
+      paginationSpeed : 400,
+      singleItem:true,
+      autoPlay:6000
+ 
+      // "singleItem:true" is a shortcut for:
+      // items : 1, 
+      // itemsDesktop : false,
+      // itemsDesktopSmall : false,
+      // itemsTablet: false,
+      // itemsMobile : false
+ 
+  });
+  
+
+    var carousel = $("#owl-demo");
+  carousel.owlCarousel({
+    navigation:true,
+    navigationText: [
+      "<i class='icon-chevron-left icon-white'><</i>",
+      "<i class='icon-chevron-right icon-white'>></i>"
+      ],
+  
+});
+
+
+ 
+});
+</script> 
+</body>
+</template>
+
+<template name="rtbanner_test">
+     <!--{{#if is_subscribed}}-->
+    <div class="rtbanner_fixed">
+   <div class="rtbanner">
+    <h1>iProf Subscription</h1>
+    <ul class="coursepoints">
+      <li>Unlimited Access to 500+ Courses</li>
+      <li>Take Unlimited Tests</li>
+      <li>Download Unlimited Content</li>
+      <li>Study Anytime, Anywhere through APP and WEB</li>
+    </ul>
+<!--    {{#if is_free_trial_taken}}
+    <a href="javascript:void(0);" class="subsbtn1 free_trial_web_wall">START 7-DAY FREE TRIAL</a>
+    {{/if}}-->
+    <button type="button" class="btn subsbtn-1 subs_from_banner_test">SUBSCRIBE NOW</button>
+  </div>
+    
+  <div class="rtbanner1">
+    <h1>Pen Drives & SD Card Courses</h1>
+    <ul class="coursepoints">
+      <li>Plug & Play course on PC/ Smartphone </li>
+      <li>Get preloaded videos, Notes & Tests </li>
+      <li>No Internet required</li>
+      <li>Free home delivery</li>
+      <li>COD Available </li>
+    </ul>
+<!--    {{#if is_free_trial_taken}}
+    <a href="javascript:void(0);" class="subsbtn1 free_trial_web_wall">START 7-DAY FREE TRIAL</a>
+    {{/if}}-->
+<!--    <button type="button" class="btn subsbtn-1 subs_from_banner_wall">SUBSCRIBE NOW</button>-->
+<button type="button" class="btn subsbtn-1 choose_course_banner_wall">CHOOSE COURSE</button>
+  </div> 
+    <!--{{/if}}-->
+    </div>
+</template>
+
+
+<template name="nav_test">
+<div class="positionfixed">
+<div class="row">
+      <div class="col-xs-12 col-sm-2 col-md-2">
+        <div class="wap-menu"> 
+          <!--<a href="javascript:void(0);" class="mobile-menu"><i class="glyphicon glyphicon-menu-hamburger"></i></a>-->
+          <div class="mainmenu arrow-down">
+            <ul class="yourprfr">
+            <li><a href="javascript:void(0);" class="hoverCursor lightgreen_bg" id="home_page"><i class="glyphicon glyphicon-home"></i>Home</a></li>
+             {{#if disable_tab_course countCourse 0}}
+              <li><a href="javascript:void(0);" class="hoverCursor green_bg" id="course_page_disable"><i class="glyphicon glyphicon-book"></i>Courses<span class="countcourse">{{countCourse}}</span></a></li>
+              {{else}}
+              <li><a href="javascript:void(0);" class="hoverCursor green_bg" id="course_page"><i class="glyphicon glyphicon-book"></i>Courses<span class="countcourse">{{countCourse}}</span></a></li>
+              {{/if}} 
+            <li class="active"><a class="hoverCursor blue_bg" id="test_page"><i class="glyphicon glyphicon-list-alt"></i>Tests <span class="countcourse">{{countTest}}</span></a>
+<!--            <ul class="submenu">
+                  <li class="render_my_course" id="render_my_test"><a href="javascript:void(0)" class="blue">My Test Series</a></li>
+                  <li class="render_my_course" id="render_my_purchasedTest"><a href="javascript:void(0)" class="blue">My Purchases</a></li>
+                </ul>-->
+            </li>		
+             
+              <li><a href="javascript:void(0);" class="hoverCursor red_bg" id="tutor_page"><i class="glyphicon glyphicon-user"></i>Tutors</a></li>
+
+            
+              
+              <!--<div class="greybar"></div>-->
+            </ul>
+          </div>
+          <div class="wap-submenu">
+            <ul>
+                <li id="render_my_course_from_test"><a href="javascript:void(0)">My Courses</a></li>  
+                <li id="render_my_test"><a href="javascript:void(0)">My Test Series</a></li>  
+                <li id="render_my_purchasedTest"><a href="javascript:void(0)">My Purchases</a></li> 
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+</template>
+
+<template name="test_list">
+<div class="topfixed">
+   {{>topstrip}}   
+  <div class="blue-bg">
+        <div class="container inner-nav">
+      <div class="row">
+          <ul class="pull-right">
+            {{>notif_cart_count}}
+            {{#if login_check}}
+            <li><a href="javascript:void(0);" class="sign-in">Sign In</a></li>
+            <li><a class="blue-clr sign-up btn btn-default shadow" href="javascript:void(0);" role="button">Sign Up</a></li>
+            {{else}}  
+            {{>user_profile_data}}
+            
+            {{/if}}
+        </ul>
+          <a class="navbar-brand sprite" href="/">iProf</a>
+          <button type="button" class="navbar-toggle collapsed" id="toptoggle"> 
+                <span class="sr-only">Toggle navigation</span> 
+                <span class="icon-bar"></span> 
+                <span class="icon-bar"></span> <span class="icon-bar"></span> 
+            </button>
+          {{>search_bar}}
+        
+      </div>
+    </div>
+    {{>left_navigation_mobile}}  
+  </div>
+    {{>my_preference}}
+    </div>
+    {{>wall_banner1}}
+    {{>tests_full_list}}
+    {{>footer}}
+  <div class="clearfix"></div>
+  </template> 
+
+<!--courses starts-->
+<template name="tests_full_list">
+    <div class="container">
+  <div class="row">
+      <div class="course_title_info"> 
+    <div class="courselist"> 
+        
+      <!-- Nav tabs -->
+      <ul class="nav nav-tabs" role="tablist">
+          
+        {{#if course_title}}  
+            <li role="presentation" class="active"><a class="blue" href="#comprehensive_course" aria-controls="tutors" role="tab" data-toggle="tab">{{course_title}}</a></li>
+        {{/if}}
+        {{#if comp_course}}  
+            {{#each comp_course}}
+        <!--<li role="presentation" class="active"><a href="#comprehensive-course" aria-controls="tutors" role="tab" data-toggle="tab">Comprehensive Course</a></li>-->
+            <li role="presentation"><a class="blue" href="#{{subjectId}}" aria-controls="shortlisted" role="tab" data-toggle="tab">{{title}}</a></li>
+            {{/each}}
+        {{/if}}
+         
+      </ul>
+       </div>
+    </div>
+    <!-- Tab panes -->
+    <div class="tab-content">
+        
+        {{#if comp_course_first}}
+        <div role="tabpanel" class="tab-pane active" id="comprehensive_course"> 
+        <!--most joined-->
+        {{#each comp_course_first}}
+        <div class="col-md-4 col-sm-4 col-xs-12">
+          <div class="hoverCursor white shadow grow courselist_details" id="PsCourseId">
+              <div class="course_pdp">  
+            {{#if imgurl}}      
+                <div class="courseimg"><img src="{{imgurl}}" alt=""/></div>
+                <div class="coursename" data-toggle="tooltip" data-placement="bottom" title= "{{CourseName}}"><h3>{{CourseName}}</h3></div>
+            {{else}}        
+                <div class="courseimg"><img src="/images/jeemain.jpg" alt=""/></div>
+                <div class="coursename" data-toggle="tooltip" data-placement="bottom" title= "{{CourseName}}"><h3>{{CourseName}}</h3></div>
+            {{/if}}
+            <div class="courselistdetails">
+              <p>By {{teacher}}</p>
+              <!--<p>{{> starsRating rating=4.5 size=20}}</p>-->
+             <p> 
+           {{#if rating}}
+           <div class="rateit" data-rateit-value={{rating}} data-rateit-ispreset="true" data-rateit-readonly="true"></div>
+           {{else}}
+           <div class="rateit" data-rateit-value="3.6" data-rateit-ispreset="true" data-rateit-readonly="true"></div>
+           {{/if}}
+           </p> 
+           
+
+           {{#if total_users}}
+              <p>{{total_users}} users</p>
+              {{else}}
+              <p>{{randomJoinedUsers}} users</p>
+          {{/if}}
+            </div>
+            <div class="pdfslist">
+              <ul>
+<!--                <li><i class="sprite pdfs"></i>{{numNotes}}</li>
+                <li><i class="sprite videos"></i>{{numMultimedia}}</li>-->
+                <li><i class="sprite notes"></i>{{numAssessments}}</li>
+              </ul>
+              <div class="clearfix"></div>
+            </div>
+              </div>
+            <div class="availableon">
+                <div class="availabe widthadd"><span>Availabe on:</span>
+                    {{#each price_info}}
+                        {{#if min_usb_price}}
+                        <a href="#" data-toggle="tooltip" data-placement="bottom" class="course_tool_tip" title= "USB Drives starting at &#8377; {{min_usb_price}}/-" ><i class="sprite pendrive"></i> </a>
+                        {{/if}}
+                        {{#if min_sd_price}}
+                        <a href="#" data-toggle="tooltip" data-placement="bottom" class="course_tool_tip" title="SD Cards starting at &#8377; {{min_sd_price}}/-" ><i class="sprite sdcard"></i></a>
+                        {{/if}}
+                        {{#if min_tab_price}}
+                        <a href="#" data-toggle="tooltip" data-placement="bottom" class="course_tool_tip" title="Tablets starting at &#8377; {{min_tab_price}}/-" ><i class="sprite tableticn"></i></a>
+                        {{/if}}
+                    {{/each}}
+                </div>
+                <hr/>
+              {{#if isJoinedCourse isJoined true}}  
+                <a href="javascript:void()" class="joinnow joinClass" id="join_course_test_page">+ ADD TO MY TESTS</a> 
+              {{else}}
+                <a href="javascript:void()" class="joinnow unJoinClass" id ="unjoin_course_test_page">- REMOVE FROM MY TESTS</a>
+              {{/if}}
+              
+              </div>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+        
+        {{/each}}
+      </div>
+        {{/if}}
+        
+        
+{{#if comp_course}}
+{{#each comp_course}}  
+        
+      <div role="tabpanel" class="tab-pane" id="{{subjectId}}"> 
+        {{#each list}}
+        <div class="col-md-4 col-sm-4 col-xs-12">
+          <div class="hoverCursor white shadow courselist_details" id="PsCourseId">
+              <div class="course_pdp">  
+            {{#if imgurl}}      
+                <div class="courseimg"><img src="{{imgurl}}" alt=""/></div>
+                <div class="coursename" data-toggle="tooltip" data-placement="bottom" title= "{{CourseName}}"><h3>{{CourseName}}</h3></div>
+            {{else}}        
+                <div class="courseimg"><img src="/images/jeemain.jpg" alt=""/></div>
+                <div class="coursename" data-toggle="tooltip" data-placement="bottom" title= "{{CourseName}}"><h3>{{CourseName}}</h3></div>
+            {{/if}}
+            <div class="courselistdetails">
+              <p>By {{teacher}}</p>
+             
+                <p> 
+             {{#if rating}}
+           <div class="rateit" data-rateit-value={{rating}} data-rateit-ispreset="true" data-rateit-readonly="true"></div>
+           {{else}}
+           <div class="rateit" data-rateit-value="3.6" data-rateit-ispreset="true" data-rateit-readonly="true"></div>
+           {{/if}}
+           </p> 
+                
+
+
+              <p>{{total_users}} users</p>
+            </div>
+            <div class="pdfslist">
+              <ul>
+<!--                <li><i class="sprite pdfs"></i>{{numNotes}}</li>
+                <li><i class="sprite videos"></i>{{numMultimedia}}</li>-->
+                <li><i class="sprite notes"></i>{{numAssessments}}</li>
+              </ul>
+              <div class="clearfix"></div>
+            </div>
+              </div>
+            <div class="availableon">
+                <div class="availabe widthadd"><span>Availabe on:</span>
+                    {{#each price_info}}
+                        {{#if min_usb_price}}
+                        <a href="#" data-toggle="tooltip" data-placement="bottom" class="course_tool_tip" title= "USB Drives starting at &#8377; {{min_usb_price}}/-" ><i class="sprite pendrive"></i> </a>
+                        {{/if}}
+                        {{#if min_sd_price}}
+                        <a href="#" data-toggle="tooltip" data-placement="bottom" class="course_tool_tip" title="SD Cards starting at &#8377; {{min_sd_price}}/-" ><i class="sprite sdcard"></i></a>
+                        {{/if}}
+                        {{#if min_tab_price}}
+                        <a href="#" data-toggle="tooltip" data-placement="bottom" class="course_tool_tip" title="Tablets starting at &#8377; {{min_tab_price}}/-" ><i class="sprite tableticn"></i></a>
+                        {{/if}}
+                    {{/each}}
+                </div>
+              <hr/>
+              {{#if isJoinedCourse isJoined true}}  
+                <a href="javascript:void()" class="joinnow joinClass" id="join_course_course_page">+ ADD TO MY TESTS</a> 
+              {{else}}
+                <a href="javascript:void()" class="joinnow unJoinClass" id="unjoin_course_course_page">- REMOVE FROM MY TESTS</a>
+              {{/if}}
+            </div>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+        
+        {{/each}}
+      </div>
+
+{{/each}}    
+{{/if}}        
+    </div>
+  </div>
+</div>
+</template>
+
+<!--
+<template name="rating">
+            {{#if comp_course_first_rating}}
+                   {{#each comp_course_first_rating.list}}
+    <div class="rateit" data-rateit-value="{{rating}}" data-rateit-ispreset="true" data-rateit-readonly="true"></div>
+            {{/each}}
+        {{/if}}
+        
+        
+        {{#if comp_course_rating}}
+{{#each comp_course_rating}}  
+            {{#each list}}
+                <div class="rateit" data-rateit-value="{{rating}}" data-rateit-ispreset="true" data-rateit-readonly="true"></div>
+            {{/each}}
+
+{{/each}}    
+{{/if}}   
+</template>
+--> 
+
+
+
+
+    

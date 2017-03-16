@@ -1,0 +1,35 @@
+@font-face {
+	font-family: 'sf_ui_displaylight';
+	src: url('../fonts/sf-ui-display-light-webfont.eot');
+	src: url('../fonts/sf-ui-display-light-webfont.eot?#iefix') format('embedded-opentype'),  url('../fonts/sf-ui-display-light-webfont.woff2') format('woff2'),  url('../fonts/sf-ui-display-light-webfont.woff') format('woff'),  url('../fonts/sf-ui-display-light-webfont.ttf') format('truetype'),  url('../fonts/sf-ui-display-light-webfont.svg#sf_ui_displaylight') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'sf_ui_displaymedium';
+	src: url('../fonts/sf-ui-display-medium-webfont.eot');
+	src: url('../fonts/sf-ui-display-medium-webfont.eot?#iefix') format('embedded-opentype'),  url('../fonts/sf-ui-display-medium-webfont.woff2') format('woff2'),  url('../fonts/sf-ui-display-medium-webfont.woff') format('woff'),  url('../fonts/sf-ui-display-medium-webfont.ttf') format('truetype'),  url('../fonts/sf-ui-display-medium-webfont.svg#sf_ui_displaymedium') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'sf_ui_displayregular';
+	src: url('../fonts/sf-ui-display-regular-webfont.eot');
+	src: url('../fonts/sf-ui-display-regular-webfont.eot?#iefix') format('embedded-opentype'),  url('../fonts/sf-ui-display-regular-webfont.woff2') format('woff2'),  url('../fonts/sf-ui-display-regular-webfont.woff') format('woff'),  url('../fonts/sf-ui-display-regular-webfont.ttf') format('truetype'),  url('../fonts/sf-ui-display-regular-webfont.svg#sf_ui_displayregular') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'sf_ui_displaythin';
+	src: url('../fonts/sf-ui-display-thin-webfont.eot');
+	src: url('../fonts/sf-ui-display-thin-webfont.eot?#iefix') format('embedded-opentype'),  url('../fonts/sf-ui-display-thin-webfont.woff2') format('woff2'),  url('../fonts/sf-ui-display-thin-webfont.woff') format('woff'),  url('../fonts/sf-ui-display-thin-webfont.ttf') format('truetype'),  url('../fonts/sf-ui-display-thin-webfont.svg#sf_ui_displaythin') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'sf_ui_displayultralight';
+	src: url('../fonts/sf-ui-display-ultralight-webfont.eot');
+	src: url('../fonts/sf-ui-display-ultralight-webfont.eot?#iefix') format('embedded-opentype'),  url('../fonts/sf-ui-display-ultralight-webfont.woff2') format('woff2'),  url('../fonts/sf-ui-display-ultralight-webfont.woff') format('woff'),  url('../fonts/sf-ui-display-ultralight-webfont.ttf') format('truetype'),  url('../fonts/sf-ui-display-ultralight-webfont.svg#sf_ui_displayultralight') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}

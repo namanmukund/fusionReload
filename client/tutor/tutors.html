@@ -1,0 +1,78 @@
+<template name="tutors">
+<body>
+    {{>nav_tutors}}
+<!--<script src="js/jquery-1.11.2.min.js"></script>--> 
+<!-- Include all compiled plugins (below), or include individual files as needed --> 
+<!--<script src="js/bootstrap.js"></script> -->
+<script src="/js/custom.js"></script>
+<script>
+$(document).ready(function() {
+    "use strict";	
+    $("#support").click(function(e) {
+	$(".support_bos").slideToggle();
+	e.stopPropagation();
+    
+    });
+ });
+</script>
+</body>
+</template>
+<!--Navigation Start-->
+<template name="nav_tutors">
+<div class="topfixed">
+ {{>topstrip}}
+<div class="red-bg topshadow">
+     <div class="container inner-nav">
+      <div class="row"><ul class="pull-right">
+            {{>notif_cart_count}}
+            {{#if login_check}}
+            <li><a href="javascript:void(0);" class="sign-in">Sign In</a></li>
+            <li><a class="sign-up btn btn-default shadow" href="javascript:void(0);" role="button">Sign Up</a></li>
+            {{else}}  
+            {{>user_profile_data}}
+            
+            {{/if}} 
+        </ul><a class="navbar-brand sprite" href="/">iProf</a>
+          {{>search_bar}}
+        
+      </div>
+    </div>
+    </div>
+    </div>
+    <!--{{>breadcrumb_tutors}}-->
+    {{>tutors_page}}
+    {{>footer}}
+  <div class="clearfix"></div>
+</template> 
+<!--Navigation end-->
+
+<template name="tutors_page">
+<div class="no-border no-radius no-margin-bottom comingsoon innermargintop-comingsoon">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+      	<div class="row">
+        	<div class="col-sm-6 col-md-6">
+            	<div class="comingsoon-text">
+            	<p>RAISING THE SKILL</p>
+                <p>LEVELS OF STUDENTS AT</p>
+                <p>HOME'S CONVENIENCE</p>
+                <strong>COMING SOON!!</strong>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-6">
+            	<img src="/images/comingsoonimg.jpg" alt="" class="img-responsive"/>
+            </div>
+        </div>
+      
+      </div>
+    </div>
+  </div>
+  <div class="coomingsoon-ftrimg"></div>
+</div>
+
+<!-- /.modal --> 
+<!--contact now popup--> 
+</template>
+
+

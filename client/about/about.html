@@ -1,0 +1,504 @@
+<head>
+<style>
+.modal-backdrop {
+	background-color: none !important;
+}
+.sharebtn {
+	padding-top: 10px;
+}
+</style>
+<!--<script src="/js/custom.js"></script>-->
+</head>
+<template name="about">
+  <link href="/css/aboutpages.css" rel="stylesheet">
+  <script src="/js/aboutexam.js"></script>
+  
+  {{>topstrip}}
+  {{>headerabout}} 
+
+  <!--Breadcrumb-->
+  <div class="no-border no-radius no-shadow no-padding margin-top">
+    <div class="container">
+      <div class="row"> 
+        <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-536a31e424969e3f"></script>
+        <div class="pull-right sharebtn"> <a class="addthis_button_compact"> <img src="http://s7.addthis.com/static/btn/sm-plus.gif" width="16" height="16" border="0" alt="Share" /> Share </a>
+          <div class="clearfix"></div>
+        </div>
+        <ol class="breadcrumb no-margin">
+          <li><a href="javascript:void(0);" class="homelink">Home</a></li>
+          <li class="active">About Exam</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+  <!--Breadcrumb End-->
+  <div class="white no-border no-radius no-shadow no-margin-bottom abtexam"> {{>navigationData}} {{>contentSectionData}} </div>
+  {{>rtbanner_about_page_right}}
+  {{>rtbanner_about_page_left}}
+  {{>footer}}
+
+  {{#if login_check}}
+    {{>about_signup_sticky}}
+  {{/if}}
+  </template>
+  <template name="info"> 
+    <!--  <link href="/css/aboutpages.css" rel="stylesheet">
+  <link href="/js/aboutpages.css" rel="stylesheet">
+  <script src="/js/aboutexam.js"></script>--> 
+    {{>topstrip}}
+    {{>headerabout}} 
+    <!--Breadcrumb-->
+    <div class="well no-border no-radius no-shadow no-padding margin-top">
+      <div class="container"> 
+        <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-536a31e424969e3f"></script>
+        <div class="pull-right sharebtn"> <a class="addthis_button_compact"> <img src="http://s7.addthis.com/static/btn/sm-plus.gif" width="16" height="16" border="0" alt="Share" /> Share </a>
+          <div class="clearfix"></div>
+          <!--span class="exam-top-banner"><img src="/tdl_v3_staging/images/700-80.png"/></span--> 
+        </div>
+        <div class="row">
+          <ol class="breadcrumb no-margin">
+            <li><a href="/">Home</a></li>
+            <li class="active">Info</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+    <!--Breadcrumb End-->
+    <div class="white no-border no-radius no-shadow no-margin-bottom abtexam"> {{>infonavigationData}} 
+      <!-- {{{infocontentSectionData}}} --> 
+    </div>     
+    {{>footer}}
+    {{>about_signup_sticky}} </template>
+  <template name="infonavigationData">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12"> </div>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="centernaiv" id="box-links">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+        </div>
+        <div class="collapse navbar-collapse nav" id="bs-example-navbar-collapse-1">
+          <ul>
+            {{#if headerData}} {{{headerData}}} {{/if}}
+          </ul>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+    </div>
+  </template>
+  <template name="navigationData">
+    <div class="clearfix"></div>
+    <div class="centernaiv" id="box-links">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+        </div>
+        <div class="collapse navbar-collapse nav" id="bs-example-navbar-collapse-1">
+          <ul>
+            {{#if headerData}} {{{headerData}}} {{else}} {{#if conditionalHeader}} {{>conditionalHeader}} {{/if}} {{/if}}
+          </ul>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+    </div>
+  </template>
+  <template name="contentSectionData">
+    <div class="container">
+      <div class="demo-box sections"> {{{descriptionData}}} </div>
+    </div>
+  </template>
+  <!--Navigation Start-->
+  <template name="headerabout"> 
+    <!--Navigation Start-->
+    <div class="light-green">
+      <div class="container inner-nav">
+        <div class="row">
+          <ul class="pull-right">
+            {{>notif_cart_count}} {{#if login_check}}
+            <li><a href="javascript:void(0);" class="sign-in">Sign In</a></li>
+            <li><a class="sign-up btn btn-default shadow" href="javascript:void(0);" role="button">Sign Up</a></li>
+            {{else}} {{>user_profile_data}} {{/if}}
+          </ul>
+          <a class="navbar-brand sprite" href="/">iProf</a> {{>search_bar}} </div>
+      </div>
+    </div>
+    <script src="/js/custom.js"></script> 
+  </template>
+  <template name="conditional_header_288">
+    <li><a href="#box_1" class="js_onPageLink">About Dreamweaver CS6</a></li>
+    <li><a href="#box_2" class="js_onPageLink">Careers</a></li>
+    <li><a href="#box_3" class="js_onPageLink">Tools</a></li>
+    <li><a href="#box_4" class="js_onPageLink">Tutorials, tips and tricks</a></li>
+    <li><a href="#box_5" class="js_onPageLink last">How to Learn</a></li>
+  </template>
+  <template name="conditional_header_298">
+    <li><a href="#box_1" class="js_onPageLink">About Adobe Premiere Pro CS4</a></li>
+    <li><a href="#box_2" class="js_onPageLink">Application Areas</a></li>
+    <li><a href="#box_3" class="js_onPageLink">Major elements </a></li>
+    <li><a href="#box_4" class="js_onPageLink">Career Prospects</a></li>
+    <li><a href="#box_5" class="js_onPageLink last">How to Learn</a></li>
+  </template>
+  <template name="conditional_header_315">
+    <li><a href="#box_1" class="js_onPageLink">About Visual Basic.NET</a></li>
+    <li><a href="#box_2" class="js_onPageLink">Applications</a></li>
+    <li><a href="#box_3" class="js_onPageLink ">Features</a></li>
+    <li><a href="#box_4" class="js_onPageLink">Usage</a></li>
+    <li><a href="#box_5" class="js_onPageLink last">How to Learn</a></li>
+  </template>
+  <template name="conditional_header_326">
+    <li><a href="#box_1" class="js_onPageLink">About HTML and CSS</a></li>
+    <li><a href="#box_2" class="js_onPageLink">Purpose</a></li>
+    <li><a href="#box_3" class="js_onPageLink">Tags and elements</a></li>
+    <li><a href="#box_4" class="js_onPageLink ">Developing webpages</a></li>
+    <li><a href="#box_5" class="js_onPageLink last">How to Learn</a></li>
+  </template>
+  <template name="conditional_header_352">
+    <li><a href="#box_1" class="js_onPageLink">About PowerPoint 2007</a></li>
+    <li><a href="#box_2" class="js_onPageLink">Features</a></li>
+    <li><a href="#box_3" class="js_onPageLink last">How to learn</a></li>
+  </template>
+  <template name="conditional_header_306">
+    <li><a href="#box_1" class="js_onPageLink">About Adobe Photoshop CS5</a></li>
+    <li><a href="#box_2" class="js_onPageLink">Features</a></li>
+    <li><a href="#box_3" class="js_onPageLink">Careers</a></li>
+    <li><a href="#box_4" class="js_onPageLink">How to Learn</a></li>
+    <li><a href="#box_5" class="js_onPageLink last">Keyboard shortcuts</a></li>
+  </template>
+  <template name="conditional_header_311">
+    <li><a href="#box_1" class="js_onPageLink">About Adobe InDesign CS6</a></li>
+    <li><a href="#box_2" class="js_onPageLink">Applications</a></li>
+    <li><a href="#box_3" class="js_onPageLink">Careers</a></li>
+    <li><a href="#box_4" class="js_onPageLink">Tutorials</a></li>
+    <li><a href="#box_5" class="js_onPageLink">How to Learn</a></li>
+    <li><a href="#box_6" class="js_onPageLink last">Tips & Tricks</a></li>
+  </template>
+  <template name="conditional_header_334">
+    <li><a href="#box_1" class="js_onPageLink">About MS Excel 2010</a></li>
+    <li><a href="#box_2" class="js_onPageLink">Basic Elements</a></li>
+    <li><a href="#box_3" class="js_onPageLink last">How to Learn</a></li>
+  </template>
+  
+  <!-- // french language -->
+  <template name="conditional_header_271">
+    <li><a href="#box_1" class="js_onPageLink">About French</a></li>
+    <li><a href="#box_2" class="js_onPageLink">Learn foreign French</a></li>
+    <li><a href="#box_3" class="js_onPageLink">Learn French</a></li>
+    <li><a href="#box_4" class="js_onPageLink last">French Translations</a></li>
+  </template>
+  
+  <!-- // tally  -->
+  <template name="conditional_header_301">
+    <li><a href="#box_1" class="js_onPageLink">About Tally ERP 9</a></li>
+    <li><a href="#box_2" class="js_onPageLink">Features</a></li>
+    <li><a href="#box_3" class="js_onPageLink last">How to Learn</a></li>
+  </template>
+  
+  <!-- // spanish language  -->
+  <template name="conditional_header_272">
+    <li><a href="#box_1" class="js_onPageLink">About Spanish</a></li>
+    <li><a href="#box_2" class="js_onPageLink">Learn foreign language</a></li>
+    <li><a href="#box_3" class="js_onPageLink">Learn Spanish</a></li>
+    <li><a href="#box_4" class="js_onPageLink last">Basic Spanish </a></li>
+  </template>
+  
+  <!-- // Coral Draw  -->
+  <template name="conditional_header_295">
+    <li><a href="#box_1" class="js_onPageLink">About Corel Draw X5</a></li>
+    <li><a href="#box_2" class="js_onPageLink">Features</a></li>
+    <li><a href="#box_3" class="js_onPageLink">Tools and Tutorials</a></li>
+    <li><a href="#box_4" class="js_onPageLink">Keyboard shortcuts</a></li>
+    <li><a href="#box_5" class="js_onPageLink last">Learn Corel Draw</a></li>
+  </template>
+  
+  <!-- // illustrator  -->
+  <template name="conditional_header_304">
+    <li><a href="#box_1" class="js_onPageLink">About Adobe Illustrator CS5</a></li>
+    <li><a href="#box_2" class="js_onPageLink">Difference between AI and CD</a></li>
+    <li><a href="#box_3" class="js_onPageLink">Features</a></li>
+    <li><a href="#box_4" class="js_onPageLink">Tutorials</a></li>
+    <li><a href="#box_5" class="js_onPageLink">Effects and Panels</a></li>
+    <li><a href="#box_6" class="js_onPageLink last">How to Learn</a></li>
+  </template>
+  <!-- // JAVA  -->
+  <template name="conditional_header_310">
+    <li><a href="#box_1" class="js_onPageLink">About Java </a></li>
+    <li><a href="#box_2" class="js_onPageLink">Java Platforms</a></li>
+    <li><a href="#box_3" class="js_onPageLink">Java Usage</a></li>
+    <li><a href="#box_4" class="js_onPageLink">Java Installation</a></li>
+    <li><a href="#box_5" class="js_onPageLink">Java Programming</a></li>
+    <li><a href="#box_6" class="js_onPageLink">Java Extensions</a></li>
+    <li><a href="#box_7" class="js_onPageLink last">Java 7 </a></li>
+  </template>
+  
+  <!-- // AUTOCAD  -->
+  <template name="conditional_header_302">
+    <li><a href="#box_1" class="js_onPageLink">About AutoDesk AutoCAD</a></li>
+    <li><a href="#box_2" class="js_onPageLink">Features</a></li>
+    <li><a href="#box_3" class="js_onPageLink">AutoCAD and Variants</a></li>
+    <li><a href="#box_4" class="js_onPageLink">Career Prospects</a></li>
+    <li><a href="#box_5" class="js_onPageLink last">Tutorials</a></li>
+  </template>
+  
+  <!-- // ADOBE FLASH -->
+  <template name="conditional_header_325">
+    <li><a href="#box_1" class="js_onPageLink">About Adobe Flash CS4</a></li>
+    <li><a href="#box_2" class="js_onPageLink">System Requirements</a></li>
+    <li><a href="#box_3" class="js_onPageLink">Features and Usage</a></li>
+    <li><a href="#box_4" class="js_onPageLink">Why use flash</a></li>
+    <li><a href="#box_5" class="js_onPageLink last">Tutorials</a></li>
+  </template>
+  <!-- // MS ACCESS 350 -->
+  <template name="conditional_header_350">
+    <li><a href="#box_1" class="js_onPageLink">About Microsoft Access 2007</a></li>
+    <li><a href="#box_2" class="js_onPageLink">Uses</a></li>
+    <li><a href="#box_3" class="js_onPageLink">Elements</a></li>
+    <li><a href="#box_4" class="js_onPageLink last">How to Learn</a></li>
+  </template>
+  <!-- // MS ACCESS 335 -->
+  <template name="conditional_header_335">
+    <li><a href="#box_1" class="js_onPageLink">About Microsoft Word 2007</a></li>
+    <li><a href="#box_2" class="js_onPageLink">Why We Learn</a></li>
+    <li><a href="#box_3" class="js_onPageLink">Features</a></li>
+    <li><a href="#box_4" class="js_onPageLink last">How to Learn</a></li>
+  </template>
+  <!-- // programing language -->
+  <template name="conditional_header_239">
+    <li> <a href="#box_1" class="js_onPageLink">C language</a> </li>
+    <li> <a href="#box_2" class="js_onPageLink last">C++ language</a> </li>
+  </template>
+  <!-- // CSAT -->
+  <template name="conditional_header_229">
+    <li><a href="#box_1" class="js_onPageLink">About CSAT</a></li>
+    <li><a href="#box_2" class="js_onPageLink">Eligibility</a></li>
+    <li><a href="#box_3" class="js_onPageLink">Exam Pattern</a></li>
+    <li><a href="#box_4" class="js_onPageLink">Syllabus</a></li>
+    <li><a href="#box_5" class="js_onPageLink">Preparation Tips</a></li>
+    <li><a href="#box_6" class="js_onPageLink last">Selection Procedure</a></li>
+  </template>
+  <!-- // bank po -->
+  <template name="conditional_header_188">
+    <li><a href="#box_1" class="js_onPageLink">About </a> </li>
+    <li><a href="#box_2" class="js_onPageLink">Eligibility</a></li>
+    <li><a href="#box_3" class="js_onPageLink">Application</a></li>
+    <li><a href="#box_4" class="js_onPageLink">Exam Pattern</a></li>
+    <li><a href="#box_5" class="js_onPageLink">Syllabus</a></li>
+    <li><a href="#box_6" class="js_onPageLink">How to Prepare</a></li>
+    <li><a href="#box_7" class="js_onPageLink last">Selection Procedure</a></li>
+  </template>
+  <!-- // cat -->
+  <template name="conditional_header_316">
+    <li><a href="#box_1" class="js_onPageLink">About </a></li>
+    <li><a href="#box_2" class="js_onPageLink">Eligibility</a></li>
+    <li><a href="#box_3" class="js_onPageLink">Application</a></li>
+    <li><a href="#box_4" class="js_onPageLink">Exam Pattern</a></li>
+    <li><a href="#box_5" class="js_onPageLink">Syllabus</a></li>
+    <li><a href="#box_6" class="js_onPageLink">How to Prepare</a></li>
+    <li><a href="#box_7" class="js_onPageLink">Selection Procedure</a></li>
+    <li><a href="#box_8" class="js_onPageLink">Streams</a></li>
+    <li><a href="#box_9" class="js_onPageLink ">Important Dates</a></li>
+    <li><a href="#box_10" class="js_onPageLink ">Top Colleges</a></li>
+    <li><a href="#box_11" class="js_onPageLink last">FAQ</a></li>
+  </template>
+  <!-- // aipmt -->
+  <template name="conditional_header_57">
+    <li><a href="#box_1" class="js_onPageLink">About </a></li>
+    <li><a href="#box_2" class="js_onPageLink">Eligibility</a></li>
+    <li><a href="#box_3" class="js_onPageLink">Application</a></li>
+    <li><a href="#box_4" class="js_onPageLink">Exam Pattern</a></li>
+    <li><a href="#box_5" class="js_onPageLink">Syllabus</a></li>
+    <li><a href="#box_6" class="js_onPageLink">How to Prepare</a></li>
+    <li><a href="#box_7" class="js_onPageLink">Selection Procedure</a></li>
+    <li><a href="#box_8" class="js_onPageLink ">Important Dates</a></li>
+    <li><a href="#box_9" class="js_onPageLink ">Top Colleges</a></li>
+    <li><a href="#box_10" class="js_onPageLink last">FAQ</a></li>
+  </template>
+  <!-- // ca cpt -->
+  <template name="conditional_header_356">
+    <li><a href="#box_1" class="js_onPageLink">About </a></li>
+    <li><a href="#box_2" class="js_onPageLink">Eligibility</a></li>
+    <li><a href="#box_3" class="js_onPageLink">Application</a></li>
+    <li><a href="#box_4" class="js_onPageLink">Exam Pattern</a></li>
+    <li><a href="#box_5" class="js_onPageLink">Syllabus</a></li>
+    <li><a href="#box_6" class="js_onPageLink">How to Prepare</a></li>
+    <li><a href="#box_7" class="js_onPageLink">Selection Procedure</a></li>
+    <li><a href="#box_8" class="js_onPageLink ">Important Dates</a></li>
+    <li><a href="#box_9" class="js_onPageLink last">FAQ</a></li>
+  </template>
+  <!-- // nda -->
+  <template name="conditional_header_119">
+    <li><a href="#box_1" class="js_onPageLink">About </a></li>
+    <li><a href="#box_2" class="js_onPageLink">Eligibility</a></li>
+    <li><a href="#box_3" class="js_onPageLink">Application</a></li>
+    <li><a href="#box_4" class="js_onPageLink">Exam Pattern</a></li>
+    <li><a href="#box_5" class="js_onPageLink">Syllabus</a></li>
+    <li><a href="#box_6" class="js_onPageLink">How to Prepare</a></li>
+    <li><a href="#box_7" class="js_onPageLink">Selection Procedure</a></li>
+    <li><a href="#box_8" class="js_onPageLink ">Important Dates</a></li>
+    <li><a href="#box_9" class="js_onPageLink last">FAQ</a></li>
+  </template>
+  <!-- // english speaking course 95 -->
+  <template name="conditional_header_95">
+    <li><a href="#box_1" class="js_onPageLink">English Speaking</a></li>
+    <li><a href="#box_2" class="js_onPageLink">Benefits of English Speaking</a></li>
+    <li><a href="#box_3" class="js_onPageLink">English Speaking Tips</a></li>
+  </template>
+  <!-- // sat -->
+  <template name="conditional_header_191">
+    <li><a href="#box_1" class="js_onPageLink">About </a></li>
+    <li><a href="#box_2" class="js_onPageLink">Eligibility</a></li>
+    <li><a href="#box_3" class="js_onPageLink">Application</a></li>
+    <li><a href="#box_4" class="js_onPageLink">Exam Pattern</a></li>
+    <li><a href="#box_5" class="js_onPageLink ">Top Colleges</a></li>
+    <li><a href="#box_6" class="js_onPageLink">Important Dates</a></li>
+  </template>
+  
+  <!-- // Class 12 -->
+  <template name="conditional_header_114">
+    <li><a href="#box_1" class="js_onPageLink">About CBSE Class 12</a></li>
+    <li><a href="#box_2" class="js_onPageLink">Preparation Tips</a></li>
+    <li><a href="#box_3" class="js_onPageLink last">Important Questions</a></li>
+  </template>
+  <!-- // Class 11 -->
+  <template name="conditional_header_113">
+    <li><a href="#box_1" class="js_onPageLink">About CBSE Class 11</a></li>
+    <li><a href="#box_2" class="js_onPageLink">Preparation Tips</a></li>
+    <li><a href="#box_3" class="js_onPageLink last">Important Questions</a></li>
+  </template>
+  <!-- // Class 10 -->
+  <template name="conditional_header_115">
+    <li><a href="#box_1" class="js_onPageLink">About CBSE Class 10</a></li>
+    <li><a href="#box_2" class="js_onPageLink">Preparation Tips</a></li>
+    <li><a href="#box_3" class="js_onPageLink last">Important Questions</a></li>
+  </template>
+  <!-- // Class 9 -->
+  <template name="conditional_header_116">
+    <li><a href="#box_1" class="js_onPageLink">About CBSE Class 9</a></li>
+    <li><a href="#box_2" class="js_onPageLink">Preparation Tips</a></li>
+    <li><a href="#box_3" class="js_onPageLink last">Important Questions</a></li>
+  </template>
+  <!-- // Class 8 -->
+  <template name="conditional_header_84">
+    <li><a href="#box_1" class="js_onPageLink">About CBSE Class 8</a></li>
+    <li><a href="#box_2" class="js_onPageLink">Preparation Tips</a></li>
+    <li><a href="#box_3" class="js_onPageLink last">Important Questions</a></li>
+  </template>
+  <!-- // Class 7 -->
+  <template name="conditional_header_83">
+    <li><a href="#box_1" class="js_onPageLink">About CBSE Class 7</a></li>
+    <li><a href="#box_2" class="js_onPageLink">Preparation Tips</a></li>
+    <li><a href="#box_3" class="js_onPageLink last">Important Questions</a></li>
+  </template>
+  <!-- // Class 6 -->
+  <template name="conditional_header_80">
+    <li><a href="#box_1" class="js_onPageLink">About CBSE Class 6</a></li>
+    <li><a href="#box_2" class="js_onPageLink">Preparation Tips</a></li>
+    <li><a href="#box_3" class="js_onPageLink last">Important Questions</a></li>
+  </template>
+  <!-- // Class 5 -->
+  <template name="conditional_header_79">
+    <li><a href="#box_1" class="js_onPageLink">About CBSE Class 5</a></li>
+    <li><a href="#box_2" class="js_onPageLink last">Preparation Tips</a></li>
+  </template>
+  
+  <!-- // Class 4 -->
+  <template name="conditional_header_85">
+    <li><a href="#box_1" class="js_onPageLink">About CBSE Class 4</a></li>
+    <li><a href="#box_2" class="js_onPageLink last">Preparation Tips</a></li>
+  </template>
+  <!-- // Class 3 -->
+  <template name="conditional_header_86">
+    <li><a href="#box_1" class="js_onPageLink">About CBSE Class 3</a></li>
+    <li><a href="#box_2" class="js_onPageLink last">Preparation Tips</a></li>
+  </template>
+  <!-- // Class 2 -->
+  <template name="conditional_header_87">
+    <li><a href="#box_1" class="js_onPageLink">About CBSE Class 2</a></li>
+    <li><a href="#box_2" class="js_onPageLink last">Preparation Tips</a></li>
+  </template>
+  <!-- // Class 1 -->
+  <template name="conditional_header_88">
+    <li><a href="#box_1" class="js_onPageLink">About CBSE Class 1</a></li>
+    <li><a href="#box_2" class="js_onPageLink last">Preparation Tips</a></li>
+  </template>
+  
+<template name="about_signup_sticky">
+  <div class="no-border no-radius no-shadow no-padding margin-top footerform">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+        <div class="row">
+          <form class="form-inline" method="POST" >
+            <div class="form-group has-feedback"><span class="glyphicon glyphicon-user form-control-feedback"></span>
+              <input class="form-control padding-left" type="text" name="user_name" placeholder="Name"  required />
+            </div>
+            <div class="form-group has-feedback"><span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+              <input class="form-control padding-left" type="email" name="email_id" placeholder="Email id" required />
+            </div>
+            <div class="form-group has-feedback"><span class="glyphicon glyphicon-lock form-control-feedback"></span>
+              <input class="form-control padding-left" type="password" name="user_password" placeholder="Password" required />
+            </div>
+            <div class="form-group has-feedback"><span class="glyphicon glyphicon-earphone form-control-feedback"></span>
+              <input class="form-control padding-left" type="text" maxlength="10" name ="mobile_no" placeholder="Mobile Number" required />
+            </div>
+       
+            <div class="form-group has-feedback ftr_frm_widthadd">
+            <button type="submit" class="btn btn-warning ftr_signup_btn" id="sign_up_submit">SIGN UP</button>
+            <span style="text-align:center; padding:0 5px 0 20px">&nbsp;- OR -&nbsp;</span>
+            <span class="socialicn text-right"><a href="#" id="sign_up_facebook_login" style="padding:0 5px;"><img src="/images/facebook-box_36p.png" alt=""/></a>&nbsp;&nbsp;<a href="#"  id="sign_up_google_login"><img src="/images/google-plus-box_36p.png" alt=""/></a></span>
+            </div>
+            <div class="clearfix"></div>
+          </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+  
+  <template name="rtbanner_about_page_right">
+  <!--{{#if is_subscribed}}-->
+    <div class="rtbanner_fixed_abt">
+   <div class="rtbanner">
+    <h1>iProf Subscription</h1>
+    <ul class="coursepoints">
+      <li>Unlimited Access to 500+ Courses</li>
+      <li>Take Unlimited Tests</li>
+      <li>Download Unlimited Content</li>
+      <li>Study Anytime, Anywhere through APP and WEB</li>
+      <!--<li>Get Exclusive Discounts</li>-->
+    </ul>
+    <!--    {{#if is_free_trial_taken}}
+    <a href="javascript:void(0);" class="subsbtn1 free_trial_web_about">START 7-DAY FREE TRIAL</a>
+    {{/if}}-->
+    <button type="button" class="btn subsbtn-1 subs_from_banner_about">SUBSCRIBE NOW</button>
+  </div> 
+    <!--{{/if}}-->
+    </div>
+</template>
+
+<template name="rtbanner_about_page_left">
+  <!--{{#if is_subscribed}}-->  
+  <div class="rtbanner_abt-left">
+  <div class="rtbanner1">
+    <h1>Pen Drives & SD Card Courses</h1>
+    <ul class="coursepoints">
+      <li>Plug & Play course on PC/ Smartphone </li>
+      <li>Get preloaded videos, Notes & Tests </li>
+      <li>No Internet required</li>
+      <li>Free home delivery</li>
+      <li>COD Available </li>
+    </ul>
+<!--    {{#if is_free_trial_taken}}
+    <a href="javascript:void(0);" class="subsbtn1 free_trial_web_wall">START 7-DAY FREE TRIAL</a>
+    {{/if}}-->
+<!--    <button type="button" class="btn subsbtn-1 subs_from_banner_about">SUBSCRIBE NOW</button>-->
+<button type="button" class="btn subsbtn-1 choose_course_banner_about">CHOOSE COURSE</button>
+  </div> 
+    <!--{{/if}}-->
+    </div>
+</template>

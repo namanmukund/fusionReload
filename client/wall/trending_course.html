@@ -1,0 +1,100 @@
+<template name="trending_courses">
+  <div class="container wallcourse">
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <div class="row">
+          <div class="trendingcourses">
+            <h4>TRENDING NOW</h4>
+            {{#if getCourseCount}}
+            <a href="javascript:void()" class="morecourse pull-right" id="seemorecourse">View More &nbsp;<i class="glyphicon glyphicon-triangle-right trending_course_tri"></i></a>
+            {{else}}
+              {{#if getTestCount}}
+                <a href="javascript:void()" class="moretest pull-right" id="seemoretest">View More &nbsp;<i class="glyphicon glyphicon-triangle-right trending_course_tri"></i></a>
+              {{/if}}
+            {{/if}}
+            <div class="clearfix"></div>
+          </div>
+          <div class="">
+            <div id="slider1" class="slider">
+              <ul>
+        {{#if comp_course}}
+        {{#each comp_course}}
+        <div class="col-xs-12 col-sm-4 col-md-4">
+          <div class="hoverCursor white shadow grow courselist_details" id="PsCourseId">
+              <div class="course_pdp">
+                  <div class="courseimg">
+            {{#if imgurl}}
+
+            <img src="{{imgurl}}" alt=""/>
+            {{else}}
+            <img src="/images/jeemain.jpg" alt=""/>
+                {{/if}}
+
+            </div>
+            <div class="coursename" data-toggle="tooltip" data-placement="bottom" title= "{{CourseName}}"><h3>{{CourseName}}</h3></div>
+            <div class="courselistdetails">
+              <p>By {{teacher}}</p>
+              <p>
+             {{#if rating}}
+           <div class="rateit" data-rateit-value={{rating}} data-rateit-ispreset="true" data-rateit-readonly="true"></div>
+           {{else}}
+           <div class="rateit" data-rateit-value="3.6" data-rateit-ispreset="true" data-rateit-readonly="true"></div>
+           {{/if}}
+           </p>
+
+           {{#if total_users}}
+              <p>{{total_users}} users</p>
+              {{else}}
+              <p>{{randomJoinedUsers}} users</p>
+          {{/if}}
+
+            </div>
+            <div class="pdfslist">
+              <ul>
+                {{#if isCourse is_test_series 0}}
+                <li><i class="sprite pdfs"></i>{{numNotes}}</li>
+                <li><i class="sprite videos"></i>{{numMultimedia}}</li>
+                {{/if}}
+                <li><i class="sprite notes"></i>{{numAssessments}}</li>
+              </ul>
+              <div class="clearfix"></div>
+            </div>
+              </div>
+            <div class="availableon">
+                <div class="availabe widthadd"><span>Availabe on:</span>
+                    {{#each price_info}}
+                        {{#if min_usb_price}}
+                        <a href="#" data-toggle="tooltip" data-placement="bottom" class="course_tool_tip" title= "USB Drives starting at &#8377; {{min_usb_price}}/-" ><i class="sprite pendrive"></i> </a>
+                        {{/if}}
+                        {{#if min_sd_price}}
+                        <a href="#" data-toggle="tooltip" data-placement="bottom" class="course_tool_tip" title="SD Cards starting at &#8377; {{min_sd_price}}/-" ><i class="sprite sdcard"></i></a>
+                        {{/if}}
+                        {{#if min_tab_price}}
+                        <a href="#" data-toggle="tooltip" data-placement="bottom" class="course_tool_tip" title="Tablets starting at &#8377; {{min_tab_price}}/-" ><i class="sprite tableticn"></i></a>
+                        {{/if}}
+                    {{/each}}
+                </div>
+                <hr/>
+             {{#if isJoinedCourse isJoined true}}
+                <a href="javascript:void()" class="joinnow" id="join_course_trending_course">+ ADD TO MY COURSES</a>
+              {{else}}
+                <a href="javascript:void()" class="joinnow" id="unjoin_course_trending_course">- REMOVE FROM MY COURSES</a>
+              {{/if}}
+
+            </div>
+            <div class="clearfix"></div>
+          </div>
+          
+          
+        </div>
+
+        {{/each}}
+    {{/if}}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

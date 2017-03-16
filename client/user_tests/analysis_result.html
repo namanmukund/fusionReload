@@ -1,0 +1,142 @@
+<template name="analysis_result">
+  <body>   
+  {{>headertest}}
+  {{>breadcrumb_test}}
+  <!--analysis result Start-->
+  <div class="well white no-border no-radius no-shadow no-margin-bottom no-padding taketest">
+    <div class="container">
+      <div class="row">
+      <h4>&nbsp;</h4>
+      {{#if loadScript totalQuestion}}
+	<div class="row rodivtext">
+	      <div class="col-md-2 col-sm-2 col-xs-12 rodivtext1">
+		  <span class="questioncl"><b>&#63;</b></span>
+		  <div class="sliderleftquestion">
+			  <a href="javascript:();" class="leftwithoutarrow graybutton"><i class="glyphicon glyphicon-chevron-up"></i></a>
+		      <div class="middle">
+			  <ul class="thumbs questionul">
+			      {{#each allques}}
+				<li class="thumb1"><a href="javascript:void(0)" id="{{index}}"  class="quesNo {{selcolor attempt}}">{{incrementQuesA}}</a></li>
+			      {{/each}}
+			      <div class="clearfix"></div>
+			  </ul>          
+		      </div>
+		      <div class="clearfix"></div>
+		      <a href="javascript:();" class="rightwithoutarrow graybutton"><i class="glyphicon glyphicon-chevron-down"></i></a>
+		  </div>
+	      </div>
+	      <div class="col-md-10 col-sm-10 col-xs-12 rodivtext2">
+		  <div class="topheid">
+			  <span class="lefic"><i></i>{{test_result.test_name}}</span>
+		      <span class="lesectopm">Section 1</span>
+		      <div class="righttime">
+			  <span><i></i></span>
+			  <span class="timeadd">{{durations result.totalTimeTaken}}</span>
+			  <span class="markssadd"><strong>{{result.marksObtained}}</strong> Marks</span>
+			  <div class="clearfix"></div>
+		      </div>
+		      <div class="clearfix"></div>
+		  </div>
+		  <div class="rightsidepui">
+			  <a href="javascript:();"  class="rightsidepuiopen" title="Review Question"><i class="lsd"></i></a>
+			  <div class="sliderightoleft_Solution">
+			  <span class="graybutton dispbolo"><a href="javascript:();" class="closecros closebuttods"><i></i></a><i class="onclickchanges"></i> Review Question </span>
+			  <div class="reviewq scrolloneleftside4" id="reviewq">
+			      <!--<img src="images/su.png" />
+			      <img src="images/su.png" />
+			      <img src="images/su.png" />
+			      <img src="images/su.png" />-->
+			  </div>
+		      </div>
+		  </div>
+		  <ul class="questiontest">
+		    {{#mathjax wait=true}}
+		      <li id="ql_{{id}}">
+		      <div class="questiontestask" style="float:left; width:4%; margin-right:5px; padding-top:1px;"><span>Q{{qNoA}}</span></div>
+		      <div class="questiontestask"  style="float:left; width:94%">
+			<input type="hidden" name="quesId" class="quesId" id="q_{{id}}" value="{{question_marks}}" />
+			<strong>{{{questionDet.question_statements}}}</strong>
+		      </div>
+		      <div class="clearfix"></div>
+			<ul>
+			  {{#each questionDet.options}}
+			  <li>
+			      {{#if attempted questionDet.question_attempt_status}}
+				{{#if rightOption right_options}}
+				<i class="right">&nbsp;</i>
+				{{else}}
+				<i class="wrong">&nbsp;</i>
+				{{/if}}
+				<!--<input type="radio" name="a" /> -->
+				<p>{{{statement}}}
+				{{#if corrOpt right_options}}
+				  <span class="youranswer">
+				    [ Correct Answer ]
+				    {{#if wrongOpt selected }}
+				    [ Your Answer ]
+				    {{/if}}
+				  </span>
+				{{else}}
+				  {{#if wrongOpt selected }}
+				    <span class="currentanswer">[ Your Answer ]</span>
+				  {{/if}}
+				{{/if}}
+				</p>
+			      {{else}}
+			      <i class="">&nbsp;</i>
+			      <input type="radio" name="options" disabled id="{{id}}" value="{{id}}" />
+			      {{{statement}}}
+			      {{/if}}
+			      <div class="clearfix"></div>
+			  </li>
+			  {{/each}}
+			</ul>
+		      </li>
+		      {{/mathjax}}
+		  </ul>
+	      </div>
+	      <div class="clearfix"></div>
+	      <div class="paginationdiv">
+		  <ol class="listsyle">
+		      <li class="asdf"><i class="skybully"></i>Correct</li>
+		      <li class="asdf"><i class="grayclo"></i>Incorrect</li>
+		  </ol>
+		  <!--<a href="#" class="Quit2 graybutton">Quit</a>-->
+		  
+		  <div class="rightnextpaginestion">
+		      {{#if nextitem "0"}}
+			  <button class="graybutton priitem" href="javascript:void(0);"><i class="glyphicon glyphicon-chevron-left"></i>Previous Question </button>
+			  <button class="graybutton nextpri" href="javascript:void(0);" id="analysisbtn" {{shouldBeDisabled}}><i class="glyphicon glyphicon-chevron-right"></i>Next Question </button>
+		      {{else}}
+			  <button class="graybutton nextpri" href="javascript:void(0);"><i class="glyphicon glyphicon-chevron-right"></i>Next Question </button>
+		      {{/if}}
+		      <span class="numbring"><strong>{{qNoA}}</strong>/{{totalQuestion}}</span>
+		      <!--<a class="nextpri buttongreen" href="#questionpopid" name="modal">Submit<i class="glyphicon glyphicon-chevron-right"></i></a>-->
+		  </div>
+		  <div class="clearfix"></div>
+	      </div>
+	  </div>
+	{{/if}}
+      </div>
+    </div>
+  </div>
+  <!--analysis result End--> 
+  {{>footer}}
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
+  <!--<script src="js/jquery-1.11.2.min.js"></script>--> 
+  <!-- Include all compiled plugins (below), or include individual files as needed --> 
+  <!--<script src="js/bootstrap.js"></script>-->
+  {{#if loadScript totalQuestion}}
+  <script src="/js/custom.js"></script>
+  {{/if}}
+  <style>
+  .priitem {
+    font-size: 14px;
+    margin-right: 7px;
+    min-width: 120px;
+    padding: 7px 7px 10px;
+    text-align: center;
+  }
+  </style>
+</body>
+</template>

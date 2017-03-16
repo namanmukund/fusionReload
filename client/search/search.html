@@ -1,0 +1,237 @@
+<template name="search">
+<body>
+   {{>navigation_search}} 
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
+<!--<script src="js/jquery-1.11.2.min.js"></script>--> 
+<!-- Include all compiled plugins (below), or include individual files as needed --> 
+<!--<script src="js/bootstrap.js"></script> 
+<script src="js/bootstrap-multiselect.js"></script> 
+<script src="js/custom.js"></script> -->
+<style>
+    .modal-backdrop{
+        background-color: none !important;
+    }
+</style>
+<script>
+    $('document').ready(function(){
+        $('html').on('click', function(){
+           if($('.notifi_pop').is(':visible'))
+           {
+               $('.notifi_pop').hide();
+           }
+        });
+        $('html').on('click', '.notifi_pop', function(){
+            $('.notifi_pop').show();
+        });
+        $('html').on('click', function(){
+           if($('.cartpop').is(':visible'))
+           {
+               $('.cartpop').hide();
+           }
+        });
+        $('html').on('click', '.cartpop', function(){
+            $('.cartpop').show();
+        });
+    });
+</script>
+</body>
+</template>
+
+<!--Navigation Start-->
+<template name="navigation_search">
+<div class="light-green">
+  <div class="container inner-nav">
+    <div class="row"> <a class="navbar-brand sprite blklogo" href="index.html">iProf</a>
+      <form class="navbar-form navbar-left" role="search">
+          {{>search_bar}}
+      </form>
+        <ul class="pull-right">
+            {{>notif_cart_count}}
+          <li><a href="javascript:void(0);" class="sign-in">Sign In</a></li>
+          <li><a class="btn btn-default sign-up shadow" href="javascript:void(0);" role="button">Sign Up</a></li>
+        </ul>
+    </div>
+  </div>
+</div>    
+    {{>search_result}}   
+    {{>footer}}
+  <div class="clearfix"></div>
+</template> 
+<!--Navigation end-->
+
+<template name="search_result">
+<div class="well no-border no-radius no-padding no-margin-bottom searchresult">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1 boxborder white">
+        <div class="row"> 
+          <!--breadcrumb-->
+          <ol class="breadcrumb no-margin">
+            <li><a href="#">Home</a></li>
+            <li class="active">Result</li>
+          </ol>
+          <!--breadcrumb ends-->
+          <div id="tabcontent" class="white">
+            <ul class="nav nav-tabs white margnbottom" role="tablist">
+              <li role="presentation" class="active"><a href="#courses" aria-controls="home" role="tab" data-toggle="tab">Courses ({{search_courses.count}})</a></li>
+              <li role="presentation"><a href="#testseries" aria-controls="profile" role="tab" data-toggle="tab">Test Series ({{search_tests.count}})</a></li>
+              <li role="presentation"><a href="#videos" aria-controls="messages" role="tab" data-toggle="tab">Videos ({{search_videos.count}})</a></li>
+              <li role="presentation"><a href="#tutors" aria-controls="settings" role="tab" data-toggle="tab">Tutors (45)</a></li>
+            </ul>
+            <div class="shadow allmargn">
+              <div class="tab-content"> 
+                <!--course tab starts-->
+                <div role="tabpanel" class="tab-pane active" id="courses"> 
+                  
+                    {{#each search_courses.CourseInfoRecord}}
+                        <div class="courseresult white">
+                            <div class="resultimage"><img src="images/searchresultimg.jpg" alt="" class="img-responsive"/></div>
+                                <div class="courseresultdetails">
+                                    <div class="pull-right noofusers"> <i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i> <span>1000 Users</span> </div>
+                                    <h4>{{CourseName}}</h4>
+                                    <p>By {{teacher}}</p>
+                                    <div class="freeassets">
+                                      <p>Assets: </p>
+                                      <span><i class="sprite notesicn"></i> {{numNotes}} Notes</span> <span><i class="sprite vdoicn"></i> {{numMultimedia}} Videos</span> <span><i class="sprite pdficn"></i> {{numAssessments}} Tests</span> </div>
+                                    <div class="available_on"> <span>Available on:</span> <span><i class="sprite sdicn"></i> SD Card</span> <span><i class="sprite pdicn"></i> Pendrive</span> </div>
+                                    <div class="pull-right joinnowshare"> <a href="javascript:void(0)">Share</a> <a href="javascript:void(0)">Join Now</a> </div>
+                                </div>
+                            <div class="clearfix"></div>
+                        </div>
+                                      <hr/>
+                    {{/each}}
+
+                </div>
+                <!--course tab ends--> 
+                <!--test series starts-->
+                <div role="tabpanel" class="tab-pane" id="testseries"> 
+                    {{#each search_tests.testInfo}}
+                        <div class="courseresult white">
+                            <div class="resultimage"><img src="images/searchresultimg.jpg" alt="" class="img-responsive"/></div>
+                                <div class="courseresultdetails">
+                                    <div class="pull-right noofusers"> <i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i> <span>1000 Users</span> </div>
+                                    <h4>{{test_name}}</h4>
+                                    <p>By Publisher: Maestro Series</p>
+                                    <div class="freeassets">
+                                      <span><i class="sprite notesicn"></i> 20 Mock Tests</span> <span><i class="sprite notesicn"></i> 30 Quick Tests</span> <span><i class="sprite quesicn"></i> 1234 Questions</span> </div>
+                                    <div class="available_on"> <span>Available on:</span> <span><i class="sprite sdicn"></i> SD Card</span> <span><i class="sprite pdicn"></i> Pendrive</span> </div>
+                                    <div class="pull-right joinnowshare"> <a href="javascript:void(0)">Share</a> <a href="javascript:void(0)">Join Now</a> </div>
+                                </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    <hr/>
+                    {{/each}}
+                </div>
+                <!--test series ends--> 
+                <!--videos starts-->
+                <div role="tabpanel" class="tab-pane" id="videos"> 
+                  <!--video result 1-->
+                    {{#each search_videos.videoInfo}}
+                        <div class="courseresult white">
+                            <div class="resultimage"><a href="javascript:void(0);"><img src="images/vdoplayicn.png" alt="" class="vdoplayicn"/></a><img src="images/searchresultimg.jpg" alt="" class="img-responsive"/></div>
+                            <div class="courseresultdetails">
+                                <div class="pull-right noofusers"> <i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i> <span>1000 Users</span> </div>
+                                <h4>{{name}}</h4>
+                                <p>{{course_name}}</p>
+                                <div class="available_on"> <span>Available on:</span> <span><i class="sprite ddicn"></i> Direct Download</span></div>
+                                <div class="available_on"> <span>Duration:</span> <span>{{video_duration}}</span></div>
+                                <div class="pull-right joinnowshare maargntop"><a href="javascript:void(0)">Join Now</a> </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                  <hr/>
+                    {{/each}}
+                </div>
+                <!--tutors starts-->
+                <div role="tabpanel" class="tab-pane" id="tutors"> 
+                  <!--tutor result 1-->
+                  <div class="courseresult white">
+                    <div class="abtfaculty">
+                      <div class="pull-right noofusers"><p><i class="sprite verifiedicn"></i> Verified</p>
+                      <p><i class="sprite locationicn"></i>1.5 km</p> </div>
+                      <img src="images/faculty.jpg" alt=""/>
+                      <h4 class="no-margin-bottom">Shruti Sharma</h4>
+                      <p>Female</p>
+                      <p>20 Students</p>
+                    </div>
+                    <div class="teacherdetails">
+                      <p><strong>Subjects: </strong> Bank PO, Computer &amp; Marketing</p>
+                      <p><strong>Hourly Fees: </strong> 700/-</p>
+                      <p><strong>Teaches In: </strong> Noida City Centre, Sector -39, 40, 51, 32, Noida . UP</p>
+                      <div class="timings"> <strong>Timings</strong>
+                        <ul>
+                          <li><i class="glyphicon glyphicon-time"></i>6:00 am</li>
+                          <li><span>5:00 pm</span></li>
+                          <li>Weekends</li>
+                        </ul>
+                      </div>
+                      <div class="clearfix"></div>
+                    </div>
+                    <div class="text-right contactfaculty"> <a href="javascript:void()" class="contactnow"><i class="glyphicon glyphicon-earphone"></i> Contact Now</a> <a href="javascript:void()">+ Add to Shortlist</a> </div>
+                  </div>
+                  <!--tutor result 1 ends-->
+                  <hr/>
+                  <!--tutor result 2-->
+                  <div class="courseresult white">
+                    <div class="abtfaculty">
+                      <div class="pull-right noofusers"><p><i class="sprite verifiedicn"></i> Verified</p>
+                      <p><i class="sprite locationicn"></i>1.5 km</p> </div>
+                      <img src="images/faculty.jpg" alt=""/>
+                      <h4 class="no-margin-bottom">Shruti Sharma</h4>
+                      <p>Female</p>
+                      <p>20 Students</p>
+                    </div>
+                    <div class="teacherdetails">
+                      <p><strong>Subjects: </strong> Bank PO, Computer &amp; Marketing</p>
+                      <p><strong>Hourly Fees: </strong> 700/-</p>
+                      <p><strong>Teaches In: </strong> Noida City Centre, Sector -39, 40, 51, 32, Noida . UP</p>
+                      <div class="timings"> <strong>Timings</strong>
+                        <ul>
+                          <li><i class="glyphicon glyphicon-time"></i>6:00 am</li>
+                          <li><span>5:00 pm</span></li>
+                          <li>Weekends</li>
+                        </ul>
+                      </div>
+                      <div class="clearfix"></div>
+                    </div>
+                    <div class="text-right contactfaculty"> <a href="javascript:void()" class="contactnow"><i class="glyphicon glyphicon-earphone"></i> Contact Now</a> <a href="javascript:void()">+ Add to Shortlist</a> </div>
+                  </div>
+                  <!--tutor result 2 ends-->
+                  <hr/>
+                  <!--tutor result 3-->
+                  <div class="courseresult white">
+                    <div class="abtfaculty">
+                      <div class="pull-right noofusers"><p><i class="sprite verifiedicn"></i> Verified</p>
+                      <p><i class="sprite locationicn"></i>1.5 km</p> </div>
+                      <img src="images/faculty.jpg" alt=""/>
+                      <h4 class="no-margin-bottom">Shruti Sharma</h4>
+                      <p>Female</p>
+                      <p>20 Students</p>
+                    </div>
+                    <div class="teacherdetails">
+                      <p><strong>Subjects: </strong> Bank PO, Computer &amp; Marketing</p>
+                      <p><strong>Hourly Fees: </strong> 700/-</p>
+                      <p><strong>Teaches In: </strong> Noida City Centre, Sector -39, 40, 51, 32, Noida . UP</p>
+                      <div class="timings"> <strong>Timings</strong>
+                        <ul>
+                          <li><i class="glyphicon glyphicon-time"></i>6:00 am</li>
+                          <li><span>5:00 pm</span></li>
+                          <li>Weekends</li>
+                        </ul>
+                      </div>
+                      <div class="clearfix"></div>
+                    </div>
+                    <div class="text-right contactfaculty"> <a href="javascript:void()" class="contactnow"><i class="glyphicon glyphicon-earphone"></i> Contact Now</a> <a href="javascript:void()">+ Add to Shortlist</a> </div>
+                  </div>
+                  <!--tutor result 3 ends--> 
+                </div>
+                <!--tutors ends--> 
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</template>

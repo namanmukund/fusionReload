@@ -1,0 +1,132 @@
+<template name="user_wall">
+  <body>
+  {{>sticky_nav}}
+  {{>navigation_user_wall}} 
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
+<!--  <script src="js/jquery-1.11.2.min.js"></script> 
+   Include all compiled plugins (below), or include individual files as needed  
+  <script src="js/bootstrap.js"></script> 
+  <script src="js/custom.js"></script>-->
+  <style>
+    .modal-backdrop{
+        background-color: none !important;
+    }
+</style>
+  <script>
+    $('document').ready(function(){
+        $('.sign-in').click(function(e){
+            e.preventDefault();
+           $('#signin').modal('show');
+        });
+        $('.sign-up').click(function(e){
+            e.preventDefault();
+           $('#signup').modal('show');
+        });
+        $('.frgtpwd').click(function(e){
+            e.preventDefault();
+            $('#signin').modal('hide');
+           $('#forgotpwd').modal('show');
+        });
+        $('html').on('click', function(){
+           if($('.notifi_pop').is(':visible'))
+           {
+               $('.notifi_pop').hide();
+           }
+        });
+        $('html').on('click', '.notifi_pop', function(){
+            $('.notifi_pop').show();
+        });
+        $('html').on('click', function(){
+           if($('.cartpop').is(':visible'))
+           {
+               $('.cartpop').hide();
+           }
+        });
+        $('html').on('click', '.cartpop', function(){
+            $('.cartpop').show();
+        });
+    });
+</script>
+  </body>
+</template>
+<template name="navigation_user_wall">
+  <div class="topfixed">
+    <div class="light-green">
+      <div class="container inner-nav">
+        <div class="row"><a class="navbar-brand sprite" href="index.html">iProf</a>
+          <form class="navbar-form navbar-left" role="search">
+            {{>search_bar}}
+          </form>
+          <ul class="pull-right">
+            {{>notif_cart_count}}
+            <li><a class="welcome" href="javascript:void(0);" id="user_name"><span class="userimg"></span>{{user_name}}&nbsp;&nbsp;<i class="glyphicon glyphicon-menu-down" id="arrowdown"></i></a>
+              <div class="welcomepop shadow">
+                <p><a href="javascript:void(0)"><i class="glyphicon glyphicon-pencil"></i>Edit Profile</a></p>
+                <p><a href="javascript:void(0)"><i class="sprite subsicn"></i>My Subscription</a></p>
+                <p><a href="javascript:void(0)"><i class="glyphicon glyphicon-cog"></i>Settings</a></p>
+                <p><a href="javascript:void(0)"><i class="glyphicon glyphicon glyphicon-off"></i>Sign Out</a></p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    {{>my_preference}}</div>
+  {{>wall_banner1}}
+  {{>trending_courses}}
+  {{>tests}}
+  {{>ad}}
+  {{>funzone_call}}
+  {{>qod}}
+  {{>trending_blogs}}
+  {{>footer}}
+  <div class="clearfix"></div>
+</template>
+
+<!--mysubscriptionpop-->
+
+
+<!--iprof subscription pop-->
+
+
+<!--months subscription pop-->
+
+
+<!--subscription expired pop-->
+
+
+<!--editprofile pop-->
+<template name="editprofile">
+  <div class="modal fade" tabindex="-1" role="dialog" id="editprofilepop">
+    <div class="modal-dialog modal-width">
+      <div class="modal-content">
+        <div class="modal-header pophd">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Edit Profile</h4>
+        </div>
+        <div class="modal-body">
+          <form class="register signuppop">
+            <div class="form-group has-feedback"><span class="glyphicon glyphicon-user form-control-feedback"></span>
+              <input class="form-control padding-left" type="text" name="user_name" placeholder="Name" required/>
+            </div>
+            <div class="form-group has-feedback"><span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+              <input class="form-control padding-left" type="email" name="email_id" placeholder="Email id" required/>
+            </div>
+            <div class="form-group has-feedback"><span class="glyphicon glyphicon-lock form-control-feedback"></span>
+              <input class="form-control padding-left" type="password" name="user_password" placeholder="Password" required/>
+            </div>
+            <div class="form-group has-feedback"><span class="glyphicon glyphicon-earphone form-control-feedback"></span>
+              <input class="form-control padding-left" type="text" name ="mobile_no" placeholder="Mobile Number(Optional)"/>
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-warning btnwidth" id="sign_up_submit">SAVE</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+</template>
+<!-- /.modal -->

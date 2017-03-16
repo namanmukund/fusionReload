@@ -1,0 +1,301 @@
+<template name="trending_test">
+    <body>
+   {{>nav_trending_test}}
+   {{>trending_test_list}} 
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
+<!--<script src="js/jquery-1.11.2.min.js"></script> 
+ Include all compiled plugins (below), or include individual files as needed  
+<script src="js/bootstrap.js"></script> 
+<script src="js/custom.js"></script> -->
+<style>
+    .modal-backdrop{
+        background-color: none !important;
+    }
+</style>
+<script>
+    $('document').ready(function(){
+        $('.sign-in').click(function(e){
+            e.preventDefault();
+           $('#signin').modal('show');
+        });
+        $('.sign-up').click(function(e){
+            e.preventDefault();
+           $('#signup').modal('show');
+        });
+        $('.frgtpwd').click(function(e){
+            e.preventDefault();
+            $('#signin').modal('hide');
+           $('#forgotpwd').modal('show');
+        });
+        $('html').on('click', function(){
+           if($('.notifi_pop').is(':visible'))
+           {
+               $('.notifi_pop').hide();
+           }
+        });
+        $('html').on('click', '.notifi_pop', function(){
+            $('.notifi_pop').show();
+        });
+        $('html').on('click', function(){
+           if($('.cartpop').is(':visible'))
+           {
+               $('.cartpop').hide();
+           }
+        });
+        $('html').on('click', '.cartpop', function(){
+            $('.cartpop').show();
+        });
+    });
+</script>
+</body>
+</template>
+
+<template name="nav_trending_test">
+<div class="positionfixed">
+  <div class="row">
+    <div class="col-xs-12 col-sm-2 col-md-2">
+      <div class="wap-menu"> 
+        <!--<a href="javascript:void(0);" class="mobile-menu"><i class="glyphicon glyphicon-menu-hamburger"></i></a>-->
+        <div class="mainmenu arrow-down">
+          <ul class="yourprfr">
+            <li><a class="hoverCursor lightgreen_bg" id="home_page"><i class="glyphicon glyphicon-home"></i>Home</a></li>
+            <li><a class="hoverCursor green_bg" id="course_page"><i class="glyphicon glyphicon-book"></i>Courses</a></li>
+            <li><a class="hoverCursor red_bg" id="tutor_page"><i class="glyphicon glyphicon-user"></i>Tutors</a></li>
+            <li class="active"><a class="hoverCursor blue_bg" id="test_page"><i class="glyphicon glyphicon-list-alt"></i>Tests</a>
+              <ul class="submenu">
+                <li><a href="javascript:void(0)">Trending Tests</a></li>
+                <li><a href="javascript:void(0)">My Tests</a></li>
+              </ul>
+            </li>
+            <div class="greybar"></div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+</template>
+<!--Navigation Start-->
+
+
+<template name="trending_test_list">
+<div class="topfixed">
+  <div class="light-green">
+        <div class="container inner-nav">
+      <div class="row"> <a class="navbar-brand sprite" href="/">iProf</a>
+        <form class="navbar-form navbar-left" role="search">
+          {{>search_bar}}
+        </form>
+        <ul class="pull-right">
+            {{>notif_cart_count}}
+          <li><a href="javascript:void(0);" class="sign-in">Sign In</a></li>
+          {{>sign_in}}
+          {{>forgot_pwd}}
+          <li><a class="btn btn-default sign-up shadow" href="javascript:void(0);" role="button">Sign Up</a></li>
+          {{>sign_up}}  
+        </ul>
+      </div>
+    </div>
+  </div>
+    {{>my_preference}}
+    </div>
+    {{>wall_banner1}}
+    {{>breadcrumb_trend_tests}}
+    {{>trend_test_list}}
+    {{>footer}}
+  <div class="clearfix"></div>
+  </template> 
+
+
+<!--Breadcrumb-->
+<template name="breadcrumb_trend_tests">
+<div class="well no-border no-radius no-shadow no-padding blue_bg">
+  <div class="container">
+    <div class="row">
+      <ol class="breadcrumb no-margin">
+        <li><a class="hoverCursor sliderviewmore" id = "test_home">Home</a></li>
+        <li class="active">Trending Tests</li>
+      </ol>
+    </div>
+  </div>
+</div>
+<!--Breadcrumb End--> 
+
+<!--courses heading-->
+<div class="well white no-border no-radius no-shadow no-padding coursehd">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>Trending Tests</h1>
+      </div>
+    </div>
+  </div>
+</div>
+</template>
+<!--courses heading ends--> 
+
+<!--courses heading-->
+<template name=" trend_test_list">
+<div class="container">
+  <div class="row"> 
+    <!--box 1-->
+    <div class="col-md-4">
+      <div class="white shadow grow courselist_details">
+        <div class="courseimg"><img src="images/jeemain.jpg" alt=""/>
+          <h3>JEE Main &amp; Advance</h3>
+        </div>
+        <div class="courselistdetails">
+          <p>By Publisher: Maestro Series</p>
+          <p><i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i></p>
+          <p>1000 Users</p>
+        </div>
+        <div class="testlist">
+          <ul>
+            <li><i class="sprite testicn"></i>20 Tests</li>
+            <li><i class="sprite questionicn"></i>2130 Questions</li>
+          </ul>
+          <div class="clearfix"></div>
+        </div>
+        <div class="availableon">
+          <div class="availabe widthadd"><span>Availabe on:</span> <i class="sprite dwnlod"></i><i class="sprite sdcard"></i><i class="sprite memorycard"></i></div>
+          <hr/>
+          <a href="javascript:void()" class="joinnow">Join Now</a> </div>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+    <!--box 1 ends--> 
+    <!--box 2-->
+    <div class="col-md-4">
+      <div class="white shadow grow courselist_details">
+        <div class="courseimg"><img src="images/jeemain.jpg" alt=""/>
+          <h3>JEE Main &amp; Advance</h3>
+        </div>
+        <div class="courselistdetails">
+          <p>By Publisher: Maestro Series</p>
+          <p><i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i></p>
+          <p>1000 Users</p>
+        </div>
+        <div class="testlist">
+          <ul>
+            <li><i class="sprite testicn"></i>20 Tests</li>
+            <li><i class="sprite questionicn"></i>2130 Questions</li>
+          </ul>
+          <div class="clearfix"></div>
+        </div>
+        <div class="availableon">
+          <div class="availabe widthadd"><span>Availabe on:</span> <i class="sprite dwnlod"></i><i class="sprite sdcard"></i><i class="sprite memorycard"></i></div>
+          <hr/>
+          <a href="javascript:void()" class="joinnow">Join Now</a> </div>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+    <!--box 2 ends--> 
+    <!--box 3-->
+    <div class="col-md-4">
+      <div class="white shadow grow courselist_details">
+        <div class="courseimg"><img src="images/jeemain.jpg" alt=""/>
+          <h3>JEE Main &amp; Advance</h3>
+        </div>
+        <div class="courselistdetails">
+          <p>By Publisher: Maestro Series</p>
+          <p><i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i></p>
+          <p>1000 Users</p>
+        </div>
+        <div class="testlist">
+          <ul>
+            <li><i class="sprite testicn"></i>20 Tests</li>
+            <li><i class="sprite questionicn"></i>2130 Questions</li>
+          </ul>
+          <div class="clearfix"></div>
+        </div>
+        <div class="availableon">
+          <div class="availabe widthadd"><span>Availabe on:</span> <i class="sprite dwnlod"></i><i class="sprite sdcard"></i><i class="sprite memorycard"></i></div>
+          <a href="javascript:void()" class="joinnow">Join Now</a> </div>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+    <!--box 3 ends--> 
+    <!--box 4-->
+    <div class="col-md-4">
+      <div class="white shadow grow courselist_details">
+        <div class="courseimg"><img src="images/jeemain.jpg" alt=""/>
+          <h3>JEE Main &amp; Advance</h3>
+        </div>
+        <div class="courselistdetails">
+          <p>By Publisher: Maestro Series</p>
+          <p><i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i></p>
+          <p>1000 Users</p>
+        </div>
+        <div class="testlist">
+          <ul>
+            <li><i class="sprite testicn"></i>20 Tests</li>
+            <li><i class="sprite questionicn"></i>2130 Questions</li>
+          </ul>
+          <div class="clearfix"></div>
+        </div>
+        <div class="availableon">
+          <div class="availabe widthadd"><span>Availabe on:</span> <i class="sprite dwnlod"></i><i class="sprite sdcard"></i><i class="sprite memorycard"></i></div>
+          <hr/>
+          <a href="javascript:void()" class="joinnow">Join Now</a> </div>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+    <!--box 4 ends--> 
+    <!--box 5-->
+    <div class="col-md-4">
+      <div class="white shadow grow courselist_details">
+        <div class="courseimg"><img src="images/jeemain.jpg" alt=""/>
+          <h3>JEE Main &amp; Advance</h3>
+        </div>
+        <div class="courselistdetails">
+          <p>By Publisher: Maestro Series</p>
+          <p><i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i></p>
+          <p>1000 Users</p>
+        </div>
+        <div class="testlist">
+          <ul>
+            <li><i class="sprite testicn"></i>20 Tests</li>
+            <li><i class="sprite questionicn"></i>2130 Questions</li>
+          </ul>
+          <div class="clearfix"></div>
+        </div>
+        <div class="availableon">
+          <div class="availabe widthadd"><span>Availabe on:</span> <i class="sprite dwnlod"></i><i class="sprite sdcard"></i><i class="sprite memorycard"></i></div>
+          <hr/>
+          <a href="javascript:void()" class="joinnow">Join Now</a> </div>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+    <!--box 5 ends--> 
+    <!--box 6-->
+    <div class="col-md-4">
+      <div class="white shadow grow courselist_details">
+        <div class="courseimg"><img src="images/jeemain.jpg" alt=""/>
+          <h3>JEE Main &amp; Advance</h3>
+        </div>
+        <div class="courselistdetails">
+          <p>By Publisher: Maestro Series</p>
+          <p><i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i></p>
+          <p>1000 Users</p>
+        </div>
+        <div class="testlist">
+          <ul>
+            <li><i class="sprite testicn"></i>20 Tests</li>
+            <li><i class="sprite questionicn"></i>2130 Questions</li>
+          </ul>
+          <div class="clearfix"></div>
+        </div>
+        <div class="availableon">
+          <div class="availabe widthadd"><span>Availabe on:</span> <i class="sprite dwnlod"></i><i class="sprite sdcard"></i><i class="sprite memorycard"></i></div>
+          <hr/>
+          <a href="javascript:void()" class="joinnow">Join Now</a> </div>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+    <!--box 6 ends-->
+    <div class="text-center"><a href="javascript:void()" class="morereview">More Tests<i class="dwnarw glyphicon glyphicon-menu-down"></i></a></div>
+  </div>
+</div>
+</template>
+<!--courses heading ends--> 

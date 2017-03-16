@@ -1,0 +1,39 @@
+<template name="failure">
+<body class="landing-page">
+    
+    
+ <div class="topfixed">  
+            {{>topstrip}}   
+        <div class="green">
+            <div class="container inner-nav">
+                <div class="row"><a class="navbar-brand sprite" href="/">iProf</a>
+                    <ul class="pull-right">
+                        {{#if login_check}}
+                        <li><a href="javascript:void(0);" class="sign-in">Sign In</a></li>
+                        <li><a class="sign-up btn btn-default shadow" href="javascript:void(0);" role="button">Sign Up</a></li>
+                        {{else}}  
+                        {{>user_profile_data}}
+
+                        {{/if}}
+                    </ul>
+                </div>
+            </div>
+        </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-offset-2 col-md-8">
+            <div class="successdiv innermargintop">
+              <div class="success"><img src="/images/emoticon-sad.png" alt=""/></div>
+              <div class="clearfix"></div>
+              <div class="success-text">
+                <p>Transaction was unsuccessful.</p>
+                <button type="button" class="btn btn-success" id="payment_unsuccess">Continue</button>
+              </div>
+            </div>
+        </div>
+    </div>
+</div>
+    {{>footer}}
+</body>    
+</template>

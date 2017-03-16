@@ -1,0 +1,1001 @@
+<template name="wall">
+  <body>
+  {{>sticky_nav}}
+  {{>rtbanner}}
+  {{>navigation_wall}} 
+  <script>
+    $('document').ready(function(){
+        $('html').on('click', function(){
+           if($('.cartpop').is(':visible'))
+           {
+               $('.cartpop').hide();
+           }
+        });
+        $('html').on('click', '.cartpop', function(){
+            $('.cartpop').show();
+        });
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+    
+    function hide_qod_options(){
+      $('#questionday').hide();
+      $('#questionanswerdisplay').show();
+    }
+    $(document).ready(function() {
+      $("#owl-demo").owlCarousel({
+	navigation : true, // Show next and prev buttons
+	slideSpeed : 300,
+	loop:true,
+	paginationSpeed : 400,
+	singleItem:true,
+	autoPlay:6000
+      });
+      
+      var carousel = $("#owl-demo");
+      carousel.owlCarousel({
+	  navigation:true,
+	  navigationText: [
+	    "<i class='glyphicon glyphicon-menu-left icon-white'><</i>",
+	    "<i class='glyphicon glyphicon-menu-right icon-white'>></i>"
+	    ],
+      });
+    });
+    ga('send', {
+      hitType: 'pageview',
+      page: '/wall'
+    });
+  </script> 
+  <script src="/js/custom.js"></script>
+  </body>
+</template>
+<template name="rtbanner">
+  <!--{{#if is_subscribed}}-->
+    <div class="rtbanner_fixed">
+   <div class="rtbanner">
+    <h1>iProf Subscription</h1>
+    <ul class="coursepoints">
+      <li>Unlimited Access to 500+ Courses</li>
+      <li>Take Unlimited Tests</li>
+      <li>Download Unlimited Content</li>
+      <li>Study Anytime, Anywhere through APP and WEB</li>
+      <!--<li>Get Exclusive Discounts</li>-->
+    </ul>
+    <!--    {{#if is_free_trial_taken}}
+    <a href="javascript:void(0);" class="subsbtn1 free_trial_web_wall">START 7-DAY FREE TRIAL</a>
+    {{/if}}-->
+    <button type="button" class="btn subsbtn-1 subs_from_banner_wall">SUBSCRIBE NOW</button>
+  </div>
+
+    
+  <div class="rtbanner1">
+    <h1>Pen Drives & SD Card Courses</h1>
+    <ul class="coursepoints">
+      <li>Plug & Play course on PC/ Smartphone </li>
+      <li>Get preloaded videos, Notes & Tests </li>
+      <li>No Internet required</li>
+      <li>Free home delivery</li>
+      <li>COD Available </li>
+    </ul>
+<!--    {{#if is_free_trial_taken}}
+    <a href="javascript:void(0);" class="subsbtn1 free_trial_web_wall">START 7-DAY FREE TRIAL</a>
+    {{/if}}-->
+<!--    <button type="button" class="btn subsbtn-1 subs_from_banner_wall">SUBSCRIBE NOW</button>-->
+<button type="button" class="btn subsbtn-1 choose_course_banner_wall">CHOOSE COURSE</button>
+  </div> 
+    <!--{{/if}}-->
+    </div>
+</template>
+<template name="sticky_nav">
+  <div class="positionfixed">
+    <div class="row">
+      <div class="col-xs-12 col-sm-2 col-md-2">
+        <div class="wap-menu">
+          <!--<a href="javascript:void(0);" class="mobile-menu"><i class="glyphicon glyphicon-menu-hamburger"></i></a>-->
+          <div class="mainmenu arrow-down">
+            <ul class="yourprfr">
+              <li class="active"><a class="hoverCursor lightgreen_bg" id="home_page"><i class="glyphicon glyphicon-home"></i>Home</a></li>
+              {{#if disable_tab_course countCourse 0}}
+              <li><a href="javascript:void(0);" class="hoverCursor green_bg" id="course_page_disable"><i class="glyphicon glyphicon-book"></i>Courses<span class="countcourse">{{countCourse}}</span></a></li>
+              {{else}}
+              <li><a href="javascript:void(0);" class="hoverCursor green_bg" id="course_page"><i class="glyphicon glyphicon-book"></i>Courses<span class="countcourse">{{countCourse}}</span></a></li>
+              {{/if}}
+              {{#if disable_tab_test countTest 0}}
+              <li><a href="javascript:void(0);" class="hoverCursor blue_bg" id="test_page_disable"><i class="glyphicon glyphicon-list-alt"></i>Tests<span class="countcourse">{{countTest}}</span></a></li>
+              {{else}}
+              <li><a href="javascript:void(0);" class="hoverCursor blue_bg" id="test_page"><i class="glyphicon glyphicon-list-alt"></i>Tests<span class="countcourse">{{countTest}}</span></a></li>
+              {{/if}}
+              <li><a href="javascript:void(0);" class="hoverCursor red_bg" id="tutor_page"><i class="glyphicon glyphicon-user"></i>Tutors<span class="countcourse">0</span></a></li>
+            </ul>
+          </div>
+          <div class="wap-submenu blu-clr">
+            <ul>
+              <li id="render_my_course_from_wall"><a href="javascript:void(0)">My Courses</a></li>
+              <li id="render_my_test_from_wall"><a href="javascript:void(0)">My Test Series</a></li>
+              <li id="render_my_purchases_from_wall"><a href="javascript:void(0)">My Purchases</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<!--Navigation Start-->
+<template name="navigation_wall">
+  <div class="topfixed">{{>topstrip}}
+    <div class="light-green">
+      <div class="container inner-nav">
+        <div class="row">
+          <ul class="pull-right">
+            {{>notif_cart_count}}
+            {{#if login_check}}
+            <li><a href="javascript:void(0);" class="sign-in">Sign In</a></li>
+            <li><a class="sign-up btn btn-default shadow" href="javascript:void(0);" role="button">Sign Up</a></li>
+            {{else}}
+            {{>user_profile_data}}
+            
+            {{/if}}
+          </ul>
+          
+          <button type="button" class="navbar-toggle collapsed mobile_left_nav_button" id="toptoggle"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+          <a class="navbar-brand sprite" href="/">iProf</a>
+          {{>search_bar}}</div>
+      </div>
+      {{>left_navigation_mobile}}</div>
+    {{>my_preference}}</div>
+  {{>wall_banner1}}
+  {{>trending_courses}}
+  {{>about_courses_div}}
+  {{>funzone_call}}
+  
+  {{#if is_qod_show is_qod_exist 1}}
+  {{>qod}}
+  {{/if}}
+  {{>footer}}
+  <div id="getstartdisplaynone">{{>getStarted}}</div>
+  <div class="clearfix"></div>
+</template>
+<!--
+<template name="header">
+        <div class="container inner-nav">
+      <div class="row"> <a class="navbar-brand sprite" href="index.html">iProf</a>
+        <form class="navbar-form navbar-left" role="search">
+          <div class="input-group">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Search">
+            </div>
+            <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
+          </div>
+        </form>
+        <ul class="pull-right">
+          <li class="notific">
+              <a href="javascript:void(0)" class="notif"><i class="glyphicon glyphicon-bell fntsize"></i></a>
+              <span class="notification">{{notificationCount}}</span>
+               {{>notification}}
+          </li>
+          <li class="notific">
+              <a href="javascript:void(0)" class="shopcart"><i class="glyphicon glyphicon-shopping-cart fntsize"></i></a>
+              <span class="notification">{{cartCount}}</span>
+              {{>cart}}
+          </li>
+          <li><a href="javascript:void(0);" class="sign-in">Sign In</a></li>
+          {{>sign_in}}
+          {{>forgot_pwd}}
+          <li><a class="btn btn-default sign-up shadow" href="javascript:void(0);" role="button">Sign Up</a></li>
+          {{>sign_up}}
+        </ul>
+      </div>
+    </div>
+</template>
+  -->
+<!--your preference-->
+<template name="my_preference">
+  <div class="well white no-border no-radius shadow no-padding no-margin-bottom prefrence">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="row">
+            <form class="form-inline">
+              <div class="form-group">
+                <h4>Your Preference:</h4>
+              </div>
+              <div class="form-group hidetag" id="hideCategory">
+                <select class="form-control catg" id="category" name="category" disabled>
+                  <!--<option value="">Select Category</option>-->
+                  <option value="0">Select Category</option>
+                  
+
+                {{#each categories}}
+                {{#if display_name}}        <!-- selected="{{selected1 id categoryId}}" -->
+                    {{#if categoryName}}
+                        {{#if check_for_category_cache display_name categoryName}}
+
+                  
+                  <option value="{{id}}" selected>{{categoryName}}</option>
+                  
+
+                        {{else}}
+
+                  
+                  <option value="{{id}}" {{selectedCategory id categoryId}}>{{display_name}}</option>
+                  
+
+                        {{/if}}
+                    {{else}}
+
+                  
+                  <option value="{{id}}" {{selectedCategory id categoryId}}>{{display_name}}</option>
+                  
+
+
+                    {{/if}}
+                {{/if}}
+                {{/each}}
+
+<!--                                  {{#if categoryName}}
+                    <option value="categoriesCache" selected>{{categoryName}}</option>
+
+                                {{/if}}-->
+                  
+                </select>
+              </div>
+              <div class="form-group hidetag" id="hideSubCategory">
+                <select class="form-control subctg" id="subCategory" name="subCategory" disabled>
+                  <option value="0">Sub category</option>
+                  
+
+                {{#if subCategories}}
+                {{#each subCategories}}
+                {{#if display_name}}
+
+
+                  
+                  <option value="{{id}}" {{selectedSubCategory id subCategoryId}}>{{display_name}}</option>
+                  
+
+
+                {{/if}}
+                {{/each}}
+                {{else}}
+
+                  
+                  <option value="subCategoriesCache" selected>{{subCategoryName}}</option>
+                  
+
+                {{/if}}
+
+
+
+                
+                </select>
+              </div>
+              <div class="form-group hidetag" >
+                <select class="form-control" id="course" name="course" disabled>
+                  <option value="0">Course</option>
+                  
+
+                {{#if courses}}
+                {{#each courses}}
+                {{#if display_name}}
+
+
+                  
+                  <option value="{{id}}" {{selectedCourse id courseId}}>{{display_name}}</option>
+                  
+
+
+
+
+                {{/if}}
+                {{/each}}
+                {{else}}
+
+                  
+                  <option value="subCategoriesCache" selected>{{courseName}}</option>
+                  
+
+                {{/if}}
+
+                
+                </select>
+              </div>
+              <div class="btn-group" id="courseOnRender" data-toggle="tooltip" data-placement="bottom" title= "Selected course: {{courseName}}">{{courseName}}</div>
+              <span class="arrrow_pref" style="display:inline-block;">&nbsp; &gt;</span>
+              
+              <!-- <div class="input-group">
+            <div class="input-group-btn">
+              <button tabindex="-1" class="btn btn-default" type="button">Select</button>
+              <button tabindex="-1" data-toggle="dropdown" class="btn btn-default dropdown-toggle" type="button">
+              <span class="caret"></span>
+              </button>
+              <ul role="menu" class="dropdown-menu">
+               {{#if subjects}}
+                {{#each subjects}}
+                {{#if name}}
+                <li><a href="#">
+                <input type="checkbox"><span class="lbl">{{name}}</span>
+                </a></li>
+
+                {{/if}}
+                {{/each}}
+                {{/if}}
+
+              </ul>
+            </div>
+            <input type="text" class="form-control">
+          </div> -->
+              
+              <div class="btn-group preferencebtngrp" id="subjectOnChange">
+                <!-- <button class="btn">Subjects</button> -->
+                <button data-toggle="dropdown" class="btn dropdown-toggle" data-placeholder="false">Subjects<span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                  <li>
+                    <label>
+                      <input type="checkbox" class="check" id="checkAll">
+                      Select All</label>
+                  </li>
+                  {{#if subjects}}
+                  {{#each subjects}}
+                  {{#if name}}
+                  <li>
+                    <label>
+                      <input type="checkbox" class="check" id="subjectChecbox"  name="inputcheckbox" value={{id}}>
+                      {{name}}</label>
+                  </li>
+                  {{/if}}
+                  {{/each}}
+                  {{/if}}
+                </ul>
+              </div>
+              <div class="btn-group" id="subjectOnRender" data-toggle="tooltip" data-placement="bottom" title= "Selected subjects: {{subjectName}}">&nbsp; {{subjectName}}</div>
+              
+              <!--  <div class="form-group hidetag">
+                <select id="example-getting-started" multiple="multiple">
+
+
+                {{#if subjects}}
+                {{#each subjects}}
+                {{#if name}}
+
+
+                  <option value={{id}}>{{name}}</option>
+
+
+                {{/if}}
+                {{/each}}
+
+
+                {{/if}}
+
+                </select> -->
+              
+              <!--  <select id="example-getting-started" multiple="multiple">
+                                    <option value="cheese">Cheese</option>
+                                    <option value="tomatoes">Tomatoes</option>
+                                    <option value="Mozzarella">Mozzarella</option>
+                                    <option value="Mushrooms">Mushrooms</option>
+                                    <option value="Pepperoni">Pepperoni</option>
+                                    <option value="Onions">Onions</option>
+                                </select>  -->
+              <!-- </div> -->
+              
+              <!--  -->
+              <!--    {{#each subjects}}
+                    {{id}} {{display_name}}
+                {{/each}}       -->
+              
+              <!--  <div class="form-group subjecthd">
+                    {{#Multiselect name='subject' options=subjects.display_name selected=selectedSubject }}
+                          <option value="{{id}}" >{{display_name}}</option>
+                    {{/Multiselect}}
+
+              </div> -->
+              <!-- <ul class="subjectshover shadow"><li>Subject 1</li><li>Subject 2</li><li>Subject 3</li></ul>     -->
+              <!--              <div class="form-group hidetag subjecthd change_subject">
+                <select id="example-getting-started" multiple="multiple">
+                  <option value="cheese">Cheese</option>
+                  <option value="tomatoes">Tomatoes</option>
+                  <option value="Mozzarella">Mozzarella</option>
+                  <option value="Mushrooms">Mushrooms</option>
+                  <option value="Pepperoni">Pepperoni</option>
+                  <option value="Onions">Onions</option>
+                </select>
+              </div>-->
+              <!-- <div class="form-group hidetag subjecthd change_subject">{{selectedSubjectTxt}} Subject</div> -->
+              <div class="form-group"><span class="cancel-url"><a href="javascript:void(0);">Cancel</a></span></div>
+              <div class="form-group"><span class="save-url">
+                <button class="btn btn-default shadow save_pref_btn">Save</button>
+                </span></div>
+              <div class="form-group"><span class="change-url">
+                <button class="btn btn-default shadow change_preference_wall">Change</button>
+                </span></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+<!--your preference end-->
+<!--wall banner-->
+<template name="wall_banner1">
+  <div class="container margintop">
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <div class="row">
+          <div id="owl-demo" class="owl-carousel owl-theme">
+            <!--active item-->
+            <div class="item">
+              <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="row">
+                  <div class="innerbanner-1">
+                    <div class="pull-right">
+                      <div class="bannercontent">
+                        <div class="innerbannerhd">Get Success<strong class="ylwclr">Without Stress</strong></div>
+                        <div class="innerbannersubhd">Subscription starting @<strong>999</strong></div>
+                        <p>LAPTOP/PC | MOBILE | TABLET</p>
+                        <div class="innerbannerbtns">
+                          <!--                                {{#if is_free_trial_taken}}
+                                    <button type="button" class="bannerbtn" ><img src="/images/innerbanner-get-trial.png" alt=""/></button>
+                                {{/if}}-->
+                          <a href="javascript:void(0);" class="banner_subscription"><img src="/images/inner-subscribenow.png" alt=""/></a></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--active item ends-->
+            
+            <!--item 1-->
+            <div class="item">
+              <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="row">
+                  <div class="innerbanner-2">
+                    <div class="pull-right">
+                      <div class="bannercontent">
+                        <div class="innerbannerhd">Don't<strong class="ylwclr">Miss Out</strong></div>
+                        <div class="innerbannersubhd">Subscription starting @<strong>999</strong></div>
+                        <p>LAPTOP/PC | MOBILE | TABLET</p>
+                        <div class="innerbannerbtns">
+                          <!--                                {{#if is_free_trial_taken}}
+                            	<button type="button" class="bannerbtn" ><img src="/images/innerbanner-get-trial.png" alt=""/></button>
+                                {{/if}} -->
+                          <a href="javascript:void(0);" class="banner_subscription"><img src="/images/inner-subscribenow.png" alt=""/></a></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--item 1 ends-->
+            
+            <!--item 1-->
+            <div class="item">
+              <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="row">
+                  <div class="innerbanner-3">
+                    <div class="pull-right">
+                      <div class="bannercontent">
+                        <div class="innerbannerhd1">One Subscription,<strong class="ylwclr">Multiple Courses</strong></div>
+                        <div class="innerbannersubhd">Subscription starting @<strong>999</strong></div>
+                        <p>LAPTOP/PC | MOBILE | TABLET</p>
+                        <div class="innerbannerbtns">
+                          <!--                                {{#if is_free_trial_taken}}
+                            	<button type="button" class="bannerbtn" ><img src="/images/innerbanner-get-trial.png" alt=""/></button>
+                                {{/if}}-->
+                          <a href="javascript:void(0);" class="banner_subscription"><img src="/images/inner-subscribenow.png" alt=""/></a></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--item 1 ends-->
+            
+            <!--item 1-->
+            <div class="item">
+              <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="row">
+                  <div class="innerbanner-4">
+                    <div class="pull-right">
+                      <div class="bannercontent">
+                        <div class="innerbannerhd">Crack<strong class="ylwclr">ANY Exam</strong></div>
+                        <div class="innerbannersubhd">Subscription starting @<strong>999</strong></div>
+                        <p>LAPTOP/PC | MOBILE | TABLET</p>
+                        <div class="innerbannerbtns">
+                          <!--                                {{#if is_free_trial_taken}}
+                            	<button type="button" class="bannerbtn" ><img src="/images/innerbanner-get-trial.png" alt=""/></button>
+                                {{/if}}-->
+                          <a href="javascript:void(0);" class="banner_subscription"><img src="/images/inner-subscribenow.png" alt=""/></a></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--item 1 ends-->
+            
+            <div class="item">
+              <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="row">
+                  <div class="innerbanner-5">
+                    <div class="pull-right">
+                      <div class="bannercontent">
+                        <div class="innerbannerhd">Study<strong class="ylwclr">Without</strong>Internet!</div>
+                        <div class="innerbannersubhd">Get your course home delivered, preloaded on SD card / PenDrive</div>
+                        <div class="innerbannerbtns"><a href="/#getstarted" class="chosecoursebtn"><img src="/images/inner-choosecourse.png" alt=""/></a></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Controls -->
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+<!--wall banner ends-->
+<!--trending courses ends-->
+
+<!--tests-->
+<!--tests ends-->
+
+<!--ad-->
+<template name="ad">
+  <div class="container">
+    <div class="row margntop">
+      <div class="col-md-12">
+        <div class="row">
+          <div class="adspace">AD space</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+<!--ad ends-->
+
+<!--fun zone-->
+<template name="funzone_call">
+  <div class="container">
+    <div class="row margntop">
+      <div class="col-md-12 fun_quiz">
+        <div class="fun_zone">
+          <div class="funzoneimge"><img src="/images/funzonevideos.png" alt="" class="img-responsive"/></div>
+          <div class="funzonetext">
+            <h1>Funzone</h1>
+            Studying all the time can be boring! Take a break and enjoy the trivia and fun posts, still related to your subject of interests! Don't forget to share it with your friends!
+            <button type="button" class="btn btn-danger playbtn shadow" id = "go_funzone">VIEW FUNZONE</button>
+          </div>
+          <div class="clearfix"></div>
+          <hr>
+        </div>
+        <div class="quiz_zone">
+          <div class="pull-right quizimg"><img src="/images/scoreicn1.jpg" alt="" class="img-responsive"/></div>
+          <div class="quizzone">
+            <h1>Beat My Score</h1>
+            <div class="quizzonetext">Challenge your friends to beat your test scores or Compete against selected opponents!
+              <p>Choose the Subjects and Dare yourself now!</p>
+            </div>
+            <button class="btn shadow startbtn clickBms">START</button>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+<!--fun zone ends-->
+
+<!--question of the day-->
+<template name="qod">
+  <div class="container">
+    <div class="row margntop">
+      <!--question day starts-->
+      <div class="col-md-12">
+        <div class="white shadow text-center">{{#mathjax wait=true}}
+          <div class="questionofthedaydetails">
+            <div class="question_icn"><img src="/images/questionicn.jpg" alt=""/>
+              <h2>Question of the Day</h2>
+              <div class="clearfix"></div>
+            </div>
+            <div class="questiontext">{{{question}}}</div>
+            {{#if question_submit_status}}
+            <!--{{#if submit}}-->
+            
+            <!--{{else}}-->
+            
+            <div id="questionday" class="questionday">
+              <ul class="start_test questionanswer">
+                {{#each options}}
+                <li>
+                  <div class="radio radio-info">
+                    <label>
+                      <input type="radio" name="radio" id = "{{option_id}}" value ="{{option_statement}}" />
+                      <span class="lbl padding-8">{{{option_statement}}}</span></label>
+                  </div>
+                </li>
+                {{/each}}
+              </ul>
+              <div class="clearfix"></div>
+              <button class="btn btn-success submitbtn shadow pull-left qod_submit_button"  id="sbtbtnn"
+                onclick="hide_qod_options();">SUBMIT</button>
+              <div class="clearfix"></div>
+            </div>
+            <div id="questionanswerdisplay" class="pull-left questionanswerdisplay">
+              <p class="pull-left">{{{submit.correct_ans}}}</p>
+              <p>{{{submit.answer_text}}}</p>
+              <p>{{submit.percent}}</p>
+            </div>
+            <!--{{/if}}-->
+            {{else}}
+            <div class="pull-left">{{#if question_data_if_submit}}
+              <p class="pull-left">{{{question_data_if_submit.correct_ans}}}</p>
+              <!--                {{#if question_data_if_submit.answer_image}}
+                <img src="{{question_data_if_submit.answer_image}}"><br/>
+                {{/if}}-->
+              <p>{{{question_data_if_submit.answer_text}}}</p>
+              <p>{{question_data_if_submit.percent}}</p>
+              {{/if}}</div>
+            {{/if}}</div>
+          {{/mathjax}}
+          <div class="clearfix"></div>
+        </div>
+      </div>
+      <!--question day ends-->
+      
+    </div>
+  </div>
+</template>
+<!--question of the day ends-->
+
+<!--trending blogs-->
+<template name="trending_blogs">
+  <div class="container blog">
+    <div class="row">
+      <div class="trendingcourses">
+        <h4>TRENDING BLOGS</h4>
+        <a href="javascript:void()" class="moretest pull-right">View More<i class="glyphicon glyphicon-triangle-right"></i></a>
+        <div class="clearfix"></div>
+      </div>
+      <!--blog 1 starts-->
+      <div class="col-xs-12 col-sm-4 col-md-4 margnbottom">
+        <div class="shadow white text-left"><img src="/images/blog1.jpg" alt=""/>
+          <div class="blogdetails">
+            <h3>How To Crack GATE 2016 Without Coaching?</h3>
+            <div class="blogtext">Still in conundrum of whether to go for coaching or preparing at own, for GATE 2016? Here, we are ...</div>
+            <a href="javascript:void()" class="pull-right">Read More</a>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+      </div>
+      <!--blog 1 ends-->
+      <!--blog 2-->
+      <div class="col-xs-12 col-sm-4 col-md-4 margnbottom">
+        <div class="shadow white text-left"><img src="/images/blog1.jpg" alt=""/>
+          <div class="blogdetails">
+            <h3>How To Crack GATE 2016 Without Coaching?</h3>
+            <div class="blogtext">Still in conundrum of whether to go for coaching or preparing at own, for GATE 2016? Here, we are ...</div>
+            <a href="javascript:void()" class="pull-right">Read More</a>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+      </div>
+      <!--blog 2 ends-->
+      <!--blog 3-->
+      <div class="col-xs-12 col-sm-4 col-md-4 margnbottom">
+        <div class="shadow white text-left"><img src="/images/blog1.jpg" alt=""/>
+          <div class="blogdetails">
+            <h3>How To Crack GATE 2016 Without Coaching?</h3>
+            <div class="blogtext">Still in conundrum of whether to go for coaching or preparing at own, for GATE 2016? Here, we are ...</div>
+            <a href="javascript:void()" class="pull-right">Read More</a>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+      </div>
+      <!--blog 3 ends-->
+      
+    </div>
+  </div>
+</template>
+<!--trending blogs ends-->
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<template name="notification">
+  <div id="notifid" class="notifi_pop shadow">
+    <div class="notifihd">Notifications</div>
+    <div class="subnotific">
+      <!--      {{#if userNotificationCount}}
+        {{#each userNotification}}
+            <div class="notifopen">
+              <p>{{messageTitle}}</p>
+              <p>{{message}}</p>
+              <div class="clearfix"></div>
+            </div>
+        {{/each}}
+      {{else}}-->
+      <!--      <div class="notifopen"><a href="javascript:void()"><i class="pull-right glyphicon glyphicon-menu-right"></i>
+        <p class="orange">End of November Sale</p>
+        <p>Get 20% Extra off on all courses</p>
+        </a></div>
+      <div class="notifopen"><a href="javascript:void()"><i class="pull-right glyphicon glyphicon-menu-right"></i>
+        <p class="orange">End of November Sale</p>
+        <p>Get 20% Extra off on all courses</p>
+        </a></div>
+      <div class="notifopen"><a href="javascript:void()"><i class="pull-right glyphicon glyphicon-menu-right"></i>
+        <p class="orange">End of November Sale</p>
+        <p>Get 20% Extra off on all courses</p>
+        </a></div>-->
+      <p>There are no notifications</p>
+      <!--{{/if}}-->
+    </div>
+    <!--<a href="javascript:void()" class="vwmore">View more</a>-->
+  </div>
+</template>
+<template name="cart">
+  <div class="cartpop shadow">{{#if cartCount}}
+    <div class="subnotific"><strong><span class="pull-right">TOTAL: Rs.{{cartTotal}}</span>ITEM({{cartCount}})</strong>
+      <div class="cartscroll">{{#each cartList}}
+        <div class="notifopen"><a href="javascript:void(0);" class="removeCart" alt="{{package_id}}_{{package_subscription_id}}_{{package_type}}"><i class="pull-right glyphicon glyphicon-trash"></i></a>
+          <p><a href="javascript:void(0);"><strong>{{package_name}}</strong></a></p>
+          <p><i class="sprite {{hardwareTypeClass hardware_id}} "></i>{{hardware_name}}</p>
+          <p>{{#if packageCost discounted_cost}}<span class="grnclr" value="{{discounted_cost}}">Rs. {{discounted_cost}}</span><del>Rs. {{actual_subscription_cost}}</del>{{else}}<span class="grnclr" value="{{subscription_cost}}">Rs. {{subscription_cost}}</span>{{/if}}<strong>{{discount_percentage}}</strong></p>
+        </div>
+        {{/each}}</div>
+    </div>
+    <button type="button" class="btn paynowbtn shadow">PROCEED TO CHECKOUT</button>
+    {{else}}
+    <div class="subnotific">
+      <p>Your cart is empty</p>
+    </div>
+    {{/if}}</div>
+</template>
+<template name="notif_cart_count">
+  <li class="notific" id="notifidweb"><a href="javascript:void(0);" class="notif"><i class="glyphicon glyphicon-bell fntsize"></i></a>
+    <!--      {{#if notificationCount}}<span class="notification">{{notificationCount}}</span>{{/if}}-->
+    {{>notification}}</li>
+  <li class="notific"><a href="javascript:void(0);" class="shopcart"><i class="glyphicon glyphicon-shopping-cart fntsize"></i></a>{{#if cartCount }}<span class="notification">{{cartCount}}</span>{{/if}}
+    {{>cart}}</li>
+</template>
+<template name="search_bar">
+  <form class="search_page navbar-form navbar-left" role="search">
+    <div class="input-group">
+      <div class="form-group">
+        <input type="text" class="form-control" id="query" placeholder="Search" autocomplete="off">
+        {{#if search_criteria}}
+        {{>search_drop}}
+        {{/if}}</div>
+      <button class="btn btn-default" id="search_button"></button>
+      <div class="clearfix"></div>
+    </div>
+  </form>
+</template>
+<template name="search_drop">
+  <form class="search_dropdown_menu">
+    {{#if is_search_result}}
+    <ul class="results" >
+      <!--      {{#if solr_result}}-->
+      
+      <div style="height:355px;border:1px solid #ccc;font:16px/26px sans-serif;overflow:auto;overflow-x: hidden;">{{#if solr_result}}
+        {{#each solr_result}}
+        <li class = "res hoverCursor search_drop_result" id="{{PsCourseId}}"  value ="{{gradeId}}"><a >{{CourseName}}<br />
+          </a></li>
+        {{/each}}
+        {{/if}}
+        {{#if solr_result_test}}
+        {{#each solr_result_test}}
+        <li class = "res hoverCursor search_drop_result" id="{{test_id}}"  value ="{{chapter_id}}"><a >{{test_name}}<br />
+          </a></li>
+        {{/each}}
+        {{/if}}</div>
+      <!--{{/if}}-->
+    </ul>
+    {{else}}
+    <ul>
+      <li class="results" style="color:#808394">No result found</li>
+    </ul>
+    {{/if}}
+  </form>
+</template>
+
+<!--sign in-->
+
+<template name="change_subject">
+  <div class="modal fade" tabindex="-1" role="dialog" id="changesubject">
+    <div class="modal-dialog modal-width">
+      <div class="modal-content">
+        <div class="modal-header pophd">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Choose Subjects</h4>
+        </div>
+        <div class="modal-body">
+          <form class="login signuppop">
+            {{#each subjects}}
+            <div class="form-group">
+              <input type="checkbox" name="subjects[]"  id="subjects_data" value="{{id}}" checked="" />
+              {{display_name}}</div>
+            {{/each}}
+            <button type="submit" class="btn btn-warning btnwidth">Save</button>
+          </form>
+        </div>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+</template>
+
+<!-- /.modal -->
+<!--sign in pop ends-->
+
+<template name="change_preference_pop_up">
+  <div class="modal fade" tabindex="-1" role="dialog" id="changepreference">
+    <div class="modal-dialog preferencemodalwidth">
+      <div class="modal-content">
+        <div class="modal-header pophd">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title"></h4>
+        </div>
+        <div class="modal-body1">{{>getStarted}}</div>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+</template>
+<template name="no_tests">
+  <div class="modal fade" tabindex="-1" role="dialog" id="congratspop">
+    <div class="modal-dialog modal-width">
+      <div class="modal-content">
+        <div class="modal-header pophd">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Tests</h4>
+        </div>
+        <div class="modal-body text-center">
+          <p class="text-left">There are no Test Series here.</p>
+        </div>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+</template>
+<template name="no_courses">
+  <div class="modal fade" tabindex="-1" role="dialog" id="congratspop">
+    <div class="modal-dialog modal-width">
+      <div class="modal-content">
+        <div class="modal-header pophd">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Courses</h4>
+        </div>
+        <div class="modal-body text-center">
+          <p class="text-left">There are no Courses here.</p>
+        </div>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+</template>
+<template name="no_my_courses">
+  <div class="modal fade" tabindex="-1" role="dialog" id="congratspop">
+    <div class="modal-dialog modal-width">
+      <div class="modal-content">
+        <div class="modal-header pophd">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Courses</h4>
+        </div>
+        <div class="modal-body text-center">
+          <p class="text-left">There are no courses here! Browse for courses.</p>
+          <button type="button" id="go_to_courses_my_course" class="btn btn-warning">Go to Courses</button>
+        </div>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+</template>
+<template name="no_my_purchases">
+  <div class="modal fade" tabindex="-1" role="dialog" id="congratspop">
+    <div class="modal-dialog modal-width">
+      <div class="modal-content">
+        <div class="modal-header pophd">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Courses</h4>
+        </div>
+        <div class="modal-body text-center">
+          <p class="text-left">You have not made any purchases yet. Browse for courses.</p>
+          <button type="button" id="go_to_purchases_my_course" class="btn btn-warning">Go to Courses</button>
+        </div>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+</template>
+<!--about course-->
+<template name="about_courses_div">{{#if course_about_url_string}}
+  <div id="box_3" class="marbottomboti">
+    <div class="white no-border no-radius no-shadow no-padding tableofconent aboutcourse">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12" id="aboutcourse">
+            <h4>About {{about_course_title_string}}</h4>
+            <div class="shadow abtcourspadding">
+              <p>{{about_course_desc}}</p>
+              <a href="/{{course_about_url_string}}/about" class="joinnow pull-right gotoabout" >View more</a>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{/if}}</template>
+<!--about course ends-->
+<template name="no_test_in_my_test">
+  <div class="modal fade" tabindex="-1" role="dialog" id="no_my_tests_pop_up">
+    <div class="modal-dialog modal-width">
+      <div class="modal-content">
+        <div class="modal-header pophd">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Tests</h4>
+        </div>
+        <div class="modal-body text-center">
+          <p class="text-left">You have not added any test-series to your My Tests section.</p>
+          <button type="button" id="go_to_test_my_test_pop" class="btn btn-warning">Explore Tests</button>
+        </div>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+</template>
+<template name="no_purchased_test">
+  <div class="modal fade" tabindex="-1" role="dialog" id="no_purchased_test">
+    <div class="modal-dialog modal-width">
+      <div class="modal-content">
+        <div class="modal-header pophd">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Tests</h4>
+        </div>
+        <div class="modal-body text-center">
+          <p class="text-left">You have not made any purchases yet. Browse for tests.</p>
+          <button type="button" id="my_purchased_test_pop" class="btn btn-warning">Explore Tests</button>
+        </div>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+</template>
+<template name="left_navigation_mobile">
+  <div class="wap-menu1" id="wapmenu">
+    <!--<a href="javascript:void(0);" class="mobile-menu"><i class="glyphicon glyphicon-menu-hamburger"></i></a>-->
+    <div class="mainmenu arrow-down">
+      <ul class="yourprfr">
+        <li><a href="javascript:void(0);" class="hoverCursor lightgreen_bg" id="home_page"><i class="glyphicon glyphicon-home"></i>Home</a></li>
+        {{#if disable_tab_course countCourse 0}}
+        <li><a href="javascript:void(0);" class="hoverCursor green_bg" id="course_page_disable"><i class="glyphicon glyphicon-book"></i>Courses<span class="countcourse">{{countCourse}}</span></a></li>
+        {{else}}
+        <li><a href="javascript:void(0);" class="hoverCursor green_bg" id="course_page"><i class="glyphicon glyphicon-book"></i>Courses<span class="countcourse">{{countCourse}}</span></a></li>
+        {{/if}}
+        {{#if disable_tab_test countTest 0}}
+        <li><a href="javascript:void(0);" class="hoverCursor blue_bg" id="test_page_disable"><i class="glyphicon glyphicon-list-alt"></i>Tests<span class="countcourse">{{countTest}}</span></a></li>
+        {{else}}
+        <li><a href="javascript:void(0);" class="hoverCursor blue_bg" id="test_page"><i class="glyphicon glyphicon-list-alt"></i>Tests<span class="countcourse">{{countTest}}</span></a></li>
+        {{/if}}
+        <li><a href="javascript:void(0);" class="hoverCursor red_bg" id="tutor_page"><i class="glyphicon glyphicon-user"></i>Tutors<span class="countcourse">0</span></a></li>
+      </ul>
+    </div>
+    <div class="wap-submenu blu-clr">
+      <ul>
+        <li id="render_my_course_from_wall"><a href="javascript:void(0)">My Courses</a></li>
+        <li id="render_my_test_from_wall"><a href="javascript:void(0)">My Test Series</a></li>
+        <li id="render_my_purchases_from_wall"><a href="javascript:void(0)">My Purchases</a></li>
+      </ul>
+    </div>
+  </div>
+</template>

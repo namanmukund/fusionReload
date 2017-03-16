@@ -1,0 +1,437 @@
+<template name="content_partner">
+  <body>
+  <link href="/css/style-content.css" rel="stylesheet">
+  {{>topstrip}}
+  {{>content_partner_nav}} 
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
+  <script src="js/jquery-1.11.2.min.js"></script> 
+  <!-- Include all compiled plugins (below), or include individual files as needed --> 
+  <!-- 
+{{>content_partner_nav}}
+--> 
+  <script src="js/bootstrap.js"></script> 
+  <script src="js/custom.js"></script>
+  <style>
+    .modal-backdrop{
+        background-color: none !important;
+    }
+</style>
+  <script>
+    $('document').ready(function(){
+        $('html').on('click', function(){
+           if($('.notifi_pop').is(':visible'))
+           {
+               $('.notifi_pop').hide();
+           }
+        });
+        $('html').on('click', '.notifi_pop', function(){
+            $('.notifi_pop').show();
+        });
+        $('html').on('click', function(){
+           if($('.cartpop').is(':visible'))
+           {
+               $('.cartpop').hide();
+           }
+        });
+        $('html').on('click', '.cartpop', function(){
+            $('.cartpop').show();
+        });
+        $('.fun-vid').click(function(e){
+            e.preventDefault();
+           $('#videopop').modal('show');
+        });
+    });
+</script> 
+  <script>
+  $(document).ready(function() {
+ 
+  $("#owl-demo").owlCarousel({
+ 	
+	
+      navigation : true, // Show next and prev buttons
+      slideSpeed : 300,
+	  loop:true,
+      paginationSpeed : 400,
+      singleItem:true,
+      autoPlay:6000
+ 
+      // "singleItem:true" is a shortcut for:
+      // items : 1, 
+      // itemsDesktop : false,
+      // itemsDesktopSmall : false,
+      // itemsTablet: false,
+      // itemsMobile : false
+ 
+  });
+  
+
+    var carousel = $("#owl-demo");
+  carousel.owlCarousel({
+    navigation:true,
+    navigationText: [
+      "<i class='icon-chevron-left icon-white'><</i>",
+      "<i class='icon-chevron-right icon-white'>></i>"
+      ],
+  
+});
+
+
+ 
+});
+</script> 
+  <script type="text/javascript">
+    $(document).ready(function() {
+        $('#maxOption3').multiselect();
+    });
+</script>
+  </body>
+</template>
+
+<!--Navigation Start-->
+<template name="content_partner_nav">
+  <div class="topfixed">
+    <div class="light-green">
+      <div class="container inner-nav">
+        <div class="row"><a class="navbar-brand sprite" href="/">iProf</a>
+            {{>search_bar}}
+          <ul class="pull-right">
+            {{>notif_cart_count}}
+            {{#if login_check}}
+            <li><a href="javascript:void(0);" class="sign-in">Sign In</a></li>
+            <li><a class=" sign-up btn btn-default shadow" href="javascript:void(0);" role="button">Sign Up</a></li>
+            {{else}}  
+            {{>user_profile_data}}
+            {{/if}}
+          </ul>
+        </div>
+      </div>
+    </div>
+    {{>my_preference}}</div>
+  {{>content_partner_list}}
+  {{>footer}}
+  <div class="clearfix"></div>
+</template>
+
+<!--Breadcrumb-->
+<template name="content_partner_list">
+  <div class="contener_wrapper">
+    <div class="container_landing">
+      <div class="landing_banner">
+        <!-- Header Carousel -->
+        <header id="myCarousel">
+          <!-- Indicators -->
+          
+          <!-- Wrapper for slides -->
+          <div id="owl-demo" class="owl-carousel owl-theme">
+            <div class="item">
+              <div id="contentbanner1"></div>
+            </div>
+            <div class="item">
+              <div id="contentbanner2"></div>
+            </div>
+            <div class="item">
+              <div id="contentbanner3"></div>
+            </div>
+          </div>
+        </header>
+      </div>
+      <div class="landing_largest">
+        <div class="wrapper">
+          <h2>iProf-Largest Digital Learning Market place</h2>
+          <div class="containerfluid">
+            <div class="divrow">
+              <div class="divcolom">
+                <div class="largest_text"><i class="sprite1 app_icn"></i>
+                  <p>12<strong>Lacs</strong></p>
+                  <p><span>App Downloads</span></p>
+                </div>
+              </div>
+              <div class="divcolom">
+                <div class="largest_text"><i class="sprite1 degree_icn"></i>
+                  <p>7.8<strong>Million</strong></p>
+                  <span>Students Consuming Content</span></div>
+              </div>
+              <div class="divcolom">
+                <div class="largest_text"><i class="sprite1 book_icn"></i>
+                  <p>200<strong></strong></p>
+                  <span>Streams Covered</span></div>
+              </div>
+              <div class="divcolom">
+                <div class="largest_text"><i class="sprite1 openbook_icn"></i>
+                  <p>40<strong>K</strong></p>
+                  <span>Courses Offered</span></div>
+              </div>
+              <div class="divcolom">
+                <div class="largest_text"><i class="sprite1 note_icn"></i>
+                  <p>200<strong></strong></p>
+                  <span>Active Publishers</span></div>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="landing_portfolio">
+        <div class="wrapper">
+          <h2>Course Portfolio</h2>
+          <i><img src="images/portfolio_border.png" alt=""></i>
+          <ul class="portfolio_img">
+            <li><span class="schlbg">School Studies</span></li>
+            <li><span class="comptitivebg">Competitive Exams</span></li>
+            <li><span class="iasbg">IAS & Govt. Jobs</span></li>
+            <li><span class="progbg">Programming<br>
+              &<br>
+              Software</span></li>
+            <li><span class="languagebg">Languages</span></li>
+            <div class="clearfix"></div>
+          </ul>
+          <div class="portfolio_txt">
+            <ul class="portfolio_linetxt">
+              <li>CBSE</li>
+              <li>JEE</li>
+              <li>BANK PO</li>
+              <li>C/ C++</li>
+              <li>English</li>
+              <div class="clearfix"></div>
+            </ul>
+            <ul class="portfolio_linetxt">
+              <li>Punjab Board</li>
+              <li>AIPMT</li>
+              <li>CSAT</li>
+              <li>Designing Softwares</li>
+              <li>Chinese</li>
+              <div class="clearfix"></div>
+            </ul>
+            <ul class="portfolio_linetxt">
+              <li>Olympiad</li>
+              <li>CA CPT</li>
+              <li>SSC</li>
+              <li>Project Management</li>
+              <li>French</li>
+              <div class="clearfix"></div>
+            </ul>
+            <ul class="portfolio_linetxt">
+              <li>& Many More</li>
+              <li>CAT</li>
+              <li>CTET</li>
+              <li>SAP</li>
+              <li>American English</li>
+              <div class="clearfix"></div>
+            </ul>
+            <ul class="portfolio_linetxt">
+              <li>&nbsp;</li>
+              <li>& Many More</li>
+              <li>& Many More</li>
+              <li>& Many More</li>
+              <li>& Many More</li>
+              <div class="clearfix"></div>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="landing_whypartner">
+        <div class="wrapper">
+          <h2>Why PARTNER with us?</h2>
+          <p>Create new revenue channel & get competitive edge</p>
+          <div class="container-fluid">
+            <div class="whyrow"><i class="sprite1 hndshake_icn"></i>
+              <div class="whyrow_txt">
+                <p><strong>Zero percent investment, Guaranteed Returns</strong></p>
+                <p>Get guaranteed returns with no investment is required to  market your content.<br>
+                  iProf works with its content partners on revenue sharing model, where a fixed percentage is shared on every sale done.</p>
+              </div>
+            </div>
+            <div class="whyrow"><i class="sprite1 offline_icn"></i>
+              <div class="whyrow_txt">
+                <p><strong>Content offered online and offline</strong></p>
+                <p>Leverage iProf’s device agnostic approach where the content is<br>
+                  offered to students in both online & offline modes across Tablet, PenDrive, SD cards & online.<br>
+                  iProf helps in making content procured ready-to-use across devices.</p>
+              </div>
+            </div>
+            <div class="whyrow"><i class="sprite1 security_icn"></i>
+              <div class="whyrow_txt">
+                <p><strong>Your Content is secured</strong></p>
+                <p>iProf follows Content Security Policy (CSP) as an added layer of content security where the content
+                  is secured via encryption before it is ready for sale.</p>
+              </div>
+            </div>
+          </div>
+          <div class="clearfix"></div>
+          <div class="why_button"><a href="#enquireformpop" name="modal" id="pop_up_enquire">Enquire More</a></div>
+        </div>
+      </div>
+      <div class="landing_whopartner">
+        <div class="wrapper">
+          <h2>Who can PARTNER with us?</h2>
+          <p>Create new revenue channel & get competitive edge</p>
+          <div class="container-fluid">
+            <div class="row whorow">
+              <h5>If you are a:</h5>
+              <div class="col-md-4"><i class="sprite1 opncntnt_icn"></i><span>Content Company</span></div>
+              <div class="col-md-4"><i class="sprite1 publish_icn"></i><span>Publishing House</span></div>
+              <div class="col-md-4"><i class="sprite1 aurthr_icn"></i><span>Individual Author</span></div>
+            </div>
+            <div class="row whorow">
+              <h5>And you have content assets like :</h5>
+              <div class="col-md-3"><i class="sprite1 vdo_icn"></i><span>Videos</span></div>
+              <div class="col-md-3"><i class="sprite1 digitl_icn"></i><span>Digital Notes</span></div>
+              <div class="col-md-3"><i class="sprite1 mock_icn"></i><span>Mock Test Series</span></div>
+              <div class="col-md-3"><i class="sprite1 qstn_icn"></i><span>Question Bank with Solutions</span></div>
+            </div>
+          </div>
+          <div class="clearfix"></div>
+          <div class="who_button"><a href="#enqryform">Create your free partner account today</a></div>
+        </div>
+      </div>
+      <div class="landing_footer_slider">
+        <div class="wrapper">
+          <div class="landing_inner">
+            <div id="myCarousel2" class="carousel slide widthadd">
+              <!-- Carousel items -->
+              <div class="carousel-inner landing_footr_inner">
+                <div class="item active">
+                  <div class="row-fluid">
+                    <div class="col-md-3"><a href="#x"><img src="images/logo/1.jpg" alt="Image" style="max-width:100%;"></a></div>
+                    <div class="col-md-3"><a href="#x"><img src="images/logo/2.jpg" alt="Image" style="max-width:100%;"></a></div>
+                    <div class="col-md-3"><a href="#x"><img src="images/logo/3.jpg" alt="Image" style="max-width:100%;"></a></div>
+                    <div class="col-md-3"><a href="#x"><img src="images/logo/4.jpg" alt="Image" style="max-width:100%;"></a></div>
+                  </div>
+                  <!--/row-fluid-->
+                </div>
+                <!--/item-->
+                
+                <div class="item">
+                  <div class="row-fluid">
+                    <div class="col-md-3"><a href="#x"><img src="images/logo/5.jpg" alt="Image" style="max-width:100%;"></a></div>
+                    <div class="col-md-3"><a href="#x"><img src="images/logo/6.jpg" alt="Image" style="max-width:100%;"></a></div>
+                    <div class="col-md-3"><a href="#x"><img src="images/logo/7.jpg" alt="Image" style="max-width:100%;"></a></div>
+                    <div class="col-md-3"><a href="#x"><img src="images/logo/8.jpg" alt="Image" style="max-width:100%;"></a></div>
+                  </div>
+                  <!--/row-fluid-->
+                </div>
+                <!--/item-->
+                
+                <div class="item">
+                  <div class="row-fluid">
+                    <div class="col-md-3"><a href="#x"><img src="images/logo/9.jpg" alt="Image" style="max-width:100%;"></a></div>
+                    <div class="col-md-3"><a href="#x"><img src="images/logo/10.jpg" alt="Image" style="max-width:100%;"></a></div>
+                    <div class="col-md-3"><a href="#x"><img src="images/logo/11.jpg" alt="Image" style="max-width:100%;"></a></div>
+                    <div class="col-md-3"><a href="#x"><img src="images/logo/12.jpg" alt="Image" style="max-width:100%;"></a></div>
+                  </div>
+                  <!--/row-fluid-->
+                </div>
+                <!--/item-->
+                
+                <div class="item">
+                  <div class="row-fluid">
+                    <div class="col-md-3"><a href="#x"><img src="images/logo/13.jpg" alt="Image" style="max-width:100%;"></a></div>
+                    <div class="col-md-3"><a href="#x"><img src="images/logo/14.jpg" alt="Image" style="max-width:100%;"></a></div>
+                    <div class="col-md-3"><a href="#x"><img src="images/logo/15.jpg" alt="Image" style="max-width:100%;"></a></div>
+                    <div class="col-md-3"><a href="#x"><img src="images/logo/16.jpg" alt="Image" style="max-width:100%;"></a></div>
+                  </div>
+                  <!--/row-fluid-->
+                </div>
+                <!--/item-->
+                
+                <div class="item">
+                  <div class="row-fluid">
+                    <div class="col-md-3"><a href="#x"><img src="images/logo/17.jpg" alt="Image" style="max-width:100%;"></a></div>
+                    <div class="col-md-3"><a href="#x"><img src="images/logo/18.jpg" alt="Image" style="max-width:100%;"></a></div>
+                    <div class="col-md-3"><a href="#x"><img src="images/logo/19.jpg" alt="Image" style="max-width:100%;"></a></div>
+                    <div class="col-md-3"><a href="#x"><img src="images/logo/20.jpg" alt="Image" style="max-width:100%;"></a></div>
+                  </div>
+                  <!--/row-fluid-->
+                </div>
+                <!--/item-->
+                
+                <div class="item">
+                  <div class="row-fluid">
+                    <div class="col-md-3"><a href="#x"><img src="images/logo/21.jpg" alt="Image" style="max-width:100%;"></a></div>
+                    <div class="col-md-3"><a href="#x"><img src="images/logo/22.jpg" alt="Image" style="max-width:100%;"></a></div>
+                    <div class="col-md-3"><a href="#x"><img src="images/logo/23.jpg" alt="Image" style="max-width:100%;"></a></div>
+                    <div class="col-md-3"><a href="#x"><img src="images/logo/24.jpg" alt="Image" style="max-width:100%;"></a></div>
+                  </div>
+                  <!--/row-fluid-->
+                </div>
+                <!--/item-->
+                
+                <div class="item">
+                  <div class="row-fluid">
+                    <div class="col-md-3"><a href="#x"><img src="images/logo/25.jpg" alt="Image" style="max-width:100%;"></a></div>
+                  </div>
+                  <!--/row-fluid-->
+                </div>
+                <!--/item-->
+                
+              </div>
+              <!--/carousel-inner-->
+              
+              <a  href="#myCarousel2" class="landing_left_slide" data-slide="prev"><img src="images/left_arrow.png" alt=""></a><a  href="#myCarousel2" class="landing_right_slide" data-slide="next"><img src="images/right_arrow.png" alt=""></a></div>
+            <!--/myCarousel-->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+<template name="content_enquirepop">
+  <div class="modal fade" tabindex="-1" role="dialog" id="enquirepop">
+    <div class="modal-dialog modal-widthenquire">
+      <div class="modal-content">
+        <div class="modal-header pophd">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Become A Content Publisher</h4>
+        </div>
+        <div class="modal-body text-center">
+          <div class="landing_form1"><img src="images/popup_handshake.jpg" alt=""/>
+            <form id="enqryform" class="form-inline">
+              <div class="landing_form_input">
+                <div class="form-group">
+                  <input class="form-control" type="text" placeholder="Name" name="conName" id="conName" required="true">
+                </div>
+              </div>
+              <div class="landing_form_input">
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Enter Course" name="conCourse" id="conCourse"/>
+                </div>
+              </div>
+                <div class="form-group1 text-left">
+                  <label class="checkbox-inline">
+                    <input type="checkbox" value="Videos" name="conOption[]" id="conOption1">
+                    Videos</label>
+                  <label class="checkbox-inline">
+                    <input type="checkbox" value="Notes" name="conOption[]" id="conOption2">
+                    Notes</label>
+		  <label class="checkbox-inline">
+                    <input type="checkbox" value="Test Series" name="conOption[]" id="conOption3">
+                    Test Series</label>
+                </div>
+              <div class="landing_form_input">
+                <div class="form-group">
+                  <input class="form-control" type="email" placeholder="Email" name="conEmail" id="conEmail" required="true"/>
+                </div>
+              </div>
+              <div class="landing_form_input">
+                <div class="form-group">
+                  <input class="form-control" type="text" placeholder="Mobile" name="conMobile" id="conMobile" required="true"/>
+                </div>
+              </div>
+              <div class="landing_form_input">
+                <div class="form-group">
+                  <input class="form-control" type="text" placeholder="Best Time to Call" name="bestTimeToCall" id="bestTimeToCall">
+                </div>
+              </div>
+              <div class="landing_form_input">
+		<button class="btn btn-success" id="conSubmit">SUBMIT</button>
+	      </div>
+            </form>
+          </div>
+          <div class="thankmsg" style="display:none"><img src="images/pop_thank.jpg" alt="Thank You"/>
+            <p class="thanktext">We will get you in touch with you, Shortly.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

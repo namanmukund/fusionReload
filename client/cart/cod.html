@@ -1,0 +1,120 @@
+<head>
+<style>
+  ul,ol {margin-bottom:0;}
+.paymentoptions .creditcard {display:inline-block; margin-right:20px; font-size:16px; margin:10px; }
+.paymentoptions .creditcard input{margin-right:5px; margin-top:5px; float:left;}
+.paymentoptions .creditcard  .extracharges {font-size:12px;}
+.totalamt {float:right; display:block; text-align:right;  margin:10px 0px;}
+.totalamt strong{display:block; font-size:16px; }
+.crossicon {background:url(../images/cross_icon.png) no-repeat; width:21px; height:21px; display:block; float:right; margin: 0px 5px 0 0; cursor:pointer;}
+.changecladivtable .oneside5 strong{padding:0 7px 0 0;}
+.cod {display:block; background:#ffffcd; text-align:center; padding:10px; color:#e08129; font-size:14px; margin:0 10px;}
+.amntpyble {display:block; text-align:left; padding:5px 0; font-size:15px;}
+.amntpyble strong {color:#51a351;}
+.amntpyble span{float:right; display:inline-block; width:30%;}
+.totalamntpyabl {display:block; text-align:left;  padding:5px 0; border-top:solid 1px #ccc; font-size:14px;}
+.totalamntpyabl span{float:right; display:inline-block;width:30%;}
+.widt {width:40%;}
+.chcountinue1 {padding: 9px 20px;}
+.paymenttype{margin-top:25px; border-bottom:solid 1px #ddd; }
+.paymenttype ul{clear:both; display: table; list-style:none; margin-left:0px;}
+.paymenttype ul li{float:left; margin:0 15px 0 0px; border-bottom:none;}
+.paymenttype ul li a{padding:11px 0px; color:#4a4a4a; font:bold 14px arial; min-width:160px; display:block;}
+.paymenttype ul li a.active {padding-left:0;}
+.paymenttype ul li a:hover, .paymenttype ul li a:focus, .paymenttype ul li a.active{text-decoration:none; color:#1d9c5a; border-bottom:solid 3px #1d9c5a}
+.bankdeposit {font-size:14px; padding:20px 10px;}
+.bankdeposit strong{display:block; padding:10px 0;}
+ul.bankdtl {margin:0; padding:0; list-style:none;}
+ul.bankdtl li {border:solid 1px #ccc; margin:0 8px 0 0px; width:25%; float:left; padding:10px; min-height:135px;}
+ul.bankdtl li .bnklogo{display:block; padding-bottom:10px;}
+
+.creditcard input[type="radio"] {
+    height:15px;
+    opacity: 1;
+    position: inherit;
+    width: 15px;
+    z-index: 1;
+}
+.chkavailability {margin-top:20px;}
+.chkavailability span {float:left}
+.chkavailability .chckpincode {float:left; margin-left:20px;}
+.chkavailability .chckpincode input {display:inline-block; width:55%;
+.chkavailability .chkbtn {display:inline-block; margin-left:10px;}
+  </style>
+</head>
+<template name="codnow">
+  <div class="col-xs-12 col-md-12 codnow" style="display:none">
+    <div class="cod">Payment Mode</div>
+    <div class="row">
+      <div class="paymentoptions">
+        <span class="creditcard"><input type="radio" name="paymentOption" value="1" id="onlinepaymntop" checked/>Online</span>
+        <span class="creditcard"><input type="radio" name="paymentOption" value="3" id="codpaymntop"/>Cash on Delivery</span>
+        <div class="clearfix"></div>
+      </div>
+      <div class="optioncodselected" style="display:none;">
+          <span class="cod">To avail Cash on Delivery option please pay Rs. 500/- in advance.</span>
+          <div class="pull-left"><div class="chkavailability"><span>Check Availability at</span>
+                  <div class="chckpincode">  
+                <input type="text" class="form-control" placeholder="Enter your Pincode" id="get_pin_value" maxlength="6" style="width: 150px;">
+                <button class="btn btn-default chkbtn" id="check_pincode_cod" type="submit">CHECK</button>
+                  </div>
+              </div>
+          </div>
+            <span class="totalamt widt marginrt pull-right">
+                	<span class="amntpyble">
+                    	<strong>Now Payable Amount for COD <span>Rs. 500</span></strong>
+                        <div class="clearfix"></div>
+                    </span>
+                    <span class="amntpyble">
+                    	<strong>Total Amount <span>Rs. {{totalFinalPayable}} </span></strong>
+                        <div class="clearfix"></div>
+                    </span>
+                    <span class="totalamntpyabl">
+                    	<strong>Amount Payable Later <span>Rs. {{totalPayAmountforCod}}</span></strong>
+                        <div class="clearfix"></div>
+                    </span>
+            </span>
+            <div class="clearfix"></div>
+            <div class="paymenttype">
+                <ul>
+                  <li><a href="onlinepaymnt" id="onlinepaymnt" class="active" >Online Payment</a></li>
+                  <li><a href="bankdeposit"  id="bankdeposit" >Bank Deposit</a></li>
+
+
+                </ul>
+               <div class="clearfix"></div>
+            </div>
+            <div class="bankdeposit" >
+              <span>Bank Deposit details to make advance payment</span>
+                <strong>Account Name: iProf Learning Solutions Pvt. Ltd.</strong>
+                <ul class="bankdtl">
+                	<li>
+                    	<span class="bnklogo"><img src="/images/hdfc.png" /></span>
+                        <span>Account No: 292929292929291<br>(Branch some place)<br>IFSC: IDJUSJSJS</span>
+                    </li>
+                    <li>
+                    	<span class="bnklogo"><img src="/images/icicibank.png" alt=""/></span>
+                        <span>Account No: 292929292929291<br>(Branch some place)<br>IFSC: IDJUSJSJS</span>
+                    </li>
+                    <li>
+                    	<span class="bnklogo"><img src="images/sbi.png" alt=""/></span>
+                        <span>Account No: 292929292929291<br>(Branch some place)<br>IFSC: IDJUSJSJS</span>
+                    </li>
+                    <div class="clearfix"></div>
+                 </ul>
+                 <strong>Once a payment has been made in one or our bank. Please give us a call on 0120-4363636</strong>
+              </div>
+              <div class="onlinepaymnt"  style="display:none;">
+              <div class="paymentoptions" >
+                    <span class="creditcard"><input type="radio"  name="codpayoption" value="1" checked />Credit Card</span>
+                    <span class="creditcard"><input type="radio"  name="codpayoption" value="2" />Debit Card</span>
+                    <span class="creditcard"><input type="radio" name="codpayoption" value="3" />Net Banking</span>
+                    <span class="creditcard"><input type="radio" name="codpayoption" value="4" />Payumoney</span>
+                    <div class="clearfix"></div>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+
+</template>

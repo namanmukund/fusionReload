@@ -1,0 +1,103 @@
+<template name="iprofsubscription">
+  <div class="modal fade" tabindex="-1" role="dialog" id="iprofsubscriptionpop">
+    <div class="modal-dialog modal-width">
+      <div class="modal-content">
+        <div class="modal-header pophd">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">iProf Subscription</h4>
+        </div>
+        <div class="modal-body text-center">
+          <!-- <p class="text-left">iProf Subscription</p> -->
+          <p class="text-left">No Subscription plan is active on your account. Get access to the Entire Library of more than 500 courses.</p>
+          <button type="button" class="btn btn-warning proceed_free_trial clickSubscribeNow">SUBSCRIBE NOW</button>
+        </div>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+</template>
+
+<template name="iprofsubscriptionStart">
+  <div class="modal fade" tabindex="-1" role="dialog" id="iprofsubscriptionpop">
+    <div class="modal-dialog modal-width">
+      <div class="modal-content">
+        <div class="modal-header pophd">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">iProf Subscription</h4>
+        </div>
+        <div class="modal-body text-center">
+          <!-- <p class="text-left">iProf Subscription</p> -->
+          <p class="text-left">No Subscription plan is active on your account. Get access to the Entire Library of more than 500 courses.</p>
+          <button type="button" class="btn btn-warning proceed_free_trial clickSubscribeNow">SUBSCRIBE NOW</button>
+        </div>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+</template>
+
+
+
+<template name="mysubscription">
+  <div class="modal fade" tabindex="-1" role="dialog" id="mysubscriptionpop">
+    <div class="modal-dialog modal-width">
+      <div class="modal-content">
+        <div class="modal-header pophd">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">iProf Subscription - 7 days FREE Trial</h4>
+        </div>
+        <div class="modal-body text-center">
+          <!-- <p class="text-left">iProf Subscription - 7 days FREE Trial</p> -->
+          <p class="text-left">Your FREE Trial expires in <span> {{subscriptionRemainingDays}} </span> days. Subscribe and continue enjoying the benefits of Unlimited Access to our entire library without any interruptions.</p>
+          <button type="button" class="btn btn-warning proceed_free_trial clickSubscribeNow ">SUBSCRIBE NOW</button>
+        </div>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+</template>
+
+
+<template name="monthssubscription">
+  <div class="modal fade" tabindex="-1" role="dialog" id="monthssubscriptionpop">
+    <div class="modal-dialog modal-width">
+      <div class="modal-content">
+        <div class="modal-header pophd">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">My Subscription</h4>
+        </div>
+        <div class="modal-body text-center">
+          <!-- <p class="text-left">Your Current Subscription Plan -<span>1/4/12</span>months</p> -->
+          <p class="text-left">Your subscription expires in {{subscriptionRemainingDays}} days. Renew your subscription before it expires and enjoy the Unlimited Access to our library without any interruption.</p>
+          <button type="button" class="btn btn-warning proceed_free_trial clickSubscribeNow">RENEW SUBSCRIPTION</button>
+        </div>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+</template>
+
+
+<template name="subscriptionExpired">
+  <div class="modal fade" tabindex="-1" role="dialog" id="subscriptionexpiredpop">
+    <div class="modal-dialog modal-width">
+      <div class="modal-content">
+        <div class="modal-header pophd">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Subscription Expired!</h4>
+        </div>
+        <div class="modal-body text-center">
+          <!-- <p class="text-left">Subscription Expired!</p> -->
+          <p class="text-left">Dear <span> {{subscriberName}}! </span> Your subscription has expired. Please renew to continue enjoying the benefits of unlimited access to our entire library.</p>
+          <button type="button" class="btn btn-warning proceed_free_trial clickSubscribeNow">RENEW SUBSCRIPTION</button>
+        </div>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+</template>

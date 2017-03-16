@@ -1,0 +1,1141 @@
+<template name="test_pdp_page">
+  <body>
+  {{>test_pdp}} 
+  <script src="/js/custom.js"></script>
+  <style>
+            .modal-backdrop{
+                background-color: none !important;
+            }
+        </style>
+  <script>
+$('document').ready(function () {
+    $('html').on('click', function () {
+        if ($('.notifi_pop').is(':visible'))
+        {
+            $('.notifi_pop').hide();
+        }
+    });
+    $('html').on('click', '.notifi_pop', function () {
+        $('.notifi_pop').show();
+    });
+    $('html').on('click', function () {
+        if ($('.cartpop').is(':visible'))
+        {
+            $('.cartpop').hide();
+        }
+    });
+    $('html').on('click', '.cartpop', function () {
+        $('.cartpop').show();
+    });
+    $('[data-toggle="tooltip"]').tooltip(); 
+});
+
+
+        </script> 
+  <script src="/js/pdpStickyNav.js"></script>
+  </body>
+</template>
+<template name="test_pdp">
+  <div class="topfixed">{{>topstrip}}
+    <div class="blue-bg">
+      <div class="container inner-nav">
+        <div class="row"><a class="navbar-brand sprite" href="/">iProf</a>{{>search_bar}}
+          <ul class="pull-right">
+            {{>notif_cart_count}}
+            {{#if login_check}}
+            <li><a href="javascript:void(0);" class="sign-in">Sign In</a></li>
+            <li><a class="sign-up btn btn-default shadow" href="javascript:void(0);" role="button">Sign Up</a></li>
+            {{else}}  
+            {{>user_profile_data}}
+            
+            {{/if}}
+          </ul>
+        </div>
+      </div>
+    </div>
+    {{>my_preference}}</div>
+  <div class="margintop">{{>test_pdp_breadcrumb}}
+    
+    {{>test_pdp_image}}</div>
+  {{>test_sticky_header}}    
+  {{>test_pdp_hardware}}
+  {{>test_pdp_publisher}}
+  <!--{{>free_contents}}-->
+  {{>test_toc}}
+  <!--{{>top_reviews}}-->
+  {{>package_faculty_profiles_div}}
+  {{>test_hardware}}
+  {{>footer}}
+  <div class="clearfix"></div>
+</template>
+<!--your preference end-->
+
+<!--Breadcrumb-->
+<template name="test_pdp_breadcrumb">
+  <div class="well no-border no-radius no-shadow no-margin-bottom no-padding">
+    <div class="container">
+      <div class="row">
+        <ol class="breadcrumb no-margin">
+          {{#if is_trending}}
+          <li class="pdp_to_home"><a href="javascript:void(0">Home</a></li>
+          {{#if breadcrumb_value}}
+          <li class="active">{{breadcrumb_value}}</li>
+          {{/if}}
+          {{else}}
+          <li class="pdp_to_test"><a href="javascript:void(0">Tests</a></li>
+          {{#if breadcrumb_value}}
+          <li class="active">{{breadcrumb_value}}</li>
+          {{/if}}
+          {{/if}}
+        </ol>
+      </div>
+    </div>
+  </div>
+</template>
+<!--Breadcrumb End-->
+<template name="test_pdp_image">
+  <div class="well no-border no-radius no-shadow no-margin-bottom no-padding pdp-image">{{>test_pdp_head}}
+    {{>test_pdp_assets}}</div>
+</template>
+<template name="test_pdp_head">
+  <div class="container">
+    <div class="row">{{#if header_value}}
+      <div class="col-md-6">
+        
+        <!--{{#each header_value}}-->
+        <div class="detailcourseheading">
+          <h1>{{header_value.[0].CourseName}}</h1>
+          <div class="row">
+            <div class="col-xs-12 col-md-12">{{#if allPublishers}}
+              <h3>
+                <div class="test_pdp_header_publisher" data-toggle="tooltip" data-placement="bottom" title= "Publishers: {{allPublishers}}">By {{allPublishers}}
+                  <!--              <h3>By {{header_value.[0].publisher.[0].name}}</h3>-->
+                </div>
+              </h3>
+              {{/if}}
+              <div class="reviewercomment">{{#if header_value.[0].rating}}
+                <div class="rateit" data-rateit-value={{header_value.[0].rating}} data-rateit-ispreset="true" data-rateit-readonly="true"></div>
+                {{else}}
+                <div class="rateit" data-rateit-value="3.6" data-rateit-ispreset="true" data-rateit-readonly="true"></div>
+                {{/if}}</div>
+              {{#if header_value.[0].total_users}}<span>{{header_value.[0].total_users}} users</span>{{else}}<span>{{randomJoinedUsers}} users</span>{{/if}}</div>
+          </div>
+        </div>
+        <!--{{/each}}-->
+      </div>
+      <div class="col-md-6">
+        <div class="coursecontains text-center">
+          <div class="row">
+            <h2>Course Contains</h2>
+            <div class="col-md-12">
+              <!--                            <div class="row marginbtmadd">
+                                <div class="col-xs-12">
+                                    <div class="course_contains"><i class="sprite videoicn"></i>Video Lectures:<br>
+                                        {{header_value.[0].numMultimedia}}</div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                            <div class="row marginbtmadd">
+                                <div class="col-xs-12">
+                                    <div class="course_contains"><i class="sprite notesicn"></i>Digital Notes:<br>
+                                        {{header_value.[0].numNotes}}</div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>-->
+              <div class="row">
+                <div class="col-xs-12">
+                  <div class="course_contains"><i class="sprite testicn"></i>Tests/Practice Papers:<br>
+                    {{header_value.[0].numAssessments}}</div>
+                  <div class="clearfix"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {{/if}}</div>
+  </div>
+</template>
+<!--sticky Header Start-->
+
+<!--course contains-->
+<template name="test_pdp_assets">
+  <div class="container">
+    <div class="row"></div>
+  </div>
+</template>
+
+<!--course contains ends-->
+
+<template name="test_sticky_header">
+  <div class="scrolltdlnew">
+    <div class="well no-border no-radius no-shadow no-margin-bottom no-padding header  scroller_black" id="nav">
+      <div class="container">
+        <div class="row">
+          <!--        <nav class="navbar navbar-default">
+                              <div class="container-fluid">
+                                  
+                                 Brand and toggle get grouped for better mobile display 
+                                <div class="navbar-header">
+                                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+                                </div>-->
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <nav class="navbar navbar-default sticknav">
+            <div class="navbar-header pull-left">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+            </div>
+            <div class="detailsnavi2_wrapper nav-1">
+              <div class="collapse navbar-collapse pull-left" id="bs-example-navbar-collapse-1">
+                <ul class="scrollnavi">
+                  <li><a href="#box_1">STUDY MEDIUM</a></li>
+                  <li><a href="#box_3">ABOUT COURSE</a></li>
+                  <li><a href="#box_4">TABLE OF CONTENT</a></li>
+                  {{#if is_content_partner}}
+                  <li><a href="#box_6">CONTENT PARTNER</a></li>
+                  {{/if}}
+                  <li><a href="#box_2">HARDWARE</a></li>
+                  <!--                <li><a href="#similarpackages">SIMILAR COURSES</a></li>
+                                                <li><a href="#reviews">REVIEWS</a></li>-->
+                  
+                </ul>
+                </div>
+                <div class="pull-right">
+                  <!--{{#if joinCourseVal}}-->
+                  {{#if isJoinedCourse joinCourseVal}}<a class="btn btn-danger" href="javascript:void(0);" id ="pdp_unjoin" role="button"><strong>-&nbsp;</strong>REMOVE FROM MY TESTS</a>{{else}}
+                  <!--<a href="javascript:void()" class="joinnow unJoinClass" id ="unjoin_course_course_page">UNJOIN</a>-->
+                  <a class="btn btn-danger" href="javascript:void(0);" id ="pdp_join" role="button"><strong>+&nbsp;</strong>ADD TO MY TESTS</a>{{/if}}
+                  <!--{{/if}}-->
+                  <!--<a class="btn btn-success" href="javascript:void(0);" id ="pdp_join" role="button">JOIN THIS COURSE</a>-->
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container-fluid -->
+          </nav>
+          <!--</nav>-->
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+<!--sticky Header End-->
+
+<!--study device-->
+<template name="test_pdp_hardware">
+  <div id="box_1" class="marbottomboti">
+    <div class="well white no-border no-radius no-shadow no-padding selectstudydevice">
+      <div class="container">
+        <div class="row margntop">
+          <div class="col-md-12">
+            <div class="row">
+              <!--study device option-->
+              {{#if pdp_hardware}}
+              {{#if is_subscribed}}
+              <div class="col-md-7 col-sm-7">
+                <div class="white shadow paddingbottom" id="hardware1">
+                  <div class="col-md-12">
+                    <h4>SELECT STUDY MEDIUM/DEVICE</h4>
+                    <div class="studydevicetab">
+                      <!-- Nav tabs -->
+                      <ul class="nav studydevice nav-tabs" role="tablist">
+                        {{#if pdp_hardware.penDrive}}
+                        <li role="presentation" id="pendrive_hardware_tab_li" class="active"><a href="#pendrive_hardware" role="tab" data-toggle="tab" id="pendrive_hardware_tab">PEN DRIVE</a></li>
+                        {{/if}}
+                        {{#if pdp_hardware.sdCard}}
+                        <li role="presentation" id="sdCard_hardware_tab_li"><a href="#sdcard_hardware" aria-controls="messages" role="tab" data-toggle="tab" id="sdCard_hardware_tab">SD CARD</a></li>
+                        {{/if}}
+                        {{#if pdp_hardware.tablet}}
+                        <li role="presentation" id="tablet_hardware_tab_li"><a href="#tablet_hardware" aria-controls="settings" role="tab" data-toggle="tab" id="tablet_hardware_tab">TABLET</a></li>
+                        {{/if}}
+                      </ul>
+                      
+                      <!-- Tab panes -->
+                      <div class="tab-content">{{#if pdp_hardware.penDrive}}
+                        <div role="tabpanel" class="tab-pane active" id="pendrive_hardware">
+                          <!--pendrive tab starts-->
+                          <div class="row">
+                            <div class="col-xs-5 col-sm-3 col-md-3"><img src="/images/pendrive.jpg" alt="" class="imageborder"/></div>
+                            <div class="col-xs-7 col-sm-9 col-md-9 studydevicdetails">
+                              <div class="col-sm-12 col-md-12">
+                                <div class="row">
+                                  <div class="col-sm-6 col-md-6">
+                                    <div class="row">
+                                      <h5>{{pdp_hardware.penDrive.[0].title}}</h5>
+                                      {{#if is_price_changed_pend}}
+                                      {{#if is_price_zero price_changed_value_pend.discounted_hardware_price 0}}
+                                      <div class="price">Rs {{price_changed_value_pend.hardware_price}}</div>
+                                      {{else}}
+                                      <div class="price">Rs {{price_changed_value_pend.discounted_hardware_price}}<del>Rs {{price_changed_value_pend.hardware_price}}</del></div>
+                                      {{/if}}
+                                      {{else}}
+                                      {{#if is_price_zero pdp_hardware.penDrive.[0].discounted_cost 0}}
+                                      <div class="price">Rs {{pdp_hardware.penDrive.[0].subscription_cost}}</div>
+                                      {{else}}
+                                      <div class="price">Rs {{pdp_hardware.penDrive.[0].discounted_cost}}<del>Rs {{pdp_hardware.penDrive.[0].subscription_cost}}</del></div>
+                                      {{/if}}
+                                      {{/if}}</div>
+                                  </div>
+                                  <div class="col-sm-6 col-md-6">
+                                    <div class="row">
+                                      <div class="form-group">
+                                        <label>Select Validity(in months):</label>
+                                        <div class="btn-group" role="group">{{#each pdp_hardware.penDrive}}
+                                          <button type="button" class="btn btn-default duration_change_pend" id="{{duration}}">{{duration}}</button>
+                                          {{/each}}</div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="row">
+                                  <div class="col-sm-6 col-md-6">
+                                    <div class="row">
+                                      <div class="form-group">
+                                        <h5>Size</h5>
+                                        <!--<button type="button" class="btn sizebtn active">16 GB</button>-->
+                                        <div class="price">{{pdp_hardware.penDrive.[0].system_capacity}} GB</div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <!--                                                                    <div class="col-sm-6 col-md-6">
+                                                                                                                                            <div class="row">
+                                                                                                                                                <div class="chekavailablity"><i class="glyphicon glyphicon-map-marker"></i>Check COD &amp; availability at</div>
+                                                                                                                                                <div class="form-group">
+                                                                                                                                                    <input class="form-control inputwidth" type="text" placeholder="Enter Pincode"/>
+                                                                                                                                                    <button type="button" class="btn chkbtn">CHECK</button>
+                                                                                                                                                </div>
+                                                                                                                                            </div>
+                                                                                                                                        </div>-->
+                                </div>
+                                <div class="row"><!--<span>Offers Available</span> -->
+                                  <!--                                                                    <div class="offerprice">
+                                                                                                                                            <div class="coupondetails"><strong class="couponcode">INTRO50</strong><span>Use Promo Code to avail 50% off.</span></div>
+                                                                                                                                        </div>-->
+                                  <div class="securepayment"><i class="glyphicon glyphicon-lock"></i>100% safe &amp; secure payments</div>
+                                  <div class="form-group no-margin-bottom">{{#if is_price_changed_pend}}
+                                    <button class="btn addtocartbtn btnwidthadd pull-left" value="{{price_changed_value_pend.sub_id}}">ADD TO CART</button>
+                                    <button class="btn btn-warning btnwidthadd pull-right" id="submit_pendrive" value="{{price_changed_value_pend.sub_id}}__{{price_changed_value_pend.hardware_price}}__{{price_changed_value_pend.discounted_hardware_price}}__{{price_changed_value_pend.title}}">BUY NOW</button>
+                                    {{else}}
+                                    <button class="btn addtocartbtn btnwidthadd pull-left" value="{{pdp_hardware.penDrive.[0].sub_id}}">ADD TO CART</button>
+                                    <button class="btn btn-warning btnwidthadd pull-right" id="submit_pendrive" value="{{pdp_hardware.penDrive.[0].sub_id}}__{{pdp_hardware.penDrive.[0].subscription_cost}}__{{pdp_hardware.penDrive.[0].discounted_cost}}__{{pdp_hardware.penDrive.[0].title}}">BUY NOW</button>
+                                    {{/if}}
+                                    <div class="clearfix"></div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        {{/if}}
+                        <!--pendrive tab ends-->
+                        
+                        <!--sd card tab-->
+                        {{#if pdp_hardware.sdCard}}
+                        <div role="tabpanel" class="tab-pane" id="sdcard_hardware">
+                          <div class="row">{{#if sd_image}}
+                            <div class="col-xs-5 col-sm-3 col-md-3"><img src="{{compare_size sd_image}}" alt="" class="imageborder"/></div>
+                            {{/if}}
+                            <div class="col-xs-7 col-sm-9 col-md-9 studydevicdetails">
+                              <div class="col-sm-12 col-md-12">
+                                <div class="row">
+                                  <div class="col-sm-6 col-md-6">
+                                    <div class="row">
+                                      <h5>{{pdp_hardware.sdCard.[0].title}}</h5>
+                                      {{#if is_price_changed_sd}}
+                                      {{#if is_price_zero price_changed_value_sd.discounted_hardware_price 0}}
+                                      <div class="price">Rs {{price_changed_value_sd.hardware_price}}</div>
+                                      {{else}}
+                                      <div class="price">Rs {{price_changed_value_sd.discounted_hardware_price}}<del>Rs {{price_changed_value_sd.hardware_price}}</del></div>
+                                      {{/if}}
+                                      {{else}}
+                                      {{#if is_price_zero pdp_hardware.sdCard.[0].discounted_cost 0}}
+                                      <div class="price">Rs {{pdp_hardware.sdCard.[0].subscription_cost}}</div>
+                                      {{else}}
+                                      <div class="price">Rs {{pdp_hardware.sdCard.[0].discounted_cost}}<del>Rs {{pdp_hardware.sdCard.[0].subscription_cost}}</del></div>
+                                      {{/if}}
+                                      {{/if}}</div>
+                                  </div>
+                                  <div class="col-sm-6 col-md-6">
+                                    <div class="row">
+                                      <div class="form-group">
+                                        <label>Select Validity(in months):</label>
+                                        <div class="btn-group" role="group">{{#each pdp_hardware.sdCard}}
+                                          <button type="button" class="btn btn-default duration_change_sd" id="{{duration}}">{{duration}}</button>
+                                          {{/each}}</div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="row">
+                                  <div class="col-sm-6 col-md-6">
+                                    <div class="row">
+                                      <div class="form-group">
+                                        <h5>Size</h5>
+                                        <!--<button type="button" class="btn sizebtn active">16 GB</button>-->
+                                        <div class="price">{{pdp_hardware.sdCard.[0].system_capacity}} GB</div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <!--                                                                    <div class="col-sm-6 col-md-6">
+                                                                                                                                            <div class="row">
+                                                                                                                                                <div class="chekavailablity"><i class="glyphicon glyphicon-map-marker"></i>Check COD &amp; availability at</div>
+                                                                                                                                                <div class="form-group">
+                                                                                                                                                    <input class="form-control inputwidth" type="text" placeholder="Enter Pincode"/>
+                                                                                                                                                    <button type="button" class="btn chkbtn">CHECK</button>
+                                                                                                                                                </div>
+                                                                                                                                            </div>
+                                                                                                                                        </div>-->
+                                </div>
+                                <div class="row"><!--<span>Offers Available</span>-->
+                                  <!--                                                                    <div class="offerprice">
+                                                                                                                                            <div class="coupondetails"><strong class="couponcode">INTRO50</strong><span>Use Promo Code to avail 50% off.</span></div>
+                                                                                                                                        </div>-->
+                                  <div class="securepayment"><i class="glyphicon glyphicon-lock"></i>100% safe &amp; secure payments</div>
+                                  <div class="form-group no-margin-bottom">{{#if is_price_changed_sd}}
+                                    <button class="btn addtocartbtn btnwidthadd pull-left" value="{{price_changed_value_sd.sub_id}}">ADD TO CART</button>
+                                    <button class="btn btn-warning btnwidthadd pull-right" id="submit_pendrive" value="{{price_changed_value_sd.sub_id}}__{{price_changed_value_sd.hardware_price}}__{{price_changed_value_sd.discounted_hardware_price}}__{{price_changed_value_sd.title}}">BUY NOW</button>
+                                    {{else}}
+                                    <button class="btn addtocartbtn btnwidthadd pull-left" value="{{pdp_hardware.sdCard.[0].sub_id}}">ADD TO CART</button>
+                                    <button class="btn btn-warning btnwidthadd pull-right" id="submit_pendrive" value="{{pdp_hardware.sdCard.[0].sub_id}}__{{pdp_hardware.sdCard.[0].subscription_cost}}__{{pdp_hardware.sdCard.[0].discounted_cost}}__{{pdp_hardware.sdCard.[0].title}}">BUY NOW</button>
+                                    {{/if}}
+                                    <div class="clearfix"></div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        {{/if}}
+                        <!--sd card tab ends-->
+                        
+                        <!--tablet tab-->
+                        {{#if pdp_hardware.tablet}}
+                        <div role="tabpanel" class="tab-pane" id="tablet_hardware">
+                          <div class="row">{{#if is_price_changed_tab}}
+                            <div class="col-xs-5 col-sm-3 col-md-3"><img src="http://img.thedigilibrary.com/img/{{price_changed_value_tab.media_info}}" alt="" class="imageborder"/></div>
+                            {{else}}
+                            <div class="col-xs-5 col-sm-3 col-md-3"><img src="http://img.thedigilibrary.com/img/{{pdp_hardware.tablet.[0].HardwareMediaInfo.thumb_img}}" alt="" class="imageborder"/></div>
+                            {{/if}}
+                            <div class="col-xs-7 col-sm-9 col-md-9 studydevicdetails">
+                              <div class="col-sm-12 col-md-12">
+                                <div class="row">
+                                  <div class="col-sm-6 col-md-6">
+                                    <div class="row">{{#if is_price_changed_tab}}
+                                      <h5>{{price_changed_value_tab.title}}</h5>
+                                      {{else}}
+                                      <h5>{{pdp_hardware.tablet.[0].title}}</h5>
+                                      {{/if}}
+                                      
+                                      {{#if is_price_changed_tab}}
+                                      {{#if is_price_zero price_changed_value_tab.discounted_hardware_price 0}}
+                                      <div class="price">Rs {{price_changed_value_tab.hardware_price}}</div>
+                                      {{else}}
+                                      <div class="price">Rs {{price_changed_value_tab.discounted_hardware_price}}<del>Rs {{price_changed_value_tab.hardware_price}}</del></div>
+                                      {{/if}}
+                                      {{else}}
+                                      {{#if is_price_zero pdp_hardware.tablet.[0].discounted_cost 0}}
+                                      <div class="price">Rs {{pdp_hardware.tablet.[0].subscription_cost}}</div>
+                                      {{else}}
+                                      <div class="price">Rs {{pdp_hardware.tablet.[0].discounted_cost}}<del>Rs {{pdp_hardware.tablet.[0].subscription_cost}}</del></div>
+                                      {{/if}}
+                                      {{/if}}</div>
+                                  </div>
+                                  <div class="col-sm-6 col-md-6">
+                                    <div class="row">
+                                      <div class="form-group">
+                                        <label>Select Tablet</label>
+                                        <div class="form-group">
+                                          <select class="form-control" id="hardware_tablet_name">
+                                            
+                                                                                        {{#each pdp_hardware.tablet}}
+                                                                                        
+                                            <option value="{{duration}}__{{discounted_cost}}__{{subscription_cost}}__{{sub_id}}__{{HardwareMediaInfo.thumb_img}}__{{title}}">{{title}}</option>
+                                            
+                                                                                        {{/each}}
+
+                                                                                    
+                                          </select>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="row">
+                                  <div class="col-sm-6 col-md-6">
+                                    <div class="row">
+                                      <div class="form-group">
+                                        <h5>Course Validity</h5>
+                                        {{#if validity_value}}
+                                        <div class="price">{{validity_value}} Months</div>
+                                        {{else}}
+                                        <div class="price">{{pdp_hardware.tablet.[0].duration}} Months</div>
+                                        {{/if}}
+                                        <!--<button type="button" class="btn sizebtn">{{pdp_hardware.tablet.[0].system_capacity}} GB</button>-->
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <!--                                                                    <div class="col-sm-6 col-md-6">
+                                                                                                                                            <div class="row">
+                                                                                                                                                <div class="chekavailablity"><i class="glyphicon glyphicon-map-marker"></i>Check COD &amp; availability at</div>
+                                                                                                                                                <div class="form-group">
+                                                                                                                                                    <input class="form-control inputwidth" type="text" placeholder="Enter Pincode"/>
+                                                                                                                                                    <button type="button" class="btn chkbtn">CHECK</button>
+                                                                                                                                                </div>
+                                                                                                                                            </div>
+                                                                                                                                        </div>-->
+                                  <div class="col-sm-6 col-md-6">
+                                    <div class="row"></div>
+                                  </div>
+                                </div>
+                                <div class="row"><!--<span>Offers Available</span>-->
+                                  <!--                                                                    <div class="offerprice">
+                                                                                                                                            <div class="coupondetails"><strong class="couponcode">INTRO50</strong><span>Use Promo Code to avail 50% off.</span></div>
+                                                                                                                                        </div>-->
+                                  <div class="securepayment"><i class="glyphicon glyphicon-lock"></i>100% safe &amp; secure payments</div>
+                                  <div class="form-group no-margin-bottom">{{#if is_price_changed_tab}}
+                                    <button class="btn addtocartbtn btnwidthadd pull-left" value="{{price_changed_value_tab.sub_id}}">ADD TO CART</button>
+                                    <button class="btn btn-warning btnwidthadd pull-right" id="submit_pendrive" value="{{price_changed_value_tab.sub_id}}__{{price_changed_value_tab.hardware_price}}__{{price_changed_value_tab.discounted_hardware_price}}__{{price_changed_value_tab.title}}">BUY NOW</button>
+                                    {{else}}
+                                    <button class="btn addtocartbtn btnwidthadd pull-left" value="{{pdp_hardware.tablet.[0].sub_id}}">ADD TO CART</button>
+                                    <button class="btn btn-warning btnwidthadd pull-right" id="submit_pendrive" value="{{pdp_hardware.tablet.[0].sub_id}}__{{pdp_hardware.tablet.[0].subscription_cost}}__{{pdp_hardware.tablet.[0].discounted_cost}}__{{pdp_hardware.tablet.[0].title}}">BUY NOW</button>
+                                    {{/if}}
+                                    <div class="clearfix"></div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        {{/if}}
+                        <!--tablet tab ends-->
+                      </div>
+                    </div>
+                  </div>
+                  <div class="clearfix"></div>
+                </div>
+              </div>
+              <div class="col-md-5 col-sm-5">
+                <div class="shadow">
+                  <div class="studybenefits">
+                    <div class="studybenefitstext">
+                      <h1>iProf Subscription</h1>
+                      <ul>
+                        <li>Unlimited Access to 500+ Courses</li>
+                        <li>Take Unlimited Tests</li>
+                        <li>Download Unlimited Content</li>
+                        <li>Study Anytime, Anywhere through APP and WEB</li>
+                        <li>Get Exclusive Discounts</li>
+                      </ul>
+                      <div class="freetrialbtns">
+                        <!--<button type="button" class="btn btn-success freetrialbtn">7 DAYS FREE TRIAL</button>-->
+                        <button type="button" class="btn btn-success" id="subscribe_from_pdp">SUBSCRIBE NOW</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {{else}}
+              <div class="col-md-12 col-sm-12">
+                <div class="white shadow paddingbottom" id="hardware1">
+                  <div class="col-md-12">
+                    <h4>SELECT STUDY MEDIUM/DEVICE</h4>
+                    <div class="studydevicetab">
+                      <!-- Nav tabs -->
+                      <ul class="nav studydevice nav-tabs" role="tablist">
+                        {{#if pdp_hardware.penDrive}}
+                        <li role="presentation" class="active"><a href="#pendrive_hardware" role="tab" data-toggle="tab" id="pendrive_hardware_tab">PEN DRIVE</a></li>
+                        {{/if}}
+                        {{#if pdp_hardware.sdCard}}
+                        <li role="presentation"><a href="#sdcard_hardware" aria-controls="messages" role="tab" data-toggle="tab" id="sdCard_hardware_tab">SD CARD</a></li>
+                        {{/if}}
+                        {{#if pdp_hardware.tablet}}
+                        <li role="presentation"><a href="#tablet_hardware" aria-controls="settings" role="tab" data-toggle="tab" id="tablet_hardware_tab">TABLET</a></li>
+                        {{/if}}
+                      </ul>
+                      
+                      <!-- Tab panes -->
+                      <div class="tab-content">{{#if pdp_hardware.penDrive}}
+                        <div role="tabpanel" class="tab-pane active" id="pendrive_hardware">
+                          <!--pendrive tab starts-->
+                          <div class="row">
+                            <div class="col-xs-5 col-sm-3 col-md-3"><img src="/images/pendrive.jpg" alt="" class="imageborder"/></div>
+                            <div class="col-xs-7 col-sm-9 col-md-9 studydevicdetails">
+                              <div class="col-sm-12 col-md-12">
+                                <div class="row">
+                                  <div class="col-sm-6 col-md-6">
+                                    <div class="row">
+                                      <h5>{{pdp_hardware.penDrive.[0].title}}</h5>
+                                      {{#if is_price_changed_pend}}
+                                      {{#if is_price_zero price_changed_value_pend.discounted_hardware_price 0}}
+                                      <div class="price">Rs {{price_changed_value_pend.hardware_price}}</div>
+                                      {{else}}
+                                      <div class="price">Rs {{price_changed_value_pend.discounted_hardware_price}}<del>Rs {{price_changed_value_pend.hardware_price}}</del></div>
+                                      {{/if}}
+                                      {{else}}
+                                      {{#if is_price_zero pdp_hardware.penDrive.[0].discounted_cost 0}}
+                                      <div class="price">Rs {{pdp_hardware.penDrive.[0].subscription_cost}}</div>
+                                      {{else}}
+                                      <div class="price">Rs {{pdp_hardware.penDrive.[0].discounted_cost}}<del>Rs {{pdp_hardware.penDrive.[0].subscription_cost}}</del></div>
+                                      {{/if}}
+                                      {{/if}}</div>
+                                  </div>
+                                  <div class="col-sm-6 col-md-6">
+                                    <div class="row">
+                                      <div class="form-group">
+                                        <label>Select Validity(in months):</label>
+                                        <div class="btn-group" role="group">{{#each pdp_hardware.penDrive}}
+                                          <button type="button" class="btn btn-default duration_change_pend" id="{{duration}}">{{duration}}</button>
+                                          {{/each}}</div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="row">
+                                  <div class="col-sm-6 col-md-6">
+                                    <div class="row">
+                                      <div class="form-group">
+                                        <h5>Size</h5>
+                                        <!--<button type="button" class="btn sizebtn active">16 GB</button>-->
+                                        <div class="price">{{pdp_hardware.penDrive.[0].system_capacity}} GB</div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <!--                                                                    <div class="col-sm-6 col-md-6">
+                                                                                                                                            <div class="row">
+                                                                                                                                                <div class="chekavailablity"><i class="glyphicon glyphicon-map-marker"></i>Check COD &amp; availability at</div>
+                                                                                                                                                <div class="form-group">
+                                                                                                                                                    <input class="form-control inputwidth" type="text" placeholder="Enter Pincode"/>
+                                                                                                                                                    <button type="button" class="btn chkbtn">CHECK</button>
+                                                                                                                                                </div>
+                                                                                                                                            </div>
+                                                                                                                                        </div>-->
+                                </div>
+                                <div class="row"><!--<span>Offers Available</span> -->
+                                  <!--                                                                    <div class="offerprice">
+                                                                                                                                            <div class="coupondetails"><strong class="couponcode">INTRO50</strong><span>Use Promo Code to avail 50% off.</span></div>
+                                                                                                                                        </div>-->
+                                  <div class="securepayment"><i class="glyphicon glyphicon-lock"></i>100% safe &amp; secure payments</div>
+                                  <div class="form-group no-margin-bottom">{{#if is_price_changed_pend}}
+                                    <button class="btn addtocartbtn btnwidthadd pull-left" value="{{price_changed_value_pend.sub_id}}">ADD TO CART</button>
+                                    <button class="btn btn-warning btnwidthadd pull-right" id="submit_pendrive" value="{{price_changed_value_pend.sub_id}}__{{price_changed_value_pend.hardware_price}}__{{price_changed_value_pend.discounted_hardware_price}}__{{price_changed_value_pend.title}}">BUY NOW</button>
+                                    {{else}}
+                                    <button class="btn addtocartbtn btnwidthadd pull-left" value="{{pdp_hardware.penDrive.[0].sub_id}}">ADD TO CART</button>
+                                    <button class="btn btn-warning btnwidthadd pull-right" id="submit_pendrive" value="{{pdp_hardware.penDrive.[0].sub_id}}__{{pdp_hardware.penDrive.[0].subscription_cost}}__{{pdp_hardware.penDrive.[0].discounted_cost}}__{{pdp_hardware.penDrive.[0].title}}">BUY NOW</button>
+                                    {{/if}}
+                                    <div class="clearfix"></div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        {{/if}}
+                        <!--pendrive tab ends-->
+                        
+                        <!--sd card tab-->
+                        {{#if pdp_hardware.sdCard}}
+                        <div role="tabpanel" class="tab-pane" id="sdcard_hardware">
+                          <div class="row">{{#if sd_image}}
+                            <div class="col-xs-5 col-sm-3 col-md-3"><img src="{{compare_size sd_image}}" alt="" class="imageborder"/></div>
+                            {{/if}}
+                            <div class="col-xs-7 col-sm-9 col-md-9 studydevicdetails">
+                              <div class="col-sm-12 col-md-12">
+                                <div class="row">
+                                  <div class="col-sm-6 col-md-6">
+                                    <div class="row">
+                                      <h5>{{pdp_hardware.sdCard.[0].title}}</h5>
+                                      {{#if is_price_changed_sd}}
+                                      {{#if is_price_zero price_changed_value_sd.discounted_hardware_price 0}}
+                                      <div class="price">Rs {{price_changed_value_sd.hardware_price}}</div>
+                                      {{else}}
+                                      <div class="price">Rs {{price_changed_value_sd.discounted_hardware_price}}<del>Rs {{price_changed_value_sd.hardware_price}}</del></div>
+                                      {{/if}}
+                                      {{else}}
+                                      {{#if is_price_zero pdp_hardware.sdCard.[0].discounted_cost 0}}
+                                      <div class="price">Rs {{pdp_hardware.sdCard.[0].subscription_cost}}</div>
+                                      {{else}}
+                                      <div class="price">Rs {{pdp_hardware.sdCard.[0].discounted_cost}}<del>Rs {{pdp_hardware.sdCard.[0].subscription_cost}}</del></div>
+                                      {{/if}}
+                                      {{/if}}</div>
+                                  </div>
+                                  <div class="col-sm-6 col-md-6">
+                                    <div class="row">
+                                      <div class="form-group">
+                                        <label>Select Validity(in months):</label>
+                                        <div class="btn-group" role="group">{{#each pdp_hardware.sdCard}}
+                                          <button type="button" class="btn btn-default duration_change_sd" id="{{duration}}">{{duration}}</button>
+                                          {{/each}}</div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="row">
+                                  <div class="col-sm-6 col-md-6">
+                                    <div class="row">
+                                      <div class="form-group">
+                                        <h5>Size</h5>
+                                        <!--<button type="button" class="btn sizebtn active">16 GB</button>-->
+                                        <div class="price">{{pdp_hardware.sdCard.[0].system_capacity}} GB</div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <!--                                                                    <div class="col-sm-6 col-md-6">
+                                                                                                                                            <div class="row">
+                                                                                                                                                <div class="chekavailablity"><i class="glyphicon glyphicon-map-marker"></i>Check COD &amp; availability at</div>
+                                                                                                                                                <div class="form-group">
+                                                                                                                                                    <input class="form-control inputwidth" type="text" placeholder="Enter Pincode"/>
+                                                                                                                                                    <button type="button" class="btn chkbtn">CHECK</button>
+                                                                                                                                                </div>
+                                                                                                                                            </div>
+                                                                                                                                        </div>-->
+                                </div>
+                                <div class="row"><!--<span>Offers Available</span>-->
+                                  <!--                                                                    <div class="offerprice">
+                                                                                                                                            <div class="coupondetails"><strong class="couponcode">INTRO50</strong><span>Use Promo Code to avail 50% off.</span></div>
+                                                                                                                                        </div>-->
+                                  <div class="securepayment"><i class="glyphicon glyphicon-lock"></i>100% safe &amp; secure payments</div>
+                                  <div class="form-group no-margin-bottom">{{#if is_price_changed_sd}}
+                                    <button class="btn addtocartbtn btnwidthadd pull-left" value="{{price_changed_value_sd.sub_id}}">ADD TO CART</button>
+                                    <button class="btn btn-warning btnwidthadd pull-right" id="submit_pendrive" value="{{price_changed_value_sd.sub_id}}__{{price_changed_value_sd.hardware_price}}__{{price_changed_value_sd.discounted_hardware_price}}__{{price_changed_value_sd.title}}">BUY NOW</button>
+                                    {{else}}
+                                    <button class="btn addtocartbtn btnwidthadd pull-left" value="{{pdp_hardware.sdCard.[0].sub_id}}">ADD TO CART</button>
+                                    <button class="btn btn-warning btnwidthadd pull-right" id="submit_pendrive" value="{{pdp_hardware.sdCard.[0].sub_id}}__{{pdp_hardware.sdCard.[0].subscription_cost}}__{{pdp_hardware.sdCard.[0].discounted_cost}}__{{pdp_hardware.sdCard.[0].title}}">BUY NOW</button>
+                                    {{/if}}
+                                    <div class="clearfix"></div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        {{/if}}
+                        <!--sd card tab ends-->
+                        
+                        <!--tablet tab-->
+                        {{#if pdp_hardware.tablet}}
+                        <div role="tabpanel" class="tab-pane" id="tablet_hardware">
+                          <div class="row">{{#if is_price_changed_tab}}
+                            <div class="col-xs-5 col-sm-3 col-md-3"><img src="http://img.thedigilibrary.com/img/{{price_changed_value_tab.media_info}}" alt="" class="imageborder"/></div>
+                            {{else}}
+                            <div class="col-xs-5 col-sm-3 col-md-3"><img src="http://img.thedigilibrary.com/img/{{pdp_hardware.tablet.[0].HardwareMediaInfo.thumb_img}}" alt="" class="imageborder"/></div>
+                            {{/if}}
+                            <div class="col-xs-7 col-sm-9 col-md-9 studydevicdetails">
+                              <div class="col-sm-12 col-md-12">
+                                <div class="row">
+                                  <div class="col-sm-6 col-md-6">
+                                    <div class="row">{{#if is_price_changed_tab}}
+                                      <h5>{{price_changed_value_tab.title}}</h5>
+                                      {{else}}
+                                      <h5>{{pdp_hardware.tablet.[0].title}}</h5>
+                                      {{/if}}
+                                      
+                                      {{#if is_price_changed_tab}}
+                                      {{#if is_price_zero price_changed_value_tab.discounted_hardware_price 0}}
+                                      <div class="price">Rs {{price_changed_value_tab.hardware_price}}</div>
+                                      {{else}}
+                                      <div class="price">Rs {{price_changed_value_tab.discounted_hardware_price}}<del>Rs {{price_changed_value_tab.hardware_price}}</del></div>
+                                      {{/if}}
+                                      {{else}}
+                                      {{#if is_price_zero pdp_hardware.tablet.[0].discounted_cost 0}}
+                                      <div class="price">Rs {{pdp_hardware.tablet.[0].subscription_cost}}</div>
+                                      {{else}}
+                                      <div class="price">Rs {{pdp_hardware.tablet.[0].discounted_cost}}<del>Rs {{pdp_hardware.tablet.[0].subscription_cost}}</del></div>
+                                      {{/if}}
+                                      {{/if}}</div>
+                                  </div>
+                                  <div class="col-sm-6 col-md-6">
+                                    <div class="row">
+                                      <div class="form-group">
+                                        <label>Select Tablet</label>
+                                        <div class="form-group">
+                                          <select class="form-control" id="hardware_tablet_name">
+                                            
+                                                                                        {{#each pdp_hardware.tablet}}
+                                                                                        
+                                            <option value="{{duration}}__{{discounted_cost}}__{{subscription_cost}}__{{sub_id}}__{{HardwareMediaInfo.thumb_img}}__{{title}}">{{title}}</option>
+                                            
+                                                                                        {{/each}}
+
+                                                                                    
+                                          </select>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="row">
+                                  <div class="col-sm-6 col-md-6">
+                                    <div class="row">
+                                      <div class="form-group">
+                                        <h5>Course Validity</h5>
+                                        {{#if validity_value}}
+                                        <div class="price">{{validity_value}} Months</div>
+                                        {{else}}
+                                        <div class="price">{{pdp_hardware.tablet.[0].duration}} Months</div>
+                                        {{/if}}
+                                        <!--<button type="button" class="btn sizebtn">{{pdp_hardware.tablet.[0].system_capacity}} GB</button>-->
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <!--                                                                    <div class="col-sm-6 col-md-6">
+                                                                                                                                            <div class="row">
+                                                                                                                                                <div class="chekavailablity"><i class="glyphicon glyphicon-map-marker"></i>Check COD &amp; availability at</div>
+                                                                                                                                                <div class="form-group">
+                                                                                                                                                    <input class="form-control inputwidth" type="text" placeholder="Enter Pincode"/>
+                                                                                                                                                    <button type="button" class="btn chkbtn">CHECK</button>
+                                                                                                                                                </div>
+                                                                                                                                            </div>
+                                                                                                                                        </div>-->
+                                  <div class="col-sm-6 col-md-6">
+                                    <div class="row"></div>
+                                  </div>
+                                </div>
+                                <div class="row"><!--<span>Offers Available</span>-->
+                                  <!--                                                                    <div class="offerprice">
+                                                                                                                                            <div class="coupondetails"><strong class="couponcode">INTRO50</strong><span>Use Promo Code to avail 50% off.</span></div>
+                                                                                                                                        </div>-->
+                                  <div class="securepayment"><i class="glyphicon glyphicon-lock"></i>100% safe &amp; secure payments</div>
+                                  <div class="form-group no-margin-bottom">{{#if is_price_changed_tab}}
+                                    <button class="btn addtocartbtn btnwidthadd pull-left" value="{{price_changed_value_tab.sub_id}}">ADD TO CART</button>
+                                    <button class="btn btn-warning btnwidthadd pull-right" id="submit_pendrive" value="{{price_changed_value_tab.sub_id}}__{{price_changed_value_tab.hardware_price}}__{{price_changed_value_tab.discounted_hardware_price}}__{{price_changed_value_tab.title}}">BUY NOW</button>
+                                    {{else}}
+                                    <button class="btn addtocartbtn btnwidthadd pull-left" value="{{pdp_hardware.tablet.[0].sub_id}}">ADD TO CART</button>
+                                    <button class="btn btn-warning btnwidthadd pull-right" id="submit_pendrive" value="{{pdp_hardware.tablet.[0].sub_id}}__{{pdp_hardware.tablet.[0].subscription_cost}}__{{pdp_hardware.tablet.[0].discounted_cost}}__{{pdp_hardware.tablet.[0].title}}">BUY NOW</button>
+                                    {{/if}}
+                                    <div class="clearfix"></div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        {{/if}}
+                        <!--tablet tab ends-->
+                      </div>
+                    </div>
+                  </div>
+                  <div class="clearfix"></div>
+                </div>
+              </div>
+              {{/if}}
+              {{else}}
+              <!--study device option ends-->
+              
+              <!--subscription plan  start-->
+              {{#if is_subscribed}}
+              <div class="col-md-12 col-sm-12">
+                <div class="shadow">
+                  <div class="studybenefits">
+                    <div class="studybenefitstext">
+                      <h1>iProf Subscription</h1>
+                      <ul>
+                        <li>Unlimited Access to 500+ Courses</li>
+                        <li>Take Unlimited Tests</li>
+                        <li>Download Unlimited Content</li>
+                        <li>Study Anytime, Anywhere through APP and WEB</li>
+                        <li>Get Exclusive Discounts</li>
+                      </ul>
+                      <div class="freetrialbtns">
+                        <!--<button type="button" class="btn btn-success freetrialbtn">7 DAYS FREE TRIAL</button>-->
+                        <button type="button" class="btn btn-success" id="subscribe_from_pdp">SUBSCRIBE NOW</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {{/if}}
+              
+              
+              {{/if}}
+              <!--subscription plan  ends-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+<!--study device ends-->
+
+<!--demo video hardware-->
+<template name="test_hardware">
+  <div id="box_2" class="marbottomboti">
+    <div class="white no-border no-radius no-shadow no-padding tableofconent aboutcourse">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12" id="aboutcourse">
+            <div class="row">
+              <h4>HARDWARE DETAILS</h4>
+              <div class="shadow abtcourspadding">{{#each hardware_specification obj}}
+                <h5><strong>{{{name}}}</strong></h5>
+                <div class="table-responsive">{{{ht}}}
+                  <hr/>
+                </div>
+                {{/each}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+<!--demo video hardware ends-->
+
+<!--about course-->
+<template name="test_pdp_publisher">
+  <div id="box_3" class="marbottomboti">
+    <div class="white no-border no-radius no-shadow no-padding tableofconent aboutcourse">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12" id="aboutcourse">
+            <div class="row">
+              <h4>ABOUT COURSE</h4>
+              <div class="shadow abtcourspadding">{{#if course_desc.long_desc}}
+                <p>{{{course_desc.long_desc}}}</p>
+                {{else}}
+                <p>{{{course_desc.short_desc}}}</p>
+                {{/if}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+<!--about course ends-->
+
+<!--table of content-->
+<template name="test_free_contents">{{#if toc_free_list}}   
+  {{#if isFree toc_free_list.data_length 0}}
+  <div class="white no-border no-radius no-shadow no-padding tableofconent">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="row">
+            <h4>FREE CONTENTS</h4>
+            <!--units starts-->
+            {{#each toc_free_list.free_chapters_arr}}
+            <ul href="javascript:void(0)" class="tags">
+              <li id="pdp_free_content_tag"><a href="javascript:void(0">{{heading}}</a></li>
+            </ul>
+            {{/each}}
+            <!--units ends-->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{/if}}
+  {{/if}}</template>
+<!--table of content ends-->
+
+<!--table of content-->
+<template name="test_toc">
+  <div id="box_4" class="marbottomboti">
+    <div class="white no-border no-radius no-shadow no-padding tableofconent" id="tableofcontents">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="row">
+              <div class="col-md-8">
+                <div class="row">
+                  <h4>TABLE OF CONTENTS</h4>
+                </div>
+              </div>
+              {{#if isCompCourse}}
+              <div class="col-md-4 text-right pdp-choosesubject">
+                <div class="row">Choose Subject:
+                  <div class="form-group">
+                    <select class="form-control" id="select_subject_pdp">
+                      
+                                            {{#each getSubjectList}}
+                                            
+                      <option value="{{id}}">{{name}}</option>
+                      
+                                            {{/each}}
+                                        
+                    </select>
+                  </div>
+                </div>
+              </div>
+              {{/if}}
+              <!--units starts-->
+              <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-striped table-bordered tableofcontenttable no-margin-bottom">
+                <tbody>
+                {{#if isFreeTrial}}
+                {{#if toc_list}}
+                {{#each toc_list}}
+                <tr id="ch_{{packageId}}">
+                  <td class="tablewidthadd">{{heading}}</td>
+                  <td class="tablewidthadd_3 grnclr"><i class="sprite questicn"></i>{{totalTests}} tests</td>
+                  <td class = "toc_chapter toc_chapter_read" id="ch_{{id}}"><a href="javascript:void(0)" data-toggle="tooltip" data-placement="bottom" title="Unlocked Chapter, Go to Take Test.">TAKE TEST</a></td>
+                </tr>
+                {{/each}}
+                {{/if}}   
+                {{else}}
+                {{#if toc_list}}
+                {{#each toc_list}}
+                {{#if isType isPurchased true}}
+                <tr id="ch_{{packageId}}">
+                  <td class="tablewidthadd"><i class="sprite unlock"></i>{{heading}}</td>
+                  <td class="tablewidthadd_3 grnclr"><i class="sprite questicn"></i>{{totalTests}} tests</td>
+                  <td class = "toc_chapter toc_chapter_read" id="ch_{{id}}"><a href="javascript:void(0)" data-toggle="tooltip" data-placement="bottom" title="Unlocked Chapter, Go to Take Test.">TAKE TEST</a></td>
+                </tr>
+                {{else}}
+                {{#if isType isPaid true}}
+                <tr id="ch_{{packageId}}">
+                  <td class="tablewidthadd"><i class="glyphicon glyphicon-lock"></i>{{heading}}</td>
+                  <td class="tablewidthadd_3 grnclr"><i class="sprite questicn"></i>{{totalTests}} tests</td>
+                  <td class = "toc_chapter toc_chapter_unlock unlock" id="ch_{{id}}"><a href="javascript:void(0)" data-toggle="tooltip" data-placement="bottom" title="Locked Chapter, Unlock to Take Test.">Unlock</a></td>
+                </tr>
+                {{else}}
+                <tr id="ch_{{packageId}}">
+                  <td class="tablewidthadd"><i class="sprite freetxt"></i>{{heading}}</td>
+                  <td class="tablewidthadd_3 grnclr"><i class="sprite questicn"></i>{{totalTests}} tests</td>
+                  <td class = "toc_chapter toc_chapter_read" id="ch_{{id}}"><a href="javascript:void(0)" data-toggle="tooltip" data-placement="bottom" title="Unlocked Chapter, Go to Take Test.">TAKE TEST</a></td>
+                </tr>
+                {{/if}}
+                {{/if}}
+                {{/each}}
+                {{/if}}
+                {{/if}}
+                  </tbody>
+              </table>
+              <!--units ends-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+<!--table of content ends-->
+
+<!--top reviews-->
+
+<template name ="test_top_reviews">
+  <div id="box_5" class="marbottomboti">
+    <div class="well white no-border no-radius no-shadow no-padding tableofconent topreview" id="reviews">
+      <div class="container">
+        <div class="row">
+          <h4>TOP REVIEWS</h4>
+          <div class="col-md-12">
+            <div class="row">
+              <div class="shadow">
+                <div class="col-md-4 topreviewspadding">
+                  <div class="star_rating">
+                    <div class="progress-radial progress-80">
+                      <div class="overlay"><span class="starrating"><i class="glyphicon glyphicon-star"></i>4.4</span><small>OUT OF 5</small></div>
+                    </div>
+                    <div class="progresbar">
+                      <p class="text-center basedon">Based on 1317 ratings</p>
+                      <p>5 star<span class="barprogress" style="width:70%;"></span>847</p>
+                      <p>4 star<span class="barprogress" style="width:30%;"></span>280</p>
+                      <p>3 star<span class="barprogress" style="width:10%;"></span>80</p>
+                      <p>2 star<span class="barprogress" style="width:4%;"></span>37</p>
+                      <p>1 star<span class="barprogress" style="width:8%;"></span>73</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4 topreviewspadding">
+                  <div class="star_rating">
+                    <div class="progress-radial progress-80-grn">
+                      <div class="overlay"><span class="starrating grnclr"><i class="glyphicon glyphicon-thumbs-up"></i>90%</span><small>RECOMMENDED</small></div>
+                    </div>
+                    <div class="progresbar">
+                      <p class="text-center basedon">Based on 314 recommendations</p>
+                      <p class="text-center basedon">Would you recommend this item?</p>
+                      <p class="text-center">
+                        <button type="button" class="btn yesbtn">YES</button>
+                        <button type="button" class="btn yesbtn">NO</button>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4 text-center topreviewspadding">
+                  <div class="ratereviews">
+                    <p><i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i></p>
+                    <p>RATE IT!</p>
+                  </div>
+                  <p>Have you purchased this item?</p>
+                  <button type="button" class="btn reviewbtn">WRITE A REVIEW</button>
+                </div>
+                <div class="clearfix"></div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="displayreview">
+                <div class="col-md-6">
+                  <div class="displayingreviews">Displaying Reviews 1-10 of 226</div>
+                </div>
+                <div class="col-md-6">
+                  <ul class="sortby">
+                    <span class="sortby">Sort by:</span>
+                    <li class="active"><a href="javascript:void()">Most Helpful</a></li>
+                    <li><a href="javascript:void()">Most Recent</a></li>
+                  </ul>
+                  <div class="filterby pull-right"><span class="sortby">Filter By:</span>
+                    <div class="form-group">
+                      <select class="form-control">
+                        <option>All Stars</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="clearfix"></div>
+              </div>
+              <div class="row mrgntop">
+                <div class="col-xs-4 col-md-2">
+                  <div class="reviewerimg"><img src="/images/reviewerimg.png" alt=""/></div>
+                </div>
+                <div class="col-xs-8 col-md-10">
+                  <div class="reviewdetails"><span class="pull-right">05-12-2015</span>
+                    <div class="reviewername"><strong>Nishant Kumar</strong><i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i></div>
+                    Amazing Course!!
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+<!--top reviews ends-->
+
+<template name ="test_unlock_popup">
+  <div class="modal fade" tabindex="-1" role="dialog" id="unlock">
+    <div class="modal-dialog modal-width">
+      <div class="modal-content">{{#if unlock_chapters}}
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">{{unlock_chapters.heading}}</h4>
+          {{#if course_name_pdp_page}}<span>{{course_name_pdp_page}}</span>{{/if}}</div>
+        <div class="modal-body">
+          <div class="unlockprice"><del>Rs {{unlock_chapters.price}}/-</del><strong class="grnclr">Rs. {{unlock_chapters.discountedPrice}}/-</strong>{{#if discount_percent}}<strong>{{discount_percent}}% OFF</strong>{{/if}}</div>
+          <div class="buynowsubs"><a href="javascript:void(0);" class="btn addtocart"><i class="glyphicon glyphicon-shopping-cart"></i>ADD TO CART</a><a href="javascript:void(0);" class="btn btn-warning buynowbtn"><img src="/images/buynow.png" alt=""/>BUY NOW</a></div>
+          <span class="borderline"><span class="aur">OR</span></span><strong class="altercontent">Get Unlimited Access, Starting Rs 999 only! Use Code INTRO50 for the Introductory prices!</strong>
+          <button type="button" class="btn btn-warning subsnow" id="subscribe_from_cart_pop">SUBSCRIBE NOW</button>
+        </div>
+        {{/if}}</div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+</template>
+<template name="test_join_success">
+  <div class="modal fade" tabindex="-1" role="dialog" id="congratspop">
+    <div class="modal-dialog modal-width">
+      <div class="modal-content">
+        <div class="modal-header pophd">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="modal-body text-center">
+          <p class="text-left">Course joined successfully</p>
+        </div>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+</template>

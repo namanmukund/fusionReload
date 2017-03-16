@@ -1,0 +1,240 @@
+<template name="funzone">
+    <body>     
+   {{>sticky_nav}}
+   {{>navigation_funzone}} 
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
+<!--<script src="js/jquery-1.11.2.min.js"></script>--> 
+<!-- Include all compiled plugins (below), or include individual files as needed --> 
+<!--<script src="js/bootstrap.js"></script> 
+--><script src="js/custom.js"></script> 
+<style>
+    .modal-backdrop{
+        background-color: none !important;
+    }
+</style>
+<script>
+    $('document').ready(function(){
+        $('html').on('click', function(){
+           if($('.notifi_pop').is(':visible'))
+           {
+               $('.notifi_pop').hide();
+           }
+        });
+        $('html').on('click', '.notifi_pop', function(){
+            $('.notifi_pop').show();
+        });
+        $('html').on('click', function(){
+           if($('.cartpop').is(':visible'))
+           {
+               $('.cartpop').hide();
+           }
+        });
+        $('html').on('click', '.cartpop', function(){
+            $('.cartpop').show();
+        });
+        $('.fun-vid').click(function(e){
+            e.preventDefault();
+           $('#videopop').modal('show');
+        });
+    });
+</script>
+</body>
+</template>
+
+<!--Navigation Start-->
+<template name="nav_funzone">
+  <div class="positionfixed">
+    <div class="row">
+      <div class="col-xs-12 col-sm-2 col-md-2">
+        <div class="wap-menu">
+          <!--<a href="javascript:void(0);" class="mobile-menu"><i class="glyphicon glyphicon-menu-hamburger"></i></a>-->
+          <div class="mainmenu arrow-down">
+            <ul class="yourprfr">
+              <li class="active"><a href="javascript:void(0);" class="hoverCursor lightgreen_bg" id="home_page"><i class="glyphicon glyphicon-home"></i>Home</a></li>
+              {{#if disable_tab_course countCourse 0}}
+              <li><a href="javascript:void(0);" class="hoverCursor green_bg" id="course_page_disable"><i class="glyphicon glyphicon-book"></i>Courses<span class="countcourse">{{countCourse}}</span></a></li>
+              {{else}}
+              <li><a href="javascript:void(0);" class="hoverCursor green_bg" id="course_page"><i class="glyphicon glyphicon-book"></i>Courses<span class="countcourse">{{countCourse}}</span></a></li>
+              {{/if}} 
+              {{#if disable_tab_test countTest 0}}
+              <li><a href="javascript:void(0);" class="hoverCursor blue_bg" id="test_page_disable"><i class="glyphicon glyphicon-list-alt"></i>Tests<span class="countcourse">{{countTest}}</span></a></li>
+              {{else}}
+              <li><a href="javascript:void(0);" class="hoverCursor blue_bg" id="test_page"><i class="glyphicon glyphicon-list-alt"></i>Tests<span class="countcourse">{{countTest}}</span></a></li>
+              {{/if}}
+              <li><a href="javascript:void(0);" class="hoverCursor red_bg" id="tutor_page"><i class="glyphicon glyphicon-user"></i>Tutors<span class="countcourse">0</span></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+
+
+
+
+<template name="navigation_funzone">
+<div class="topfixed">
+  {{>topstrip}}  
+  <div class="light-green">
+        <div class="container inner-nav">
+      <div class="row">
+      <ul class="pull-right">
+            {{>notif_cart_count}}
+            {{#if login_check}}       
+                <li><a href="javascript:void(0);" class="sign-in">Sign In</a></li>
+                <li><a class=" sign-up btn btn-default shadow" href="javascript:void(0);" role="button">Sign Up</a></li>
+            {{else}}  
+                {{>user_profile_data}}
+            {{/if}} 
+        </ul>
+      <a class="navbar-brand sprite" href="/">iProf</a>
+          {{>search_bar}}
+        
+      </div>
+    </div>
+  </div>
+    {{>my_preference}}
+    </div>
+    {{>breadcrumb_funzone}}
+    {{>funzone_tab}}
+    {{>footer}}
+  <div class="clearfix"></div>
+  </template> 
+
+<!--Breadcrumb-->
+<template name="breadcrumb_funzone">
+  <div class="well no-border no-radius no-shadow no-margin-bottom no-padding margintopnobanner">
+    <div class="container">
+      <div class="row">
+        <ol class="breadcrumb no-margin">
+          <li><a href="javascript:void(0)" class="hoverCursor sliderviewmore" id = "funzone_home">Home</a></li>
+          <li class="active">FunZone</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</template>
+<!--Breadcrumb End-->
+
+<!--VIDEOS-->
+
+<template name="funzone_tab">
+  <div class="container">
+    <div class="row">
+      <div class="courselist shadow greybg">
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+          <li role="presentation" class="active"><a href="#videos" aria-controls="tutors" role="tab" data-toggle="tab">Videos</a></li>
+          <li role="presentation"><a href="#funfacts" aria-controls="shortlisted" role="tab" data-toggle="tab">Facts</a></li>
+        </ul>
+      </div>
+      <!-- Tab panes -->
+      <div class="tab-content">
+          {{#if is_video_exist}}
+                <div role="tabpanel" class="tab-pane active" id="videos">
+                  <!--VIDEOS 1 starts-->
+                  {{>funzone_videos}}
+                  <!--VIDEOS 3 ends-->
+                </div>
+          {{/if}}
+          
+          {{#if is_facts_exist}}
+                <div role="tabpanel" class="tab-pane" id="funfacts">
+                  <!--facts 1 starts-->
+                   {{>funzone_facts}} 
+                </div>
+          {{/if}}
+        </div>
+    </div>
+  </div>
+</template>
+
+
+
+<template name=" funzone_videos">
+    <div class="container funzonevideos mrgntop">
+        {{#each fun_vids}}
+            <div class="col-xs-12 col-sm-4 col-md-4 margnbottom video_funzone_pop_up" id="{{video_url}}}">
+              <div class="shadow white text-left">
+                <div class="vdoimg">
+                 <a href="javascript:void(0)" class = "fun-vid"><img src="/images/vdoplayicn.png" alt=""/></a>
+                    {{>funzone_video_pop}}
+                </div>
+                <div class="blogdetails">
+                  <h4>{{title}}</h4>
+                    <div class="videoby">
+                          <span class="pull-left">Posted on: {{date}}</span>
+                    </div>			
+                  <div class="clearfix"></div>
+                </div>
+              </div>
+            </div>
+        {{/each}}
+    </div>
+</template>
+<!--videos ends--> 
+
+<!--facts blogs-->
+<template name=" funzone_facts">
+    <!--facts 1 starts-->
+    {{#each fun_facts}}
+    <div class="col-xs-12 col-sm-4 col-md-4 margnbottom">
+      <div class="shadow white text-left"> <img src="/images/blog1.jpg" alt="" class="img-responsive"/>
+        <div class="blogdetails">
+          <h4>{{subject}}</h4>
+          <h3>{{title}}</h3>
+          <div class="blogtext">{{post_description}}</div>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+    </div>
+    {{/each}} 
+</template>
+<!--facts ends--> 
+
+
+
+
+
+<!--VIDEOS-->
+
+<!--video-->
+<template name=" funzone_video_pop">
+  <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" id="videopop">
+    <div class="modal-dialog modal-lg">
+        {{#if video_pop_data}}
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">{{video_pop_data.funzone_video_title}}</h4>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="embed-responsive embed-responsive-16by9">
+<!--                  <video width="100" controls>
+                        <source src="{{video_pop_data.funzone_video_url}}">
+                        Your browser does not support HTML5 video.
+                   </video>-->
+                <!--<embed width="420" height="315" src="{{video_pop_data.funzone_video_url}}">-->
+                <!--<iframe width="871" height="480" src="https://www.youtube.com/embed/AGwaa2c2o-A?showinfo=0" frameborder="0" allowfullscreen></iframe>-->
+                <iframe class="embed-responsive-item" src="{{video_pop_data.funzone_video_url}}"></iframe>
+                <!--<iframe width="420" height="315" src="{{video_pop_data.funzone_video_url}}" frameborder="0" allowfullscreen></iframe>-->
+              </div>
+<!--                <div class="embed-responsive embed-responsive-16by9">
+                <div id="playa"></div>
+               </div>-->
+            </div>
+          </div>
+          
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+        {{/if}}
+    </div>
+  </div>
+</template>
+<!--video pop ends-->

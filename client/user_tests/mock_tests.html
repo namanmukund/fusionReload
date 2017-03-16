@@ -1,0 +1,233 @@
+<template name="mock_tests">
+  <body>  
+  {{>headertest}}
+  {{> breadcrumb_test}}
+  {{> start_mock_test}}
+  {{>footer}}
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
+  <!-- Include all compiled plugins (below), or include individual files as needed --> 
+  <style>
+  .priitem,.submitbtn {
+    font-size: 14px;
+    margin-right: 7px;
+    min-width: 120px;
+    padding: 7px 7px 10px;
+    text-align: center;
+  }
+  a.disabled {
+    pointer-events: none;
+    cursor: default;
+    font-size: 14px;
+    margin-right: 7px;
+    min-width: 120px;
+    padding: 7px 7px 10px;
+    text-align: center;
+  }
+  </style>
+<script>
+    $('document').ready(function(){
+      $('html').on('click', function(){
+	 if($('.notifi_pop').is(':visible'))
+	 {
+	     $('.notifi_pop').hide();
+	 }
+      });
+      $('html').on('click', '.notifi_pop', function(){
+	  $('.notifi_pop').show();
+      });
+    });
+</script>
+</body>
+</template>
+
+<!--Navigation Start-->
+<template name="headertest">
+<div class="{{bmsColour}} topfixed">
+    {{>topstrip}} 
+      <div class="container inner-nav">
+        <div class="row">
+            <ul class="pull-right">
+            {{>notif_cart_count}}      
+            {{#if login_check}}
+            <li><a href="javascript:void(0);" class="sign-in">Sign In</a></li>
+            <li><a class="sign-up btn btn-default shadow" href="javascript:void(0);" role="button">Sign Up</a></li>
+            {{else}}  
+            {{>user_profile_data}}
+            
+            {{/if}}
+          </ul>
+            <a class="navbar-brand sprite" href="/">iProf</a>
+            {{>search_bar}}
+        </div>
+      </div>
+</div>
+<!--Navigation end-->
+</template>
+
+<!--Breadcum-->
+<template name="breadcrumb_test">
+    <ol class="breadcrumb testmargintop" id="breadcrumb">
+        {{#each breadcumUrls obj}}
+	    {{#if showLink}}
+                <li><a href="{{url}}">{{title}}</a></li>
+            {{else}}
+                <li>{{title}}</li>
+            {{/if}}
+        {{/each}}
+    </ol>
+</template>
+<!--Breadcum-->
+
+
+<template name="start_mock_test">
+<!--opponent list-->
+<div class="well white no-border no-radius no-shadow no-margin-bottom no-padding taketest">
+  <div class="container">
+    <div class="row">
+      <h4>&nbsp;</h4>
+      <div class="row rodivtext">
+        	<div class="col-md-2 col-sm-2 col-xs-12 rodivtext1">
+            	<span class="questioncl"><b>&#63;</b></span>
+            	<div class="sliderleftquestion">
+                    <a href="javascript:void(0);" class="leftwithoutarrow graybutton"><i class="glyphicon glyphicon-chevron-up"></i></a>
+                    <div class="middle">
+                        <ul class="thumbs questionul">
+			  {{#each start_mock_test}}
+                            <li class="thumb1"><a href="javascript:void(0)" id="ques_{{index}}" rel="{{value}}" class="quesNo">{{incrementQues}}</a></li>
+			  {{/each}}
+			  <div class="clearfix"></div>
+                        </ul>          
+                    </div>
+                    <div class="clearfix"></div>
+                    <a href="javascript:();" class="rightwithoutarrow graybutton"><i class="glyphicon glyphicon-chevron-down"></i></a>
+                </div>
+            </div>
+            <div class="col-md-10 col-sm-10 col-xs-12 rodivtext2">
+            	<div class="topheid">
+                	<span class="lefic"><i></i>{{test_detail.test_name}} {{test_detail.total_question}}</span>
+                    <span class="lesectopm">{{test_detail.test_name}} {{test_detail.total_question}}</span>
+                    <div class="righttime">
+                    	<span><i></i></span>
+			<span class="timeadd" id="timer">{{timer test_detail.test_duration}}</span>
+                        <span class="markssadd"><strong>{{test_detail.total_marks}}</strong> Marks</span>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <ul class="questiontest">
+		  {{#mathjax wait=true}}
+		  {{#each ques_detail obj}}
+		  <li id="quesList_{{id}}">
+		    <div class="questiontestask" style="float:left; width:4%; margin-right:5px; padding-top:1px;"><span>Q{{qNo}}</span></div>
+		    <div class="questiontestask"  style="float:left; width:94%">
+		      <input type="hidden" name="quesId" class="quesId" id="q_{{id}}" value="{{question_marks}}" />
+		      <strong>{{{question_statements}}}</strong>
+		    </div>
+                    <div class="clearfix"></div>
+		    <ul>
+		      {{#each options}}
+		      <li>
+			  <i class="">&nbsp;</i>
+			  <input type="radio" name="options" class="optId" rel="{{right_options}}" id="{{id}}" value="{{id}}" />
+			  {{{statement}}}
+			  <div class="clearfix"></div>
+		      </li>
+		      {{/each}}
+		    </ul>
+		  </li>
+		  {{/each}}
+		  {{/mathjax}}
+                </ul>
+            </div>
+            
+            <div class="clearfix"></div>
+            <div class="paginationdiv">
+            	<ol class="listsyle">
+                    <li class="asdf"> <i class="skybully"></i>Attempted</li>
+                    <li class="asdf"><i class="grayclo"></i> Current</li>
+                </ol>
+                <!--<a href="javascript:void(0);" id="quit" class="Quit2 graybutton">Quit</a>-->
+                
+                <div class="rightnextpaginestion">
+		    {{#if nextitem "0"}}
+			<button class="graybutton priitem" id="prevN" ><i class="glyphicon glyphicon-chevron-left"></i>Previous Question </button>
+			<button class="graybutton nextpri" id="testN" {{shouldBeDisabled}}><i class="glyphicon glyphicon-chevron-right"></i>Next Question </button>
+		    {{else}}
+			<button class="graybutton nextpri" id="nextN"><i class="glyphicon glyphicon-chevron-right"></i>Next Question </button>
+		    {{/if}}
+                    <span class="numbring"><strong>{{qNo}}</strong>/{{test_detail.total_question}}</span>
+                    <button class="submitbtn buttongreen" id="confirmBoxMock" name="modal">Submit<i class="glyphicon glyphicon-chevron-right"></i></button>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+{{#if loadScript totalQuestion}}
+  <script src="/js/custom.js"></script>
+{{/if}}
+<!--opponent list End--> 
+</template>
+
+<template name="infoBoxMock">
+  <style>.modal-width {width:40% !important;} .secrolheighedd{height:250px; overflow:auto;}
+  @media (max-width:768px){.modal-width {width:80%!important;}}
+  @media (max-width:380px){
+   .modal-width {width:96% !important;}
+   .attempuntt .Attemptedq, .attempuntt .UnAttempted {float:Left;}
+   .questionpop {width:auto;} 
+  }
+  </style>
+  <!-- ======== questionpop start here ======== -->
+  <div class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-width">
+      <div class="modal-content">
+        <div class="modal-header pophd">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Test Current Status</h4>
+        </div>
+        <div class="modal-body">
+	  <!---Start-->
+	  <div id="questionpopid" class="window popbox">
+	  <div class="questionpop" >
+	      <div class="text-danger"><h5>{{messageClose}}</h5></div>
+	      <div class="attempuntt">
+		  <div class="UnAttempted"><strong>UnAttempted</strong> <span>{{unAttempted}}</span></div>
+		  <div class="Attemptedq"><strong>Attempted </strong><span>{{attempted}}</span></div>
+		  <div class="clearfix"></div>
+	      </div>
+	      <ul class="lidrow fontsi">
+		  <li>Question No.</li>
+		  <li>Attempted</li>
+		  <li>UnAttempted</li>
+		  <div class="clearfix"></div>
+	      </ul>
+	      <div class="scrolloneleftside4 secrolheighedd">
+		  {{#each scoreInfo obj}}
+		  <ul class="lidrow">
+		      <li><span class="{{colorQ attp}}">{{qNo}}</span></li>
+		      <li><strong>{{attp}}</strong></li>
+		      <li><strong>{{skip}}</strong></li>
+		      <div class="clearfix"></div>
+		  </ul>
+		  {{/each}}
+	      </div>
+	      <div class="clearfix"></div>
+	      <div class="bgsuccess">
+		  <button class="submitbtn buttongreen pull-right" id="cancelTestMock" name="modal">No</button>
+		  <button class="submitbtn buttongreen pull-right" id="saveTestMock" name="modal">Yes</button>
+		  <span class="numbring pull-right margintopd"><strong>Submit test ?</strong></span>
+		  <div class="clearfix"></div>
+	      </div>
+	  </div>
+	  </div>
+	  <!--End-->
+        </div>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+</template>
+

@@ -1,0 +1,133 @@
+<template name="beat_my_score">
+  <body>   
+  {{>headertest}}
+  {{>breadcrumb_beat_my_score}}
+  {{>beat_score}}
+  {{>footer}}
+<script>
+    $('document').ready(function(){
+        $('html').on('click', function(){
+           if($('.notifi_pop').is(':visible'))
+           {
+               $('.notifi_pop').hide();
+           }
+        });
+        $('html').on('click', '.notifi_pop', function(){
+            $('.notifi_pop').show();
+        });
+        
+    });
+
+</script>
+<script src="/js/custom.js"></script>
+</body>
+</template>
+
+<template name="breadcrumb_beat_my_score">
+<!--Breadcrumb-->
+<div class="well no-border no-radius no-shadow no-padding">
+  <div class="container">
+    <div class="row">
+      <ol class="breadcrumb no-margin testseries">
+        <li><a href="/">Home</a></li>
+        <li class="active">Beat My Score</li>
+      </ol>
+    </div>
+  </div>
+</div>
+<!--Breadcrumb End-->
+
+<!--Breadcrumb-->
+<!--<div class="well white no-border no-radius no-shadow no-margin-bottom no-padding beatmyscore">
+  <div class="container">
+    <div class="white shadow">
+      <div class="row">
+        <div class="signupnumber">
+          <div class="pnkline"></div>
+          <div class="signup_no">
+            <ul class="signupno_list">
+              <li class="pull-left"><span>1</span>
+                <p class="bgnone">SELECT SUBJECT</p>
+              </li>
+              <li><span>2</span>
+                <p class="bgnone">SELECT AN OPPONENT</p>
+              </li>
+              <li><span>3</span>
+                <p class="bgnone">START QUIZ</p>
+              </li>
+              <li class="pull-right active"><span>4</span>
+                <p class="bgnone">RESULT</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>-->
+<!--Breadcrumb End-->
+</template>
+
+<template name="beat_score">
+<!--test--> 
+<div class="well white no-border no-radius no-shadow no-margin-bottom no-padding beatmyscoreresult">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+        <div class="white shadow beastmyscorepadding">
+          <div class="row">
+            <div class="col-md-5">
+              <div class="contestant"><i class="sprite winnericn"></i><img src="images/{{imgNewUrl}}" alt="" class="img-responsive" />
+                <h5>{{currentUserName}}</h5>
+                <p>Total Score : {{currentScore}}</p>
+              </div>
+              <div class="clearfix"></div>
+              <div class="progress">
+                <div class="progress-bar {{getHigest userS oldS 1}}" role="progressbar" aria-valuenow="{{userS}}"
+  aria-valuemin="0" aria-valuemax="100" style="width:{{userS}}%"></div>
+              </div>
+              <p>{{wonTitle userS oldS 1}}</p>
+              <ol class="testanswerdetails">
+              	<ol class="testanswerdetails">
+		  {{#each currentUser obj}}
+		    <li class="{{colorNewText corrStatus}}">{{corrStatus}}<span class="text-success">{{corrAns}}</span></li>
+		  {{/each}}
+		</ol>
+             </ol>
+              
+            </div>
+            <div class="col-md-2">
+            	<div class="versus">vs</div>
+                <div class="bordercenter"></div>
+            </div>
+            <div class="col-md-5">
+              <div class="contestant"><img src="images/{{imgOldUrl}}" alt="" class="img-responsive" />
+                <h5>{{oldUserName}}</h5>
+                <p>Total Score : {{oldScore}}</p>
+              </div>
+              <div class="clearfix"></div>
+              <div class="progress">
+              <div class="progress-bar {{getHigest userS oldS 2}}" role="progressbar" aria-valuenow="{{oldS}}"
+  aria-valuemin="0" aria-valuemax="100" style="width:{{oldS}}%"></div>
+              </div>
+              <p>{{wonTitle userS oldS 2}}</p>
+              <ol class="testanswerdetails">
+              	{{#each oldUser obj}}
+		  <li class="{{colorOldText corrStatus}}">{{corrStatus}}<span class="text-success">{{corrAns}}</span></li>
+		{{/each}}
+              </ol>
+            </div>
+          </div>
+          <div class="beatmyscore_lnks text-center">
+            <a href="javascript:void()">New Opponent</a>
+            <a href="javascript:void()">Take New Test</a>
+            <a href="javascript:void()">View Stats</a>
+            <a href="javascript:void()">Share</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--test End--> 
+</template>

@@ -1,0 +1,57 @@
+//server side
+meteor add nimble:restivus
+meteor add random
+meteor add momentjs:moment
+meteor add servicelocale:meteor-server-validator
+//meteor add jaymc:google-reverse-geocode
+//meteor add email
+meteor add http
+meteor add meteorhacks:aggregate
+
+meteor add jparker:crypto-sha1
+meteor add miktam:server-cache
+
+
+meteor add nimble:restivus random momentjs:moment ervicelocale:meteor-server-validator jaymc:google-reverse-geocode email http meteorhacks:aggregate jparker:crypto-sha1 miktam:server-cache
+
+
+
+meteor add nimble:restivus random momentjs:moment servicelocale:meteor-server-validator email http meteorhacks:aggregate jparker:crypto-sha1 miktam:server-cache mrt:mathjax
+
+
+
+
+
+
+
+
+
+
+//client side packages
+ meteor add accounts-facebook
+ meteor add accounts-google
+ meteor add iron:router
+ meteor add themeteorchef:jquery-validation
+ meteor add twbs:bootstrap
+ meteor add iron:router
+ meteor add blaze-html-templates
+ meteor add peppelg:bootstrap-3-modal
+ meteor add emdagon:bootstrap-multiselect
+ meteor add barbatus:stars-rating
+ meteor add jquery
+ meteor add service-configuration
+  meteor add mrt:mathjax
+meteor add jparker:crypto-base64
+meteor add jeremy:jwplayer
+meteor add johnschult:crypto-sha512
+ meteor add monbro:iron-router-breadcrumb
+ meteor add u2622:persistent-session
+meteor add chrismbeckett:toastr
+meteor add dandv:jquery-rateit
+
+meteor add accounts-facebook accounts-google iron:router themeteorchef:jquery-validation twbs:bootstrap blaze-html-templates peppelg:bootstrap-3-modal emdagon:bootstrap-multiselect barbatus:stars-rating jquery service-configuration jparker:crypto-base64 mrt:mathjax jeremy:jwplayer johnschult:crypto-sha512 monbro:iron-router-breadcrumb u2622:persistent-session chrismbeckett:toastr dandv:jquery-rateit manuelschoebel:ms-seo check
+
+
+
+ meteor add manuelschoebel:ms-seo
+meteor add check

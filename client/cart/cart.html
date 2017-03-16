@@ -1,0 +1,379 @@
+<template name="cart_body">
+
+  <body>
+    {{>topstrip}} {{>cart_header}} {{>cart_list}}
+    <!--<script src="js/bootstrap.js"></script>
+-->
+    <style>
+      .cartdetails .cartborder ul.cartdescription li .itemdetails i.sprite {
+        width: 30px!important;
+        height: 30px!important;
+      }
+
+      .modal-backdrop {
+        background-color: none !important;
+      }
+
+      .sdcardicn {
+        background-position: -208px -450px;
+      }
+
+      .tablateicn {
+        background-position: -250px -412px;
+      }
+
+      #finalpayment {
+        background: #fb8c00 none repeat scroll 0 0;
+        color: #fff;
+        display: inline-block;
+        margin: 7px 0;
+        min-width: 10%;
+      }
+
+      #backbtn {
+        background: #fb8c00 none repeat scroll 0 0;
+        color: #fff;
+        display: inline-block;
+        margin: 7px 0;
+        min-width: 10%;
+      }
+
+      #saveAddressBtn {
+        background: #fb8c00 none repeat scroll 0 0;
+        color: #fff;
+        display: inline-block;
+        margin: 7px 0;
+        min-width: 10%;
+      }
+
+      #changeNewAddressbtn {
+        background: #fb8c00 none repeat scroll 0 0;
+        color: #fff;
+        display: inline-block;
+        margin: 7px 0;
+        min-width: 10%;
+      }
+
+      #apply_coupon_subscription {
+        background: #fb8c00 none repeat scroll 0 0;
+        color: #fff;
+        display: inline-block;
+        margin: 7px 0;
+        min-width: 10%;
+      }
+    </style>
+    <script src="/js/custom.js"></script>
+    <script>
+      // $("#nextbtn").click(function(){
+      //     $("#address").slideToggle();
+      // 	});
+    </script>
+  </body>
+</template>
+
+<template name="cart_header">
+  <!--Navigation Start-->
+  <div class="orange-bg topfixed">
+    <div class="container inner-nav">
+      <div class="row">
+      <ul class="pull-right">
+          {{>notif_cart_count}} {{#if login_check}}
+          <li><a href="javascript:void(0);" class="sign-in">Sign In</a></li>
+          <li><a class="sign-up btn btn-default shadow" href="javascript:void(0);" role="button">Sign Up</a></li>
+          {{else}} {{>user_profile_data}} {{/if}}
+        </ul>
+      <a class="navbar-brand sprite" href="/">iProf</a> {{>search_bar}}
+        
+      </div>
+    </div>
+  </div>
+  <!--Navigation ends-->
+</template>
+
+<template name="cart_list">
+  <div class="white no-shadow cartdetails innermargintop">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="cartborder" id="cartlisting">
+            <h1>Shopping Cart ({{cartCount}} items)</h1>
+            <ul class="cartdescription">
+              <li>
+                <div class="itemdetails">Item Details</div>
+                <div class="cartprice">Price</div>                
+                <div class="clearfix"></div>
+              </li>
+              {{#if cartCount}} {{#each cartList}}
+              <li>
+                <div class="itemdetails">
+                  <span><img alt="" src="/images/cartimg.jpg"></span>
+                  <h4>{{package_name}}</h4>
+                  <p> <i class="sprite {{hardwareTypeClass hardware_type}} "></i>{{hardware_name}}</p>
+                  <p>Type: {{ hardware_type }}</p>
+                  {{#if publisher}}
+                  <p>By Publisher: {{publisher}}</p>
+                  {{/if}}                  
+                  
+                  {{#if validity}}
+                  <p>Validity: {{validity}} Months</p>
+                  {{/if}}
+                </div>
+
+                <div class="cartprice">
+
+                  {{#if packageCost discounted_cost}}
+                  <div class="discountprice">
+                    <del>&#8377; {{actual_subscription_cost}} </del>
+                  </div>
+                  <p>&#8377; {{discounted_cost}}</p>
+                  {{else}}
+                  <p>&#8377; {{subscription_cost}}</p>
+                  {{/if}}
+
+                </div>
+                <div class="subtotal"><a href="javascript:void(0);" class="removeCart" alt="{{package_id}}_{{package_subscription_id}}_{{package_type}}"><span class="close pull-right"><i class="glyphicon glyphicon-trash"></i></span></a></div>
+                <div class="clearfix"></div>
+              </li>
+              {{/each}} {{else}}
+              <li>Your Cart is Empty.</li>
+              {{/if}} {{#if cartCount}}
+              <li>
+
+
+
+                <div class="deliveryandpayment">
+                  <p>Delivery and payment option can be selected later</p>
+                  <div class="applycoupncode"> <span>Offers Available</span>
+                    <span class="coupontext"><input type="text" id="get_coupon_value" placeholder="Enter Coupon Code" class="form-control"><a href="javascript:void(0)" class="remove_coupon_code"><i class="glyphicon glyphicon-remove-circle"></i></a>
+                            <button class="btn apply_coupon_subscription" href="javascript:void(0);" style="cursor:pointer">Apply</button></span>
+                    <div class="clearfix"></div>
+                    <div class="offerprice">
+
+                      <!-- <strong class="couponcode">INTRO50<input type="hidden" value="INTRO50" id="offercode"> </strong><span>Use Promo Code to avail 50% off. <a class="apply_coupon_subscription" href="javascript:void(0);" style="cursor:pointer">Select</a></span> -->
+                    </div>
+                  </div>
+                </div>
+                <div class="totalprice">
+                  <p>Sub-total:</p>
+                  <p>Discount:</p>
+                  <br>
+                  <p class="totalpayablefnt">Total Payable:</p>
+                </div>
+                <div class="totalsubtotal">
+                  <p>&#8377; {{cartTotal}}</p>
+                  <p class="deliverycharge">&#8377; {{cartdiscount}}</p>
+                  <br>
+                  <p class="totalpayablefnt">&#8377; {{totalPayable}}</p>
+                </div>
+                <div class="clearfix"></div>
+                <div class="securepayment">
+                  <p><i class="glyphicon glyphicon-lock"></i> 100% safe &amp; secure payments</p>
+                  <div class="clearfix"></div>
+                </div>
+
+                <div class="proceedbtnwidth">
+                  <!-- <button class="btn proceedbtn" type="submit" disabled="disabled">Proceed to Payment</button> -->
+                  <button class="btn proceedbtn1" id="nextbtn">NEXT</button>
+                </div>
+                <div class="clearfix"></div>
+              </li>
+              {{/if}}
+            </ul>
+          </div>
+          {{>cart_user_shipping_billing_address}}
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  {{>footer}}
+  <div class="clearfix"></div>
+</template>
+
+<template name="cart_user_profile_data">
+  <li><a class="welcome" href="javascript:void(0);" id="user_name"><span class="userimg"></span>Hi {{login_user_name}}&nbsp;&nbsp;<i class="glyphicon glyphicon-menu-down" id="arrowdown"></i></a>
+    <div class="welcomepop shadow">
+      <p class="log_out_button"><a href="javascript:void(0)"><i class="glyphicon glyphicon glyphicon-off"></i>Sign Out</a></p>
+    </div>
+  </li>
+</template>
+
+<template name="cart_user_shipping_billing_address">
+  <div class="tab-pane cartborder billingshippingaddress" id="address">
+    <div class="row" id="editableaddress">
+
+      <div class="col-xs-12 col-md-6">
+        <div class="row">
+          <form class="addressform billingform" id="billingform">
+            <h4>Billing Address</h4>
+            <div class="formpadding">
+              <div class="form-group">
+                <input type="text" name="billing_fname" class="form-control" placeholder="Full Name" />
+              </div>
+              <div class="form-group">
+                <textarea name="billing_address" class="form-control" placeholder="Address"></textarea>
+              </div>
+              <div class="form-group">
+                <input type="text" name="billing_locality" class="form-control" placeholder="Locality" />
+              </div>
+              <div class="form-group">
+                <input type="text" name="billing_city" class="form-control" placeholder="City" />
+              </div>
+              <div class="form-group">
+                <select name="billing_state" class="form-control">
+                  <option value="">Select state</option>
+                  <option value="1">Andaman and Nicobar Islands</option>
+                  <option value="2">Andhra Pradesh</option>
+                  <option value="3">Arunachal Pradesh</option>
+                  <option value="4">Assam</option>
+                  <option value="5">Bihar</option>
+                  <option value="6">Chandigarh</option>
+                  <option value="7">Chhattisgarh</option>
+                  <option value="8">Dadra and Nagar Haveli</option>
+                  <option value="9">Daman and Diu</option>
+                  <option value="10">Delhi</option>
+                  <option value="11">Goa</option>
+                  <option value="12">Gujarat</option>
+                  <option value="13">Haryana</option>
+                  <option value="14">Himachal Pradesh</option>
+                  <option value="15">Jammu and Kashmir</option>
+                  <option value="16">Jharkhand</option>
+                  <option value="17">Karnataka</option>
+                  <option value="18">Kerala</option>
+                  <option value="19">Lakshadweep</option>
+                  <option value="20">Madhya Pradesh</option>
+                  <option value="21">Maharashtra</option>
+                  <option value="22">Manipur</option>
+                  <option value="23">Meghalaya</option>
+                  <option value="24">Mizoram</option>
+                  <option value="25">Nagaland</option>
+                  <option value="26">Odisha</option>
+                  <option value="27">Puducherry</option>
+                  <option value="28">Punjab</option>
+                  <option value="29">Rajasthan</option>
+                  <option value="30">Sikkim</option>
+                  <option value="31">Tamil Nadu</option>
+                  <option value="32">Telangana</option>
+                  <option value="33">Tripura</option>
+                  <option value="34">Uttar Pradesh</option>
+                  <option value="35">Uttarakhand</option>
+                  <option value="36">West Bengal</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <input type="tel" name="billing_zip" class="form-control" placeholder="Zip" />
+              </div>
+              <div class="form-group">
+                <input type="tel" name="billing_mob_no" class="form-control" placeholder="Mobile Number" />
+              </div>
+              <!-- <div class="checkbox checkbox-success">
+              <input type="checkbox" value="option1" id="inlineCheckbox12">
+              <label for="inlineCheckbox12">Ship to this address </label>
+            </div> -->
+            </div>
+          </form>
+          <div class="checkbox checkbox-success">
+            <input type="checkbox" value="option1" id="inlineCheckbox12">
+            <label for="inlineCheckbox12">Ship to this address </label>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="col-xs-12 col-md-6">
+        <div class="row">
+          <h4>Shipping Address</h4>
+          <form class="addressform shippingform" id="shippingform">
+            <div class="formpadding">
+              <div class="form-group">
+                <input type="text" name="ship_fname" class="form-control" placeholder="Full Name" />
+              </div>
+              <div class="form-group">
+                <textarea name="ship_address" class="form-control" placeholder="Address"></textarea>
+              </div>
+              <div class="form-group">
+                <input type="text" name="ship_locality" class="form-control" placeholder="Locality" />
+              </div>
+              <div class="form-group">
+                <input type="text" name="ship_city" class="form-control" placeholder="City" />
+              </div>
+              <div class="form-group">
+                <select name="ship_state" class="form-control">
+                  <option value="">Select state</option>
+                  <option value="1">Andaman and Nicobar Islands</option>
+                  <option value="2">Andhra Pradesh</option>
+                  <option value="3">Arunachal Pradesh</option>
+                  <option value="4">Assam</option>
+                  <option value="5">Bihar</option>
+                  <option value="6">Chandigarh</option>
+                  <option value="7">Chhattisgarh</option>
+                  <option value="8">Dadra and Nagar Haveli</option>
+                  <option value="9">Daman and Diu</option>
+                  <option value="10">Delhi</option>
+                  <option value="11">Goa</option>
+                  <option value="12">Gujarat</option>
+                  <option value="13">Haryana</option>
+                  <option value="14">Himachal Pradesh</option>
+                  <option value="15">Jammu and Kashmir</option>
+                  <option value="16">Jharkhand</option>
+                  <option value="17">Karnataka</option>
+                  <option value="18">Kerala</option>
+                  <option value="19">Lakshadweep</option>
+                  <option value="20">Madhya Pradesh</option>
+                  <option value="21">Maharashtra</option>
+                  <option value="22">Manipur</option>
+                  <option value="23">Meghalaya</option>
+                  <option value="24">Mizoram</option>
+                  <option value="25">Nagaland</option>
+                  <option value="26">Odisha</option>
+                  <option value="27">Puducherry</option>
+                  <option value="28">Punjab</option>
+                  <option value="29">Rajasthan</option>
+                  <option value="30">Sikkim</option>
+                  <option value="31">Tamil Nadu</option>
+                  <option value="32">Telangana</option>
+                  <option value="33">Tripura</option>
+                  <option value="34">Uttar Pradesh</option>
+                  <option value="35">Uttarakhand</option>
+                  <option value="36">West Bengal</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <input type="tel" name="ship_zip" class="form-control" placeholder="Zip" />
+              </div>
+              <div class="form-group">
+                <input type="tel" name="ship_mob_no" class="form-control" placeholder="Mobile Number" />
+              </div>
+              <!-- <div class="checkbox checkbox-success">
+              <input type="checkbox" value="option1" id="inlineCheckbox13">
+              <label for="inlineCheckbox13">Save address </label>
+            </div> -->
+            </div>
+            <span class="shippingoption"><img src="/images/delivery-truck.png" alt=""/> Shipping Option: Standard Delivery in 3-5 days </span>
+
+
+          </form>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+      <button class="btn proceedbtn1 pull-left" id="backbtn">BACK</button>
+      <button class="btn proceedbtn1 pull-right" id="saveAddressBtn">NEXT</button>
+    </div>
+    <div class="row" id="userAddress" style="display:none">
+      <div class="col-xs-12 col-md-12">
+        <div class="row">
+          <h4>Shipping Address</h4>
+          <p id="newUserAddress"></p>
+        </div>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+    <button class="btn proceedbtn1 pull-left" id="changeNewAddressbtn" style="display:none;">Change</button>
+    {{>codnow}}
+    <button class="btn proceedbtn pull-right" id="finalpayment" style="display:none;" disabled="disabled">Proceed to Payment</button>
+    <div class="clearfix"></div>
+  </div>
+
+</template>

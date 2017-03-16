@@ -1,0 +1,132 @@
+<template name="my_downloads">
+  <body>
+  {{>topstrip}}    
+  {{>my_downloads_nav}} 
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
+  <script src="js/jquery-1.11.2.min.js"></script> 
+  <script src="js/bootstrap.js"></script> 
+  <script src="js/custom.js"></script>
+  <style>
+    .modal-backdrop{
+        background-color: none !important;
+    }
+</style>
+  <script>
+    $('document').ready(function(){
+        $('html').on('click', function(){
+           if($('.notifi_pop').is(':visible'))
+           {
+               $('.notifi_pop').hide();
+           }
+        });
+        $('html').on('click', '.notifi_pop', function(){
+            $('.notifi_pop').show();
+        });
+        $('html').on('click', function(){
+           if($('.cartpop').is(':visible'))
+           {
+               $('.cartpop').hide();
+           }
+        });
+        $('html').on('click', '.cartpop', function(){
+            $('.cartpop').show();
+        });
+        $('.fun-vid').click(function(e){
+            e.preventDefault();
+           $('#videopop').modal('show');
+        });
+    });
+</script> 
+  <script>
+  $(document).ready(function() {
+ 
+  $("#owl-demo").owlCarousel({
+ 	
+	
+      navigation : true, // Show next and prev buttons
+      slideSpeed : 300,
+	  loop:true,
+      paginationSpeed : 400,
+      singleItem:true,
+      autoPlay:6000
+ 
+      // "singleItem:true" is a shortcut for:
+      // items : 1, 
+      // itemsDesktop : false,
+      // itemsDesktopSmall : false,
+      // itemsTablet: false,
+      // itemsMobile : false
+ 
+  });
+  
+
+    var carousel = $("#owl-demo");
+  carousel.owlCarousel({
+    navigation:true,
+    navigationText: [
+      "<i class='icon-chevron-left icon-white'><</i>",
+      "<i class='icon-chevron-right icon-white'>></i>"
+      ],
+  
+});
+
+
+ 
+});
+</script> 
+  <script type="text/javascript">
+    $(document).ready(function() {
+        $('#maxOption3').multiselect();
+    });
+</script>
+  </body>
+</template>
+
+<!--Navigation Start-->
+<template name="my_downloads_nav">
+  <div class="topfixed">
+    <div class="light-green">
+      <div class="container inner-nav">
+        <div class="row"><a class="navbar-brand sprite" href="/">iProf</a>
+            {{>search_bar}}
+          <ul class="pull-right">
+            {{>notif_cart_count}}
+            {{#if login_check}}
+            <li><a href="javascript:void(0);" class="sign-in">Sign In</a></li>
+            <li><a class=" sign-up btn btn-default shadow" href="javascript:void(0);" role="button">Sign Up</a></li>
+            {{else}}  
+            {{>user_profile_data}}
+            {{/if}}
+          </ul>
+        </div>
+      </div>
+    </div>
+    {{>my_preference}}</div>
+  {{>my_downloads_list}}
+  {{>footer}}
+  <div class="clearfix"></div>
+</template>
+
+<!--Breadcrumb-->
+<template name="my_downloads_list">
+  <div class="well no-border no-radius no-shadow no-margin-bottom features innermargintop" id="mydownloads">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+        	<h1>My Downloads</h1>
+            <p>By using our PC Application, you can download and access the content in offline mode for the courses you have joined under My Course Section.</p>
+            <h2>Steps to Download PC Application:</h2>
+            <ol style="list-style-type:decimal">
+            	<li>Login with you iProf account. Download the PC Application available under "My downloads" section.</li>
+                <li>After downloading PC Application, double click on the downloaded file. The file install wizard will open up and run a system check for the required software's. If any software (e.g. JRE, Adobe flash player or adobe ActiveX) is found missing, the installer will automatically install it.</li>
+                <li>Once all required software's are installed, the installer will now install the PC application.</li>
+                <li>After the PC application is installed, a desktop short cut icon will be created.</li>
+                <li>On Double click of the icon, application will launch and login form will open.</li>
+                <li>After entering the registered user id, the user shall be able to view the list of all content which has been bought from website with the download links for each option.</li>
+            </ol>
+            <p class="downloads_note">* Note: Your system's Mac ID will be captured by application to ensure that you cannot use the downloaded content on more than one machine at a time. A maximum of 2 free re-registration requests can be made by a user (2 free, Rest paid)</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

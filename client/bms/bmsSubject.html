@@ -1,0 +1,86 @@
+<!--subject list-->
+
+<template name="bmsSubject"> 
+  {{>sticky_nav}}  
+  {{>header_bmsSubject}}
+  {{>bmsBreadcrumb}}
+  {{>bmsSubjectBreadcrumb}}
+  <div class="well white no-border no-radius no-shadow no-margin-bottom no-padding opponentlist">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <form class="form" id="clickBmsSubject">
+            <div class="btn-group" data-toggle="buttons"> {{#if getSubjectsIDWeb}}
+              {{#each getSubjectsIDWeb}}
+              <label class="btn btn-default opponentbox">
+                <input name="bmsRadio" type="radio" checked data-answer="{{id}}" value={{id}}>
+                <span cass="wraptext">
+                {{name}} 
+                 </span>
+              </label>
+              {{/each}}
+              {{/if}} </div>
+           <!--  <button type="submit" class="btn btn-default btn-success bmsNext">Submit</button> -->
+          </form>
+        </div>
+      </div>
+      
+      <!--Step-4-end--> 
+    </div>
+  </div>
+  {{>footer}} </template>
+<!--subject list End--> 
+
+<template name="header_bmsSubject"> 
+<div class="topfixed">
+    {{>topstrip}}
+    <div class="bms-bg">
+      <div class="container inner-nav">
+        <div class="row">
+            <ul class="pull-right">
+            {{>notif_cart_count}}      
+            {{#if login_check}}
+            <li><a href="javascript:void(0);" class="sign-in">Sign In</a></li>
+            <li><a class="sign-up btn btn-default shadow" href="javascript:void(0);" role="button">Sign Up</a></li>
+            {{else}}  
+            {{>user_profile_data}}
+            {{/if}}
+          </ul>
+            <a class="navbar-brand sprite" href="/">iProf</a>
+            {{>search_bar}}
+          
+        </div>
+      </div>
+    </div>
+    {{>my_preference}}
+</div>
+  <div class="clearfix"></div>
+</template>    
+
+<template name="bms_navigation">
+  <div class="positionfixed">
+    <div class="row">
+      <div class="col-xs-12 col-sm-2 col-md-2">
+        <div class="wap-menu">
+          <!--<a href="javascript:void(0);" class="mobile-menu"><i class="glyphicon glyphicon-menu-hamburger"></i></a>-->
+          <div class="mainmenu arrow-down">
+            <ul class="yourprfr">
+              <li class="active"><a href="javascript:void(0);" class="hoverCursor lightgreen_bg" id="home_page"><i class="glyphicon glyphicon-home"></i>Home</a></li>
+             {{#if disable_tab_course countCourse 0}}
+              <li><a href="javascript:void(0);" class="hoverCursor green_bg" id="course_page_disable"><i class="glyphicon glyphicon-book"></i>Courses<span class="countcourse">{{countCourse}}</span></a></li>
+              {{else}}
+              <li><a href="javascript:void(0);" class="hoverCursor green_bg" id="course_page"><i class="glyphicon glyphicon-book"></i>Courses<span class="countcourse">{{countCourse}}</span></a></li>
+              {{/if}} 
+              {{#if disable_tab_test countTest 0}}
+              <li><a href="javascript:void(0);" class="hoverCursor blue_bg" id="test_page_disable"><i class="glyphicon glyphicon-list-alt"></i>Tests<span class="countcourse">{{countTest}}</span></a></li>
+              {{else}}
+              <li><a href="javascript:void(0);" class="hoverCursor blue_bg" id="test_page"><i class="glyphicon glyphicon-list-alt"></i>Tests<span class="countcourse">{{countTest}}</span></a></li>
+              {{/if}}
+              <li><a href="javascript:void(0);" class="hoverCursor red_bg" id="tutor_page"><i class="glyphicon glyphicon-user"></i>Tutors<span class="countcourse">0</span></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
