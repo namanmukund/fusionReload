@@ -343,51 +343,51 @@ Router.map(function() {
   });
 });
 
-Router.map(function() {
-  return this.route('/:slug/chapter_content/', {
-    name: 'tests.test_pdp.chapter_content',
-    template: 'chapter_content',
-    parent: 'tests.test_pdp',
-    title: Session.get('chapter_name'),
-    onBeforeAction:function(){
-      $('#mask1').show();    
-      this.next();
-    },
-    onAfterAction: function() {
-      $('#mask1').hide();
-      SEO.set({
-	title: Session.get('metaInfo').title,
-	meta: {
-	  'description': Session.get('metaInfo').description,
-	  'keywords': Session.get('metaInfo').keywords
-	}
-      });
-    }
-  });
-});
+// Router.map(function() {
+//   return this.route('/:slug/chapter_content/', {
+//     name: 'tests.test_pdp.chapter_content',
+//     template: 'chapter_content',
+//     parent: 'tests.test_pdp',
+//     title: Session.get('chapter_name'),
+//     onBeforeAction:function(){
+//       $('#mask1').show();    
+//       this.next();
+//     },
+//     onAfterAction: function() {
+//       $('#mask1').hide();
+//       SEO.set({
+// 	title: Session.get('metaInfo').title,
+// 	meta: {
+// 	  'description': Session.get('metaInfo').description,
+// 	  'keywords': Session.get('metaInfo').keywords
+// 	}
+//       });
+//     }
+//   });
+// });
 
-Router.map(function() {
-  return this.route('/:slug/chapter_content_test/', {
-    name: 'tests.test_pdp.chapter_content_test',
-    template: 'chapter_content_test',
-    parent: 'tests.test_pdp',
-    title: Session.get('chapter_name'),
-    onBeforeAction:function(){
-      $('#mask1').show();    
-      this.next();
-    },
-    onAfterAction: function() {
-      SEO.set({
-	title: Session.get('metaInfo').title,
-	meta: {
-	  'description': Session.get('metaInfo').description,
-	  'keywords': Session.get('metaInfo').keywords
-	}
-      });
-      $('#mask1').hide();
-    }
-  });
-});
+// Router.map(function() {
+//   return this.route('/:slug/chapter_content_test/', {
+//     name: 'tests.test_pdp.chapter_content_test',
+//     template: 'chapter_content_test',
+//     parent: 'tests.test_pdp',
+//     title: Session.get('chapter_name'),
+//     onBeforeAction:function(){
+//       $('#mask1').show();    
+//       this.next();
+//     },
+//     onAfterAction: function() {
+//       SEO.set({
+// 	title: Session.get('metaInfo').title,
+// 	meta: {
+// 	  'description': Session.get('metaInfo').description,
+// 	  'keywords': Session.get('metaInfo').keywords
+// 	}
+//       });
+//       $('#mask1').hide();
+//     }
+//   });
+// });
 
 Router.route('/forget_password/:_id', function () {
   var params = this.params;
